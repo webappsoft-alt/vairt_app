@@ -1,0 +1,63 @@
+<ion-content>
+  <ion-grid class="background1" style="position: fixed;width: 100%;height: 200px;" [ngClass]="{'ios_header_css':ios_header==true}"> <br>
+    <ion-buttons (click)="back()">
+      <ion-icon name="arrow-back-outline" style="color:white;font-size: 30px;"></ion-icon>
+    </ion-buttons>
+    <h4 class="heading">Withdraw Funds</h4>
+  </ion-grid>
+  <ion-grid class="content_grid ion-no-padding" [ngClass]="{'content_grid_ios':ios_header==true}"> 
+  <ion-item lines="none">
+   <h4 class="heading_">Withdrawl Request</h4>
+   <button class="form_btn" slot="end">Withdraw Funds</button>
+ </ion-item>
+ <p class="des">Operation spot price 1 USD</p>
+
+ <ion-card class="recent-trans">
+  
+  <ion-item class="ion-no-padding trans1" lines="none">
+    <h4 class="tran_heading">#:</h4>
+    <p class="tran_value" slot="end">1</p>
+   </ion-item>
+
+  <ion-item class="ion-no-padding trans1" lines="none" style="margin-top: -30px;">
+  <h4 class="tran_heading">Created On:</h4>
+  <p class="tran_value" slot="end">12/21/12</p>
+ </ion-item>
+
+  <ion-item class="ion-no-padding trans1" lines="none" style="margin-top: -30px;">
+  <h4 class="tran_heading">Notes:</h4>
+  <p class="tran_value" slot="end">ssd</p>
+ </ion-item>
+
+ <ion-item class="ion-no-padding trans1" lines="none" style="margin-top: -23px;">
+  <h4 class="tran_heading">Withdraw Amount:</h4>
+  <p class="tran_value" slot="end">$121</p>
+ </ion-item>
+
+ <ion-item class="ion-no-padding trans1" lines="none" style="margin-top: -23px;">
+  <h4 class="tran_heading">Withdraw Method:</h4>
+  <p class="tran_value" slot="end">sas</p>
+ </ion-item>
+
+ <ion-item class="ion-no-padding trans1" lines="none" style="margin-top: -23px;">
+  <h4 class="tran_heading">Requested By:</h4>
+  <p class="tran_value" slot="end">sasa</p>
+ </ion-item>
+
+ <ion-item class="ion-no-padding trans1" lines="none" style="margin-top: -23px;">
+  <h4 class="tran_heading">Status:</h4>
+  <p class="tran_value status_approve_color" slot="end" >ss</p> 
+ </ion-item>
+
+ <ion-item class="ion-no-padding trans1" lines="none" style="margin-top: -30px;">
+  <h4 class="tran_heading">Action:</h4>
+  <p class="tran_value" slot="end">dds</p>
+ </ion-item>
+
+</ion-card>
+
+ </ion-grid>
+
+ 
+
+</ion-content>

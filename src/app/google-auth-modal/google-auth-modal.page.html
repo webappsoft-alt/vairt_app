@@ -1,0 +1,29 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-item lines='none' class="ion-no-padding"  [ngClass]="{'ios_header_css':ios_header==true}">
+    <ion-buttons class="close_btn" (click)="dismiss()">
+      <ion-icon name="close" class="close"></ion-icon>
+    </ion-buttons>
+    <p class="title">Two Factor Authentictation</p>
+  </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+<p class="sub_heading">The first step is to download the Google Authentication app for your Android or iOS device. If you need help getting started, please see Google's Support Page.</p>
+<p class="sub_heading">If you do not have access to the Android Market or App Store, there are other options for getting Google Authenticator:, Android Download, Google Chrome Plugin, or iTunes App Store</p>
+<ion-row class="ion-no-padding">
+  <ion-col size="4">
+    <img [defaultImage]="image" [lazyLoad]="qr_code" src="{{qr_code}}" style="margin-top: 25px;">
+  </ion-col>
+  <ion-col size="8">
+      <p class="sub_heading">1. Scan the QR Code</p>
+      <p class="sub_heading">2. Enter the token below</p>
+      <ion-input type="number" placeholder="Code" [(ngModel)]="code"></ion-input>
+  </ion-col>
+</ion-row>
+<br><br><br>
+<button class="form_btn ion-activatable ripple-parent" (click)="auth()"><ion-spinner *ngIf="loading"></ion-spinner>
+  <span *ngIf="!loading" class="submit-txt"> Authenticate
+    <ion-ripple-effect></ion-ripple-effect></span></button>
+  </ion-content>

@@ -1,0 +1,240 @@
+ion-content{
+    font-family: 'poppins regular';
+    overflow: hidden;
+}
+
+.background-img{
+    height: 250px;
+    background-size: cover;
+    background-position: center; 
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+ion-slides.images {
+    background: transparent;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    top: -48px;
+}
+
+.set-height{
+    width: 93%;
+    margin-left: 0%;
+}
+.address{
+    font-family: "poppins semibold";
+    white-space: break-spaces;
+    font-family: 'poppins semibold';
+}
+.type{
+    color:#b8babb;
+    margin-top: -5px;
+    font-size: 13px;
+}
+.sub_title{
+    color:#333;
+    font-size: 13px;
+    height: 10px;
+}
+.set-height{
+    width: 93%;
+    margin-left: 0%;
+}
+.address{
+    margin-left: 10px;
+    margin-top: -10px;
+    font-family: 'poppins semibold';
+}
+.type{
+    color:#b8babb;
+    margin-left: 10px;
+    margin-top: -13px;
+    font-size: 13px;
+}
+.sub_title{
+    color:#333;
+    font-size: 13px;
+    height: 10px;
+}
+.price_btn{
+    background: var(--ion-color-primary);
+    color:white;
+    text-align: center;
+    width: auto;
+    padding: 8px 10px;
+    border-radius: 5px;
+}
+.right{
+    float: right;
+    margin-right: 20px;margin-top: -2px;
+}
+
+.hori_divider{
+    width: 100%;
+    height: 1px;
+    background-color: #dcdcdc;
+    margin-top: 10px;
+}
+.heading_{
+    color:var(--ion-color-primary);
+    margin-left: 10px;
+    font-size: 15px;
+    font-family: 'poppins semibold';
+}
+ion-select{
+    --padding-start:10px;
+    font-family: 'poppins regular';
+    border:1px solid silver;
+    width: 94%;
+    margin-left: 3%;
+}
+
+.lbl{
+    font-family: 'poppins regular';
+    color:#9A9A9A ;
+    margin-left: 10px;
+    margin-top: 30px;
+    font-size: 13px;
+}
+
+// ion-input{
+//     --padding-start:10px;
+//     font-family: 'poppins regular';
+//     border:1px solid silver;
+//     width: 93%;
+//     margin-left: 3%;
+//     margin-top: 5px;
+// }
+.trans_btn{
+    background:transparent;
+    border:none;
+    outline: none;
+    text-align: center;
+    width: 100%;
+    color:var(--ion-color-primary);
+    margin-top: 15px;
+}   
+.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.info{
+    color: #858587;
+    font-family: 'poppins regular';
+    text-align: justify;
+    width: 90%;
+    margin-left: 5%;  
+    margin-top: 5px;
+    font-size: 12px;
+}
+.prim_lbl{
+    color: var(--ion-color-primary);
+    font-size: 12px;
+    margin-top: 30px;
+    text-align: right;
+    margin-right: 10px;
+}
+.adjust{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 0px;
+}
+ion-radio{
+    width:20px;
+    height:20px
+}
+ion-checkbox{
+    width:17px;
+    height:17px;
+    --border-color:#dcdcdc;
+    --border-width: 1px;
+}
+.form_btn{
+    width: 30%;
+    height: 35px;
+}
+
+.heading{
+    font-family: 'poppins semibold';
+    text-align: center;
+    color:white;
+    font-size: 16px;
+    width: 80%;
+    margin-left: 10%;
+}
+.sub-heading{
+    color:white;
+    font-family: 'poppins regular';
+    text-align: center;
+    margin-top: -7px;
+    font-size: 10px;
+    width: 90%;
+    margin-left: 5%;
+}
+.sub-heading1{
+    color:#666666;
+    font-family: 'poppins semibold';
+    margin-top: -3px;
+    margin-left: 0px;
+}
+.txt{
+    font-family: 'poppins regular';
+    margin-top: -2px; 
+    color:#68686A;
+    font-size: 14px;
+}
+
+.grey{
+    background:#F2F2F2;
+    border-top:1px solid #C9C9C9;
+    border-bottom: 1px solid #C9C9C9;
+    padding-left: 50px;
+}
+.white{
+    background:white;
+    padding-left: 50px;
+}
+.background1{
+    height:250px
+}
+
+.tab_lbl_active{
+    color:var(--ion-color-primary)
+}
+ion-segment{
+    width: 90%;
+    margin-left: 5%;
+      &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.title{
+    color:#666666;
+    font-size: 14px;
+    margin-left: 15px;
+    margin-right: 20px;
+    font-family: 'poppins regular';
+}
+.des{
+    color:#68686A;
+    font-family: 'poppins regular';
+    width: 90%;
+    margin-left: 5%;
+    text-align: justify;
+    font-size: 13px;
+}
+ion-input{
+    font-family: 'poppins regular';
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+ion-buttons.ios_header_css_back{
+    margin-top: 40px;
+}

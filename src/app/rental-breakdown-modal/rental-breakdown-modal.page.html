@@ -1,0 +1,53 @@
+<ion-header class="ion-no-border">
+  <br>
+<ion-item lines="none">
+  <img src="assets/images/property_detail/fin_2.png" width="50">
+  <p class="prop_title">Rental Breakdown</p>
+  <ion-buttons (click)="close()" slot="end" (click)="close()"><ion-icon name="close" ></ion-icon></ion-buttons>
+</ion-item>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-row>
+  <ion-col size="6"><p class="lbl">Gross rent per year</p></ion-col>
+  <ion-col size="6"><p class="value">$ {{gross_rent_per_year | number:'1.2-2':'en'}}</p></ion-col>
+</ion-row>
+<ion-row>
+  <ion-col size="6"><p class="lbl">Service charges</p></ion-col>
+  <ion-col size="6"><p class="value">$ {{service_charges}} </p></ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col size="6"><p class="lbl">Net rent</p></ion-col>
+  <ion-col size="6"><p class="value" style="color:var(--ion-color-primary)">$ {{net_rent | number:'1.2-2':'en'}}</p></ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col size="6"><p class="lbl">Net yield</p></ion-col>
+  <ion-col size="6"><p class="value">{{net_yield}}%*</p></ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col size="6"><p class="lbl">Cost</p></ion-col>
+  <ion-col size="6"><p class="value">$ {{cost}}</p></ion-col>
+  <ion-col size="6"><p class="inner_lbl">Property Management</p></ion-col>
+  <ion-col size="6"><p class="inner_value" style="margin-top: -15px;">$ {{prop_manangement}}</p></ion-col>
+  <ion-col size="6"><p class="inner_lbl">Property Insurance / Taxes</p></ion-col>
+  <ion-col size="6"><p class="inner_value" style="margin-top: -12px;">$ {{prop_taxes}}</p></ion-col>
+</ion-row>
+
+
+
+<ion-row>
+  <ion-col size="6"><p class="lbl">Net dividend income</p></ion-col>
+  <ion-col size="6"><p class="value">$ {{dividend_yield}}</p></ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col size="6"><p class="lbl">Net dividend yield</p></ion-col>
+  <ion-col size="6"><p class="value">{{net_dividend_yield}}*</p></ion-col>
+</ion-row>
+
+<p class="lbl_">Only 2 decimal places shown. Calculation carried on actual numbers. Some rounding discrepancies may appear.
+</p>
+</ion-content>

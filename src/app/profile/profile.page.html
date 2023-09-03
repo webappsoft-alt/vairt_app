@@ -1,0 +1,78 @@
+   <ion-header class="ion-no-border">
+    <ion-toolbar class="header" [ngClass]="{'ios_header_css':ios_header==true}">
+      <ion-item lines="none" style="margin-top:12px">
+      <ion-buttons class="close_btn" (click)="close()">
+        <ion-icon name="close" class="close"></ion-icon>
+      </ion-buttons>
+      <ion-title mode="ios">Profile</ion-title>
+      <ion-buttons class="close_btn" slot="end" (click)="edit()">
+        <ion-icon name="create-outline" class="close"></ion-icon>
+      </ion-buttons>
+     </ion-item><br>
+     <div>
+      <ion-avatar class="center">
+        <img src="{{pic}}">
+      </ion-avatar>
+      <p class="txt">{{full_name}}</p>
+    </div>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content class="ion-padding"><br><br>
+    <ion-card mode="ios" (click)="edit()">
+      <ion-item lines="none" class="ion-no-padding">
+        <img src="assets/images/footer/personal_info.png" class="indicate_img">
+        <h4 class="heading_">Personal Information</h4>
+        <ion-icon name="chevron-forward-outline" slot="end" class="forward_arrow"></ion-icon>
+      </ion-item>
+    </ion-card>
+  
+    <ion-card mode="ios"  (click)="move('change-password')">
+      <ion-item lines="none" class="ion-no-padding">
+        <img src="assets/images/footer/password.png" class="indicate_img">
+        <h4 class="heading_">Change Password</h4>
+        <ion-icon name="chevron-forward-outline" slot="end" class="forward_arrow"></ion-icon>
+      </ion-item>
+    </ion-card>
+  
+    <ion-card mode="ios" (click)="move('bank-account')">
+      <ion-item lines="none" class="ion-no-padding">
+        <img src="assets/images/footer/bank_account.png" class="indicate_img">
+        <h4 class="heading_">Bank Account</h4>
+        <ion-icon name="chevron-forward-outline" slot="end" class="forward_arrow"></ion-icon>
+      </ion-item>
+    </ion-card>
+  
+    <ion-card mode="ios" (click)="move('google-auth')">
+      <ion-item lines="none" class="ion-no-padding">
+        <img src="assets/images/footer/google.png" class="indicate_img">
+        <h4 class="heading_">Google Authentication</h4>
+        <ion-icon name="chevron-forward-outline" slot="end" class="forward_arrow"></ion-icon>
+      </ion-item>
+    </ion-card>
+  
+    <ion-card mode="ios" (click)="move('security')">
+      <ion-item lines="none" class="ion-no-padding">
+        <img src="assets/images/footer/security.png" class="indicate_img">
+        <h4 class="heading_">Security</h4>
+        <ion-icon name="chevron-forward-outline" slot="end" class="forward_arrow"></ion-icon>
+      </ion-item>
+    </ion-card>
+  
+    <ion-card mode="ios" (click)="move('preferences')">
+      <ion-item lines="none" class="ion-no-padding">
+        <img src="assets/images/footer/preferences.png" class="indicate_img">
+        <h4 class="heading_">Preferences</h4>
+        <ion-icon name="chevron-forward-outline" slot="end" class="forward_arrow"></ion-icon>
+      </ion-item>
+    </ion-card>
+  
+    <ion-card mode="ios" (click)="move('reference')">
+      <ion-item lines="none" class="ion-no-padding">
+        <img src="assets/images/footer/ref.png" class="indicate_img">
+        <h4 class="heading_">Reference</h4>
+        <ion-icon name="chevron-forward-outline" slot="end" class="forward_arrow"></ion-icon>
+      </ion-item>
+    </ion-card>
+  </ion-content>
+  

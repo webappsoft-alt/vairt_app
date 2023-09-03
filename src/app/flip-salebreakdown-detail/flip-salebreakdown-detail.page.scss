@@ -1,0 +1,90 @@
+.heading{
+    color: black;
+    font-family: "poppins semibold";  
+    font-size: 13px;
+    text-align: center;
+
+}
+.prop_title{
+    color: #818284;
+    font-family: 'poppins regular';
+    text-align: center;
+    font-size: 14px;
+    margin-top: -2px;
+}
+.prop_title{
+    color: var(--ion-color-primary);
+    font-family: "poppins bold";
+    text-align: center;
+    font-size: 14px;
+    margin-top: 13px;
+    margin-left: 10px;
+}
+.lbl{
+    color:black;
+    font-family: 'poppins medium';
+    font-size: 12px;
+}
+.value{
+    color:#909090;
+    font-family: 'poppins regular';
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+}
+.value_primary{
+    color:var(--ion-color-primary);
+    font-family: 'poppins bold';
+    font-size: 13px;
+    float: right; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.lbl_primary{
+    color:var(--ion-color-primary);
+    font-family: 'poppins bold';
+    font-size: 13px;
+    float: left; 
+}
+.colon{
+    color:var(--ion-color-primary)
+}
+ion-row{
+    margin-top: -25px;
+}
+.inner_lbl{
+    margin-left: 10px;
+    font-size: 12px;
+    margin-top: -17px;
+}
+.inner_value{
+    float: right;
+    color:#909090;
+    font-family: 'poppins bold';
+    font-size: 11px;
+    margin-top: -7px;
+}
+ion-buttons{
+    width: 50px;
+    height: 50px;
+    margin-right: -25px;
+}
+ion-icon{
+    color:var(--ion-color-primary);
+    font-size: 20px;
+}
+.lbl_{
+    color:black;
+    font-family: 'poppins regular';
+    text-align: center;
+    font-size: 13px;
+}
+.border_row{
+    border-top: 1px solid #dcdcdc;
+    border-bottom: 1px solid #dcdcdc;
+    margin-top: -7px;
+    height: 80px;
+}

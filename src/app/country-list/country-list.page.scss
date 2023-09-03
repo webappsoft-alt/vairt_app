@@ -1,0 +1,73 @@
+
+    ion-title{
+        font-family: 'sf regular';
+        text-align: center;
+        color:white;
+        font-weight: 500;
+    }
+    .close_btn{
+        background: transparent;
+        color:black;
+        text-decoration: none;
+        outline: none;
+        font-family: 'poppins bold';
+        font-size: 1.0rem;
+        margin-left: 10px;
+    }
+
+ 
+.lbl{
+    font-family: 'poppins regular';
+    color:black;
+}
+
+ion-checkbox{	
+        --color-checked	:#A9A9A9;
+        --background-checked: #FFFFFF;
+        --border-color-checked:#A9A9A9;
+        border-radius: 30px;
+        --background: #FFFFFF ;
+        width: 22px;
+        height: 22px;
+        --border-radius:10px
+    }	
+
+.search-icon{
+    color:var(--ion-color-tertiary);
+    width: 18px;
+    margin-top: -10px;
+}
+ion-item.search-item{
+    border:1px solid #8F8F91;
+    width: 90%;
+    margin-left: 5%;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    background:transparent;
+    border-radius: 10px;
+    // position: fixed;
+    // z-index: 1;
+    // top:20;
+}
+ion-input{
+    --padding-start:30px;
+    margin-left: 10px;
+    margin-top: -10px;
+    font-family: 'poppins regular';
+    color:black;
+}
+.background-img{
+    background-image:url('/../assets/images/background.png');
+    background-size : 100% 100%;
+   background-repeat: no-repeat;
+   height: 100%;
+}
+ion-grid{
+    height: 100%;
+    overflow: scroll;
+}
+.ios_header_css{
+    margin-top: 30px;
+    height: 100px;
+}

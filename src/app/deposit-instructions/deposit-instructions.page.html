@@ -1,0 +1,45 @@
+<ion-content>
+  <ion-grid class="background1" style="position: fixed;width: 100%;height: 200px;" [ngClass]="{'ios_header_css':ios_header==true}"> <br>
+    <ion-buttons (click)="back()">
+      <ion-icon name="arrow-back-outline" style="color:white;font-size: 30px;"></ion-icon>
+    </ion-buttons>
+    <h4 class="heading">Deposit Instructions</h4>
+  <p class="sub-heading">Please follow the wire transfer instructions below. Make sure to fill all the information correctly in order to add funds to your account.</p>
+  </ion-grid>
+  <ion-grid class="content_grid ion-no-padding" [ngClass]="{'content_grid_ios':ios_header==true}">  
+    <br> <br> <br>
+    <h4 class="heading" style="color:black">Transfer money from your bank account to your wallet</h4>
+    <ion-row class="top_row_odd"><p class="deposit_detail">Bank Deposit Detail</p></ion-row>
+    <ion-row class="top_row_even"><p class="deposit_detail">Bank Name: PNC Bank</p></ion-row>
+    <ion-row class="top_row_blue"><p class="deposit_detail">Account Title: Vairt Inc.</p></ion-row>
+    <ion-row class="top_row_even"><p class="deposit_detail">Address: 13308 Buena Vista Road, Waynesboro, PA 17268</p></ion-row>
+    <ion-row class="top_row_blue"><p class="deposit_detail">Account Number: 483060474646</p></ion-row>
+    <ion-row class="top_row_even"><p class="deposit_detail">Do not convert funds Please note if these instructions are not transmitted to the receiving bank and the funds are converted, the funds will be sent back.
+    </p></ion-row>
+    <ion-row class="top_row_blue"><p class="deposit_detail">Do not convert funds Please note if this instruction is not includeded and your funds are converted by the intermediary, the received converted amount will be used to complete your purchase.
+    </p></ion-row><br>
+    <ion-row class="top_row_blue"><p class="deposit_detail">Vairt</p></ion-row>
+    <ion-row class="top_row_even">
+      <ion-col size="6">
+        <p class="deposit_detail">Payment description</p>
+      </ion-col>
+      <ion-col size="6">
+        <p class="deposit_detail" style="float: right;margin-right: 10px;">Funds Contribution</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="top_row_odd">
+      <ion-col size="6">
+        <p class="deposit_detail">Amount</p>
+      </ion-col>
+      <ion-col size="6">
+        <p class="deposit_detail" style="float: right;margin-right: 10px;">${{amount}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-item lines="none">
+      <button class="cancel_btn" (click)="cancel()">Cancel</button>
+      <button class="form_btn" (click)="proceed()">Proceed</button>
+    </ion-item>
+    <br><br><br>
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,29 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="header">
+    <ion-item lines="none" style="margin-top:12px">
+    <ion-buttons class="close_btn" (click)="close()">
+      <ion-icon name="chevron-back-outline" class="close"></ion-icon>
+    </ion-buttons>
+    <ion-title mode="ios">References</ion-title>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h4 class="black_heading">Referral Management</h4>
+  <p class="sub_heading" style="margin-left: 0px;">Here you can see referral information.</p><br>
+  <p class="lbl">Your referral link</p>
+  <ion-item lines="none" class="ion-no-padding">
+    <div class="grey_color">https://vairt.com/join/</div>
+    <ion-input type="text" [(ngModel)]="referral"></ion-input>
+  </ion-item>
+  <br> <br>
+
+    <button class="form_btn ion-activatable ripple-parent" (click)="refferal_save()">
+      <ion-spinner *ngIf="loading"></ion-spinner>
+      <span *ngIf="!loading" class="submit-txt">
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+        <ion-ripple-effect></ion-ripple-effect
+      ></span>
+    </button>
+</ion-content>

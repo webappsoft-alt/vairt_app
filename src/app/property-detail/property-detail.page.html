@@ -1,0 +1,383 @@
+<!-- <ion-content>
+  <ion-grid class="background1" style="position: fixed;width: 100%;" [ngClass]="{'ios_header_css':ios_header==true}">
+    <ion-row class="ion-padding">
+      <ion-col size="9"><img src="assets/images/setting_white.png" width="22" routerLink="/setting"></ion-col>
+      <ion-col size="3" (click)="logout()"><img src="assets/images/logout_white.png" width="25" style="float: right;"></ion-col>
+    </ion-row>
+    <h4 class="amount">$0</h4><p class="amount_txt">Available Balance</p>
+    <ion-item class="trans ion-no-padding">
+      <ion-row class="ion-no-padding" style="width: 100%;">
+        <ion-col size="6" class="border" (click)="top_up()"><img src="assets/images/wallet_up.png" class="center" width="32" style="margin-top: -7px;">
+        <p class="top">Topup</p>
+        </ion-col>
+        <ion-col size="6" (click)="top_down()"><img src="assets/images/wallet_down.png" class="center" width="32" style="margin-top: 4px;">
+          <p class="top">Topdown</p>
+          </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-grid>
+<ion-grid class="content_grid ion-no-padding" [ngClass]="{'content_grid_ios':ios_header==true}" style="width: 100%;">
+  <h4 class="main_heading">Offerings</h4>
+  <ion-slides pager=true [options]="slideOptsOne" class="ion-no-padding slides">
+    <ion-slide *ngFor = "let property_images of property_images">
+      <div class="set-height">
+      <img src="{{property_images}}">
+      </div>
+    </ion-slide>
+  </ion-slides>
+  <div class="hori_divider" style="margin-top: 0px;"></div>
+    <ion-row class="ion-padding" style="margin-top: -30px;">
+      <ion-col size="8">
+        <p class="address">{{title}}</p>
+      </ion-col>
+      <ion-col size="4">
+        <p class="percent">${{price}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-padding" style="margin-top: -50px;">
+      <ion-col size="8">
+      </ion-col>
+      <ion-col size="4">
+        <p class="type" style="float: right;">Price Per Share</p>
+      </ion-col>
+    </ion-row>
+    <div style="width: 90%;margin-left: 5%;">
+    <ion-progress-bar style="height: 15px;border-radius: 20px;" value="{{funded}}"></ion-progress-bar>
+    </div>
+    <p class="type" style="text-align: center;margin-top: 10px;">{{orignal_funded}}% Funded</p>
+    <div class="hori_divider"></div>
+    <p class="sub_title">How much you can earn on this investment?</p>
+    <ion-row class="ion-padding">
+      <ion-col size="3"><p class="grey_color">Investment Amount</p></ion-col>
+      <ion-col size="3"><p class="grey_color">Expected Annual Appreciation</p></ion-col>
+      <ion-col size="3"><p class="grey_color">Net Dividend <br>Yield</p></ion-col>
+      <ion-col size="3"><p class="grey_color">Investment<br> Period</p></ion-col>
+    </ion-row>
+
+    <ion-row class="ion-padding">
+    
+      <ion-col size="3"><ion-input class="grey_color grey_background" type="text" style="padding-top: 6px;" [(ngModel)]="investment_amount" (keyup)='initial_invest_change($event)' style="margin-top: -33px;margin-left: -5px;"></ion-input></ion-col> 
+    
+      <ion-col size="3"><ion-input class="grey_color grey_background" type="text" style="padding-top: 6px;" [(ngModel)]="expected_apprication" style="margin-top: -33px;margin-left: 0px;" (keyup)='expected_apprication_change($event)' ></ion-input></ion-col>
+    
+      <ion-col size="3"><div class="grey_background"><p class="grey_color" style="padding-top: 6px;">{{net_dividend_yield}}</p></div></ion-col>
+    
+      <ion-col size="3"><div class="grey_background"><p class="grey_color" style="padding-top: 6px;">5 Yrs</p></div></ion-col>
+    </ion-row><br>
+    
+    <ion-row>
+      <ion-col size="6" style="border-right: 1px solid #000000;">
+        <p class="cal_heading">Net dividend income</p>
+        <p class="cal_value">${{net_dividend_income}}</p>
+      </ion-col>
+
+      <ion-col size="6">
+        <p class="cal_heading">Total return on investment</p>
+        <p class="cal_value">${{roi}}</p>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row style="margin-top: -10px;border-bottom: 1px solid black;">
+      <ion-col size="6" style="border-right: 1px solid #000000;">
+        <p class="cal_heading">Expected capital appreciation</p>
+        <p class="cal_value">${{this.app_5th}}</p>
+      </ion-col>
+
+      <ion-col size="6">
+        <p class="cal_heading">Average annualized return</p>
+        <p class="cal_value">${{avg_annulized_return}}</p>
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="8"><p class="cal_heading">Total expected value after 5 years:</p></ion-col>
+      <ion-col size="4"><p class="cal_value" style="margin-top:5px">${{five_years}}</p></ion-col>
+    </ion-row>
+    <canvas #barChart></canvas>
+
+  <ion-row class="heading_row ion-no-padding"><p style="margin-top: 6px; ">Property key info</p></ion-row><br>
+    <ion-row>
+      <ion-col size="6">
+        <img src="assets/images/property_detail/property_key1.png" width="50" class="center">
+        <p class="prop_title">MIN INVESTMENT <br> AMOUNT</p>
+        <p class="prop_price">$ {{minimum_investment}}</p>
+      </ion-col>
+
+      <ion-col size="6">
+        <img src="assets/images/property_detail/property_key2.png" width="50" class="center">
+        <p class="prop_title">NUMBER OF <br> INVESTORS</p>
+        <p class="prop_price">{{this.no_of_inv}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6">
+        <img src="assets/images/property_detail/property_key3.png" width="50" class="center">
+        <p class="prop_title">SUGGESTED HOLDING <br> PERIOD</p>
+        <p class="prop_price">5 Years</p>
+      </ion-col>
+
+      <ion-col size="6">
+        <img src="assets/images/property_detail/property_key4.png" width="50" class="center">
+        <p class="prop_title">YEARLY RENT <br> AMOUNT</p>
+        <p class="prop_price">${{this.yearly_rent_amount}}</p>
+      </ion-col>
+    </ion-row><br>
+
+    <ion-row class="heading_row ion-no-padding"><p style="margin-top: 6px; ">Rental Yields</p></ion-row><br>
+    <ion-row>
+      <ion-col size="6">
+        <img src="assets/images/property_detail/rental_1.png" width="50" class="center">
+        <p class="prop_title">GROSS <br> YIELD</p>
+        <p class="prop_price">{{gross_yield}}%</p>
+      </ion-col>
+      
+      <ion-col size="6">
+        <img src="assets/images/property_detail/rental_2.png" width="50" class="center">
+        <p class="prop_title">EXPECTED DIVIDEND<br> YIELD</p>
+        <p class="prop_price">{{net_dividend_yield}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="6">
+        <img src="assets/images/property_detail/rental_3.png" width="50" class="center">
+        <p class="prop_title">5 YEARS EXPECTED <br> RETURN</p>
+        <p class="prop_price">{{five_years}}%</p>
+      </ion-col>
+
+      <ion-col size="6">
+        <img src="assets/images/property_detail/rental_4.png" width="50" class="center">
+        <p class="prop_title">DIVIDEND <br> FREQUENCEY</p>
+        <p class="prop_price">Monthly</p>
+      </ion-col>
+    </ion-row><br>
+
+
+    <button class="form_btn ion-activatable ripple-parent" (click)="invest()" ><ion-spinner *ngIf="loading"></ion-spinner>
+      <span *ngIf="!loading" class="submit-txt"> INVEST
+        <ion-ripple-effect></ion-ripple-effect></span></button><br>
+
+
+    <ion-row class="heading_row ion-no-padding"><p style="margin-top: 6px; ">Property Info</p></ion-row><br>
+    <p class="info">{{property_desc}}</p>
+
+
+    <ion-row class="heading_row ion-no-padding"><p style="margin-top: 6px; ">Financials</p></ion-row><br>
+
+    <ion-row>
+      <ion-col size="6" (click)="transaction_detail()">
+        <img src="assets/images/property_detail/fin_1.png" width="50" class="center">
+        <p class="prop_title">Transaction <br> Detail</p>
+      </ion-col>
+
+      <ion-col size="6" (click)="rental_breakdown()">
+        <img src="assets/images/property_detail/fin_2.png" width="50" class="center">
+        <p class="prop_title">Rental <br> Breakdown</p>
+      </ion-col>
+    </ion-row><br>
+
+    <ion-row class="heading_row ion-no-padding"><p style="margin-top: 6px; ">Documents</p></ion-row><br>
+
+    <br>
+    <ion-row class="heading_row ion-no-padding"><p style="margin-top: 6px; ">Location</p></ion-row><br>
+    
+    <div #map id="map" [hidden]="autocompleteItems.length != 0"></div><br>
+    <br><br>
+</ion-grid>
+</ion-content>
+
+<ion-toolbar class="ion-no-border footer_android" [ngClass]="{'footer':ios_header==true}">
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button (click)="home()" [ngClass]="{'ios_tab' : _currentPlatform=='ios' }"> 
+        <img src="assets/images/home_.png" width="40">
+      </ion-tab-button>
+
+      <ion-tab-button (click)="inves()" [ngClass]="{'ios_tab' : _currentPlatform=='ios' }">
+        <img src="assets/images/investments.png" width="40">
+      </ion-tab-button>
+  
+      <ion-tab-button  (click)="portfolio()" [ngClass]="{'ios_tab' : _currentPlatform=='ios' }">
+        <img src="assets/images/portfolio_active.png" width="40">
+      </ion-tab-button>
+  
+      <ion-tab-button (click)="flip()" [ngClass]="{'ios_tab' : _currentPlatform=='ios' }">
+        <img src="assets/images/flip.png" width="40">
+      </ion-tab-button>
+
+      <ion-tab-button (click)="profile()" [ngClass]="{'ios_tab' : _currentPlatform=='ios' }">
+        <img src="assets/images/profile.png" width="40">
+      </ion-tab-button>
+
+      </ion-tab-bar>
+      </ion-tabs>
+   </ion-toolbar> -->
+
+   <ion-header class="ion-no-border">
+    <ion-item *ngIf="!categorySlidesVisible" lines="none" class="ion-no-padding trans1 ios_header_css_" style="border: none;">
+        <img src="assets/images/left-arrow-white.svg" class="back" [ngClass]="{'ios_header_css':ios_header==true}"  (click)="back()">
+        <ion-icon name="heart-outline" class="icn_" *ngIf="like==false" slot="end" [ngClass]="{'ios_header_css':ios_header==true}"  (click)="fvt()"></ion-icon>
+        <ion-icon name="heart" class="icn_" *ngIf="like==true" slot="end" [ngClass]="{'ios_header_css':ios_header==true}"  (click)="un_fvt()"></ion-icon>
+    </ion-item>
+  </ion-header>
+
+  <ion-content [fullscreen]="true" scrollEvents="true" (ionScroll)="onScroll($event)">
+    <div slot="fixed" *ngIf="categorySlidesVisible" style="width: 100%;">
+      <ion-item lines="none" class="header_background">  
+      <ion-buttons (click)="back()" class="back_btn" style="float: left;margin-left: 10px;margin-top: 10px;" [ngClass]="{'ios_header_css_back':ios_header==true}">
+        <ion-icon name="chevron-back" style="font-size: 25px;"></ion-icon>
+        </ion-buttons>
+      <h4 class="title" [ngClass]="{'ios_header_css_back':ios_header==true}">Offerings</h4>
+    </ion-item>
+    
+    <ion-slides [options]="opts1" [ngClass]="{'slides-visible': categorySlidesVisible, 'slides-hidden': !categorySlidesVisible}">
+      <ion-slide *ngFor="let cat of category;let i=index" class="slid" style="width: auto;">      
+      <ion-button [class.active-category]="activeCategory == i" fill="clear" (click)="selectCategory(i)">{{cat.name}}</ion-button>
+      </ion-slide>
+    </ion-slides> 
+    </div>
+
+
+    <ion-slides class="images" [options]="opts"  [pager]="true">
+      <ion-slide *ngFor="let property_images of property_images;let i=index">      
+        <ion-grid  class="background-img" [style.background-image]="'url(' + property_images + ')'">
+   
+        </ion-grid>
+      </ion-slide>
+    </ion-slides> 
+
+      <div class="row_">
+        <img src="assets/images/bed.svg" width="17">
+        <p class="assc">{{beds}}</p>
+        <div class="vertical"></div>
+        <img src="assets/images/bath.svg" width="17" style="margin-left: 10px;">
+        <p class="assc">{{baths}}</p>
+        <div class="vertical"></div>
+        <img src="assets/images/location.svg" width="17" style="margin-left: 10px;">
+        <p class="assc">{{size | number:'1.0-0':'en'}}</p>
+      </div>
+        <p class="title_">{{title}}</p>
+        <p class="address">{{address}}</p>
+
+    <div style="width: 90%;margin-left: 5%;">
+     <ion-progress-bar style="height: 15px;border-radius: 20px;" value="{{funded_bar}}"></ion-progress-bar>
+    </div>
+    <p class="type" style="text-align: center;margin-top: 10px;">{{funded}}% Funded</p>
+    <div class="hori_divider"></div>
+    <p class="sub_title">How much you can earn on this investment?</p>
+    <ion-row class="ion-padding">
+      <ion-col size="3"><p class="grey_color">Investment Amount</p></ion-col>
+      <ion-col size="3"><p class="grey_color">Expected Annual Appreciation</p></ion-col>
+      <ion-col size="3"><p class="grey_color">Net Dividend <br>Yield</p></ion-col>
+      <ion-col size="3"><p class="grey_color">Investment<br> Period</p></ion-col>
+    </ion-row>
+
+    <ion-row class="ion-padding">
+    
+      <ion-col size="3"><ion-input class="grey_color grey_background" type="text" style="padding-top: 6px;" [(ngModel)]="investment_amount" (keyup)='initial_invest_change($event)' style="margin-top: -33px;margin-left: -5px;"></ion-input></ion-col> 
+    
+      <ion-col size="3"><ion-input class="grey_color grey_background" type="text" style="padding-top: 6px;" [(ngModel)]="expected_apprication" style="margin-top: -33px;margin-left: 0px;" (keyup)='expected_apprication_change($event)' ></ion-input></ion-col>
+    
+      <ion-col size="3"><div class="grey_background"><p class="grey_color" style="padding-top: 6px;">{{net_dividend_yield}}</p></div></ion-col>
+    
+      <ion-col size="3"><div class="grey_background"><p class="grey_color" style="padding-top: 6px;">5 Yrs</p></div></ion-col>
+    </ion-row><br><br>
+
+    <ion-list *ngFor="let entry of details" style="margin-top: 0px;">
+      <ion-row class="heading_row ion-no-padding">
+        <p style="margin-top: 6px; ">{{entry.category}}</p>
+      </ion-row>
+        <br>
+    <div *ngIf="entry.roi">
+      <ion-row>
+        <ion-col size="6" *ngFor="let roi of entry.roi;let isOdd=odd" [ngClass]="{'border_left':isOdd}">
+          <p class="cal_heading">{{roi.name}}</p>
+          <p class="cal_value">${{roi.value | number:'1.0-0':'en'}}</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="8"><p class="cal_heading">Total expected value after 5 years:</p></ion-col>
+        <ion-col size="4"><p class="cal_value" style="margin-top:5px">${{five_years}}</p></ion-col>
+      </ion-row>
+      </div>
+      
+      <div *ngIf="entry.chart">
+      <canvas #barChart></canvas>
+      </div>
+
+      <div *ngIf="entry.key_info">
+        <ion-row>
+          <ion-col size="6" *ngFor="let key_info of entry.key_info;let isOdd=odd">
+            <img src="{{key_info.img}}" width="50" class="center">
+            <p class="prop_title" [innerHtml]="key_info.name">{{key_info.name}}</p>
+            <p class="prop_price" *ngIf="key_info.typeof!='string'"> {{key_info.value | number:'1.0-0':'en'}}</p>
+            <p class="prop_price" *ngIf="key_info.typeof=='string'">{{key_info.value}}</p>
+          </ion-col>
+        </ion-row>
+          <br>
+      </div>
+  
+      <div *ngIf="entry.rental_yield">
+        <ion-row>
+          <ion-col size="6" *ngFor="let rental_yield of entry.rental_yield;let isOdd=odd">
+            <img src="{{rental_yield.img}}" width="50" class="center">
+            <p class="prop_title" [innerHtml]="rental_yield.name">{{rental_yield.name}}</p>
+            <p class="prop_price" *ngIf="rental_yield.typeof!='string'">$ {{rental_yield.value | number:'1.0-0':'en'}}</p>
+            <p class="prop_price" *ngIf="rental_yield.value=='string' || rental_yield.value!='1,500'">{{rental_yield.value}}</p>
+          </ion-col>
+        </ion-row>
+          <br>
+          <button class="form_btn ion-activatable ripple-parent" (click)="invest()" style="width: 70%;height: 45px;"><ion-spinner *ngIf="loading"></ion-spinner>
+            <span *ngIf="!loading" class="submit-txt"> INVEST
+              <ion-ripple-effect></ion-ripple-effect></span></button>
+          <br>
+      </div>
+
+      <div *ngIf="entry.des">
+        <p class="info" *ngFor="let des of entry.des" >{{des.value}}</p>
+      </div>
+
+      <div *ngIf="entry.fin">
+        <ion-row>
+          <ion-col size="6" *ngFor="let fin of entry.fin" (click)="fin_fun(fin.func)">
+            <img src="{{fin.img}}" width="50" class="center">
+            <p class="prop_title" [innerHtml]="fin.name">{{fin.name}}</p>
+          </ion-col>
+        </ion-row>
+      </div>
+        <!-- <div *ngIf="entry.document">  </div> -->
+        <div *ngIf="entry.loc">
+          <div #map id="map" [hidden]="autocompleteItems.length != 0"></div>
+        </div>
+    </ion-list>
+    <h4 class="heading_brokage">Seller & <span class="cons">Property Manager</span></h4>
+    <h4 class="sub_heading" style="margin-top: 30px;">RealState Broker</h4>
+    <ion-row lines="none" class="ion-no-padding ion_row">
+      <ion-col size="6">
+      <div class="row_broker">
+        <p>Coldwell Banker</p>
+        <img src="assets/images/partner/Coldwell.png">
+      </div>
+    </ion-col>
+    <ion-col size="6">
+      <div class="row_broker">
+        <p>Keller Williams</p>
+        <img src="assets/images/partner/Keller.png">
+      </div>
+    </ion-col>
+    </ion-row>
+
+    <h4 class="sub_heading">Property Manager</h4>
+    <ion-row lines="none" class="ion-no-padding ion_row">
+      <ion-col size="12">
+      <div class="row_broker">
+        <p>Vairt Property Management</p>
+        <img src="assets/images/partner/logo1.png" width="150px">
+      </div>
+    </ion-col>
+  </ion-row>
+  </ion-content>

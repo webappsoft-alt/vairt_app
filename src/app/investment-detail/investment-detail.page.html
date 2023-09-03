@@ -1,0 +1,97 @@
+<ion-content class="ion-no-padding">
+<ion-slides pager=true class="ion-no-padding slides">
+  <ion-slide>
+    <div class="set-height">
+    <img src="assets/images/property2.jpg">
+    </div>
+  </ion-slide>
+  <ion-slide>
+    <div class="set-height">
+      <img src="assets/images/property2.jpg">
+      </div>
+  </ion-slide>
+</ion-slides>
+  <ion-row class="ion-padding" style="margin-top: -30px;">
+    <ion-col size="8">
+      <p class="address">13305 Beuna Vista Road </p>
+    </ion-col>
+    <ion-col size="4">
+      <p class="percent">$25.15</p>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-padding" style="margin-top: -50px;">
+    <ion-col size="8">
+      <p class="type">PA 1762,USA</p>
+    </ion-col>
+    <ion-col size="4">
+      <p class="type" style="float: right;">Price Per Share</p>
+    </ion-col>
+  </ion-row>
+  <div style="width: 90%;margin-left: 5%;">
+  <ion-progress-bar style="height: 15px;border-radius: 20px;" value="0.5"></ion-progress-bar>
+  </div>
+  <p class="type" style="text-align: center;margin-top: 10px;">5.21% Funded</p>
+  <ion-row class="ion-justify-content-between ion-padding ">
+    <ion-col size="2.5"><img src="assets/images/cash.png" width="35" class="center" style="margin-top: 10px;"><p class="primary" style="margin-top: 20px;">$500</p></ion-col>
+    <ion-col size="2.5"><img src="assets/images/amount.png" width="35" class="center"><p class="primary">$84000</p></ion-col>
+    <ion-col size="2.5"><img src="assets/images/wallet.png" width="35" class="center" style="margin-top: 5px;"><p class="primary" style="margin-top: 16px;">5.21 %</p></ion-col>
+    <ion-col size="2.5"><img src="assets/images/investors.png" width="35" class="center"><p class="primary" style="margin-top: 18px;">3</p></ion-col>
+    <ion-col size="2"><img src="assets/images/period.png" width="35" class="center"><p class="primary" style="margin-top: 13px;">5 Years</p></ion-col>
+  </ion-row>
+  <ion-row class="ion-padding " style="margin-top: -65px;">
+    <ion-col size="2.5"><p class="grey_sub">New  investment amount</p></ion-col>
+    <ion-col size="2.5"><p class="grey_sub">Yearly rent amount</p></ion-col>
+    <ion-col size="2.5"><p class="grey_sub">Funded</p></ion-col>
+    <ion-col size="2.5"><p class="grey_sub">Number of investors</p></ion-col>
+    <ion-col size="2"><p class="grey_sub">Suggested holding period</p></ion-col>
+  </ion-row>
+  <ion-grid class="grey">
+    <p class="sub-heading2">Rental Yields</p>
+    <ion-row class="ion-padding" style="margin-top: -20px;">
+      <ion-col size="3"><p class="grey_heading">Gross</p></ion-col>
+      <ion-col size="3"><p class="grey_heading">Dividend</p></ion-col>
+      <ion-col size="6"><p class="grey_heading">Annual Appreciation</p></ion-col>
+    </ion-row>
+    <ion-row class="ion-padding" style="margin-top: -60px;">
+      <ion-col size="3"><p class="grey_sub">10.62 %</p></ion-col>
+      <ion-col size="3"><p class="grey_sub">7.00 %*</p></ion-col>
+      <ion-col size="6"><p class="grey_sub">4.5 %*</p></ion-col>
+    </ion-row>    
+  </ion-grid><br>
+  <p class="sub-heading2">Property Detail</p>
+  <p class="des">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
+
+  <br><br>
+<button class="form_btn ion-activatable ripple-parent" (click)="next()"><ion-spinner *ngIf="loading"></ion-spinner>
+  <span *ngIf="!loading" class="submit-txt"> INVEST
+    <ion-ripple-effect></ion-ripple-effect></span></button>
+    <br><br>
+
+</ion-content>
+
+<ion-toolbar class="ion-no-border" style="height: 55px;">
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button (click)="home()" [ngClass]="{'ios_tab' : _currentPlatform=='ios' }"> 
+        <img src="assets/images/home_.png" width="40">
+      </ion-tab-button>
+
+      <ion-tab-button (click)="inves()" [ngClass]="{'ios_tab' : _currentPlatform=='ios' }">
+        <img src="assets/images/investments_active.png" width="40">
+      </ion-tab-button>
+  
+      <ion-tab-button  (click)="portfolio()" [ngClass]="{'ios_tab' : _currentPlatform=='ios' }">
+        <img src="assets/images/portfolio.png" width="40">
+      </ion-tab-button>
+  
+      <ion-tab-button (click)="flip()" [ngClass]="{'ios_tab' : _currentPlatform=='ios' }">
+        <img src="assets/images/flip.png" width="40">
+      </ion-tab-button>
+
+      <ion-tab-button (click)="profile()" [ngClass]="{'ios_tab' : _currentPlatform=='ios' }">
+        <img src="assets/images/profile.png" width="40">
+      </ion-tab-button>
+
+      </ion-tab-bar>
+      </ion-tabs>
+   </ion-toolbar>

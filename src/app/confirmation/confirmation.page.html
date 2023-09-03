@@ -1,0 +1,308 @@
+<!-- <ion-content>
+  <ion-grid class="background1" style="position: fixed;width: 100%;height: 200px;"> <br>
+
+ <h4 class="heading">Confirmation</h4>
+  <p class="sub-heading" style="font-size: 14px;">Fund Your Investment</p>
+  <p class="sub-heading" style="margin-top: -8px;">As the final step in the process, provide your Payment type. All information and transactions are encrypted.
+  </p>
+  </ion-grid>
+  <ion-grid class="content_grid ion-no-padding">
+    <br>
+    <h4 class="billed" style="margin-left: 15px;">Billed To :</h4>
+    <div style="width: 90%;margin-left: 5%;">  
+    <p class="lbl">First Name</p>
+        <ion-input type="text" readonly [(ngModel)]="first_name"></ion-input>
+       
+        <p class="lbl">Last Name</p>
+        <ion-input type="text" readonly [(ngModel)]="last_name"></ion-input>
+
+        <p class="lbl">Phone Number</p>
+
+        <ion-input type="text" readonly [(ngModel)]="phone_no"></ion-input>
+       
+        <p class="lbl">Country</p>
+        <ion-input type="text" readonly [(ngModel)]="user_country"></ion-input>
+
+        <p class="lbl">Address</p>
+        <ion-input type="text" readonly [(ngModel)]="user_address"></ion-input>
+
+        <p class="lbl">City</p>
+        <ion-input type="text" readonly [(ngModel)]="city"></ion-input>
+
+        <p class="lbl">Zip Code</p>
+        <ion-input type="text" readonly [(ngModel)]="zip"></ion-input>
+
+        <p class="lbl">SSN</p>
+        <ion-input type="text" readonly [(ngModel)]="ssn"></ion-input>
+
+        <h4 class="billed" style="margin-left: 0px;">Payment Details :</h4>
+      
+        <p class="lbl">Payment Status</p>
+        <ion-input type="text" readonly [(ngModel)]="payment_status"></ion-input>
+
+        <p class="lbl">Payment Method</p>
+        <ion-input type="text" readonly [(ngModel)]="payment_method"></ion-input>
+
+        <h4 class="billed" style="margin-left: 0px;">Order Date:</h4>
+        <p class="lbl">Date</p>
+        <ion-input type="text" readonly [(ngModel)]="order_date"></ion-input>
+      </div>
+      <h4 class="billed" style="margin-left: 20px;"> Payment Invoice: </h4>
+
+      <ion-card mode="ios" style="margin-top: 0px;">
+        <p class="title">{{prop_address}}</p>
+        <ion-item lines="none" class="ion-no-padding" style="margin-top: -10px;">
+          <p class="table_lbl">Payment Method: </p>
+          <p class="value">{{payment_method}}</p>
+        </ion-item>
+        <ion-item lines="none" class="ion-no-padding" style="margin-top: -15px;">  
+          <p class="table_lbl">Amount Spent: </p>
+          <p class="value">${{investment_amount}}</p>
+        </ion-item>
+        <ion-item lines="none" class="ion-no-padding" style="margin-top: -15px;">
+          <p class="table_lbl">Share Amount: </p>
+          <p class="value">{{share_amount}}</p>
+        </ion-item>
+        <ion-item lines="none" class="ion-no-padding" style="border-bottom: 1px solid #dcdcdc;margin-top:-15px">
+          <p class="table_lbl">Total Amount: </p>
+          <p class="value">${{investment_amount}}</p>
+        </ion-item>
+        <ion-item lines="none" class="ion-no-padding" style="margin-top: 0px;">
+          <p class="table_lbl" style="font-family: 'poppins bold';">Sub Total Amount: </p>
+          <p class="value" slot="end">${{investment_amount}}</p>
+        </ion-item>
+        <ion-item lines="none" class="ion-no-padding" style="margin-top: -15px;">
+          <p class="table_lbl" style="font-family: 'poppins bold';">Tax: </p>
+          <p class="value" slot="end">$0.00</p>
+        </ion-item>
+        <ion-item lines="none" class="ion-no-padding" style="margin-top: -15px;border-bottom: 1px solid #dcdcdc;">
+          <p class="table_lbl" style="font-family: 'poppins bold';">Shipping: </p>
+          <p class="value" slot="end">$0.00</p>
+        </ion-item>
+        <ion-item lines="none" class="ion-no-padding" style="margin-top: 0px;">
+        <p class="lbl" style="margin-left: 10px;font-family: 'poppins bold';">Grand Total:</p>
+        <p class="lbl" slot="end" style="font-family: 'poppins bold';">{{investment_amount}}</p>
+      </ion-item>
+      </ion-card>
+      <button class="form_btn" (click)="purchase()"><ion-spinner *ngIf="loading"></ion-spinner>
+        <span *ngIf="!loading" class="submit-txt"> Purchase</span></button>
+      <br>
+  </ion-grid>
+</ion-content> -->
+
+<ion-header class="ion-no-border">
+  <ion-toolbar class="header">
+    <ion-item lines="none" style="margin-top:12px">
+    <ion-buttons class="close_btn" (click)="close()">
+      <ion-icon name="close" class="close"></ion-icon>
+    </ion-buttons>
+    <ion-title mode="ios">Confirmation</ion-title>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <br>
+  <p class="sub-heading" style="font-size: 14px;">Fund Your Investment</p>
+  <p class="sub-heading" style="margin-top: -8px;">As the final step in the process, provide your Payment type. All information and transactions are encrypted.
+  </p>
+
+  <h4 class="billed" style="margin-left: 0px;"> Contact Information: </h4>
+  <ion-row  class="background ion-no-padding">
+    <ion-col size="auto" style="height: 70px; display: flex"
+      ><img src="assets/images/user.svg" width="20" class="input_img"
+    /></ion-col>
+    <ion-col size="9" style="height: 70px">
+      <p class="input_lbl">First Name</p>
+      <ion-input
+        type="text"
+        readonly
+        [(ngModel)]="first_name"
+        class="input"
+      ></ion-input>
+    </ion-col>
+  </ion-row>
+
+  <ion-row  class="background ion-no-padding">
+    <ion-col size="auto" style="height: 70px; display: flex"
+      ><img src="assets/images/user1.svg" width="20" class="input_img"
+    /></ion-col>
+    <ion-col size="9" style="height: 70px">
+      <p class="input_lbl">Last Name</p>
+      <ion-input
+        readonly
+        type="text"
+        [(ngModel)]="last_name"
+        class="input"
+      ></ion-input>
+    </ion-col>
+  </ion-row>
+
+  <ion-row  class="background ion-no-padding">
+    <ion-col size="auto" style="height: 70px; display: flex"
+      ><img src="assets/images/phone.svg" width="20" class="input_img"
+    /></ion-col>
+    <ion-col size="9" style="height: 70px">
+      <p class="input_lbl">Phone</p>
+      <ion-input
+        type="tel"
+        [(ngModel)]="phone_no"
+        class="input"
+      ></ion-input>
+    </ion-col>
+  </ion-row>
+
+  <ion-row  class="background ion-no-padding">
+    <ion-col size="auto" style="height: 70px; display: flex"
+      ><img src="assets/images/country.svg" width="20" class="input_img"
+    /></ion-col>
+    <ion-col size="9" style="height: 70px">
+      <p class="input_lbl">Country</p>
+      <ion-input
+        type="text"
+        readonly
+        [(ngModel)]="user_country"
+        class="input"
+      ></ion-input>
+    </ion-col>
+  </ion-row>
+  
+  <ion-row  class="background ion-no-padding">
+    <ion-col size="auto" style="height: 70px; display: flex"
+      ><img src="assets/images/pin.svg" width="20" class="input_img"
+    /></ion-col>
+    <ion-col size="9" style="height: 70px">
+      <p class="input_lbl">Address</p>
+      <ion-input
+        type="text"
+        readonly
+        [(ngModel)]="address"
+        class="input"
+      ></ion-input>
+    </ion-col>
+  </ion-row>
+  <ion-row  class="background ion-no-padding">
+    <ion-col size="auto" style="height: 70px; display: flex"
+      ><img src="assets/images/city.svg" width="20" class="input_img"
+    /></ion-col>
+    <ion-col size="9" style="height: 70px">
+      <p class="input_lbl">City</p>
+      <ion-input
+        type="text"
+        [(ngModel)]="city"
+        class="input"
+      ></ion-input>
+    </ion-col>
+  </ion-row>
+
+   <ion-row  class="background ion-no-padding">
+    <ion-col size="auto" style="height: 70px; display: flex"
+      ><img src="assets/images/zip-code.svg" width="20" class="input_img"
+    /></ion-col>
+    <ion-col size="9" style="height: 70px">
+      <p class="input_lbl">Zip Code</p>
+      <ion-input
+        type="text"
+        [(ngModel)]="zip"
+        class="input"
+      ></ion-input>
+    </ion-col>
+  </ion-row>
+
+  <ion-row  class="background ion-no-padding">
+    <ion-col size="auto" style="height: 70px; display: flex"
+      ><img src="assets/images/ssn_number.svg" width="20" class="input_img"
+    /></ion-col>
+    <ion-col size="9" style="height: 70px">
+      <p class="input_lbl">SSN Number</p>
+      <ion-input
+        type="text"
+        [(ngModel)]="ssn"
+        class="input"
+      ></ion-input>
+    </ion-col>
+  </ion-row>
+  <h4 class="billed" style="margin-left: 0px;">Payment Details :</h4>
+
+  <ion-row  class="background ion-no-padding">
+    <ion-col size="auto" style="height: 70px; display: flex"
+      ><img src="assets/images/payment_status.svg" width="20" class="input_img"
+    /></ion-col>
+    <ion-col size="9" style="height: 70px">
+      <p class="input_lbl">Payment Status</p>
+      <ion-input
+        type="text"
+        [(ngModel)]="payment_status"
+        class="input"
+      ></ion-input>
+    </ion-col>
+  </ion-row>
+
+  <ion-row  class="background ion-no-padding">
+    <ion-col size="auto" style="height: 70px; display: flex"
+      ><img src="assets/images/wallet.svg" width="20" class="input_img"
+    /></ion-col>
+    <ion-col size="9" style="height: 70px">
+      <p class="input_lbl">Payment Method</p>
+      <ion-input
+        type="text"
+        [(ngModel)]="payment_method"
+        class="input"
+      ></ion-input>
+    </ion-col>
+  </ion-row>
+
+  <ion-row  class="background ion-no-padding">
+    <ion-col size="auto" style="height: 70px; display: flex"
+      ><img src="assets/images/order_date.svg" width="20" class="input_img"
+    /></ion-col>
+    <ion-col size="9" style="height: 70px">
+      <p class="input_lbl">Order Date</p>
+      <ion-input
+        type="text"
+        [(ngModel)]="order_date"
+        class="input"
+      ></ion-input>
+    </ion-col>
+  </ion-row>
+  <h4 class="billed" style="margin-left: 0px;"> Payment Invoice: </h4>
+
+      <ion-card mode="ios" style="margin-top: 0px;">
+        <p class="title">{{prop_address}}</p>
+        <ion-item lines="none" class="ion-no-padding" style="margin-top: -10px;">
+          <p class="table_lbl">Payment Method: </p>
+          <p class="value">{{payment_method}}</p>
+        </ion-item>
+        <ion-item lines="none" class="ion-no-padding" style="margin-top: -15px;">  
+          <p class="table_lbl">Amount Spent: </p>
+          <p class="value">${{investment_amount}}</p>
+        </ion-item>
+        <ion-item lines="none" class="ion-no-padding" style="margin-top: -15px;">
+          <p class="table_lbl">Share Amount: </p>
+          <p class="value">{{share_amount}}</p>
+        </ion-item>
+        <ion-item lines="none" class="ion-no-padding" style="border-bottom: 1px solid #dcdcdc;margin-top:-15px">
+          <p class="table_lbl">Total Amount: </p>
+          <p class="value">${{investment_amount}}</p>
+        </ion-item>
+        <ion-item lines="none" class="ion-no-padding" style="margin-top: 0px;">
+          <p class="table_lbl" style="font-family: 'poppins bold';">Sub Total Amount: </p>
+          <p class="value" slot="end">${{investment_amount}}</p>
+        </ion-item>
+        <ion-item lines="none" class="ion-no-padding" style="margin-top: -15px;">
+          <p class="table_lbl" style="font-family: 'poppins bold';">Tax: </p>
+          <p class="value" slot="end">$0.00</p>
+        </ion-item>
+        <ion-item lines="none" class="ion-no-padding" style="margin-top: -15px;border-bottom: 1px solid #dcdcdc;">
+          <p class="table_lbl" style="font-family: 'poppins bold';">Shipping: </p>
+          <p class="value" slot="end">$0.00</p>
+        </ion-item>
+        <ion-item lines="none" class="ion-no-padding" style="margin-top: 0px;">
+        <p class="lbl" style="margin-left: 10px;font-family: 'poppins bold';">Grand Total:</p>
+        <p class="lbl" slot="end" style="font-family: 'poppins bold';">{{investment_amount}}</p>
+      </ion-item>
+      </ion-card>
+      <button class="form_btn" (click)="purchase()"><ion-spinner *ngIf="loading"></ion-spinner>
+        <span *ngIf="!loading" class="submit-txt"> Purchase</span></button>
+      <br>
+</ion-content>

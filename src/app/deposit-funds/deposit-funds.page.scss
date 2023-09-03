@@ -1,0 +1,64 @@
+.heading{
+    font-family: 'poppins semibold';
+    text-align: center;
+    color:white;
+    font-size: 16px;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 0px;
+}
+.sub-heading{
+    color:white;
+    font-family: 'poppins regular';
+    text-align: center;
+    margin-top: 0px;
+    font-size: 10px;
+    width: 90%;
+    margin-left: 5%;
+}
+ion-buttons{
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+    margin-top: -10px;
+}
+.content_grid{
+    margin-top: 180px;
+}
+ion-select{
+    font-family: 'poppins regular';
+    border:1px solid #dcdcdc;
+    margin-top: 50px;
+    width: 90%;
+    margin-left: 5%;
+}
+.dollar{
+ background: #E0E0E0;
+ padding: 13px 22px;
+}
+ion-input{
+    border:1px solid #dcdcdc;
+    font-family: 'poppins regular';
+    --padding-start:30px;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+ion-content{
+    --overflow:hidden
+}
+ion-item.sc-ion-input-md-h:not(.item-label), ion-item:not(.item-label) .sc-ion-input-md-h {
+    --padding-start: 10px;
+}
+ion-item.sc-ion-input-ios-h:not(.item-label), ion-item:not(.item-label) .sc-ion-input-ios-h {
+    --padding-start: 10px;
+}
+.form_btn{
+    width: 50%;
+    height: 40px;
+    margin-left: 25%;
+    margin-top:20px
+}
+.ios_header_css{
+    padding-top:20px;
+  //  height: 50px;
+}

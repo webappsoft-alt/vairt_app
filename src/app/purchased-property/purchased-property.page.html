@@ -1,0 +1,116 @@
+<ion-header class="ion-no-border header">
+  <div class="row" style="border: none;" [ngClass]="{'ios_header_css_row':ios_header==true}">
+  <ion-buttons class="close_btn" (click)="back()">
+    <ion-icon name="chevron-back-outline" class="close"></ion-icon>
+  </ion-buttons>
+  <h4 class="title">Documents</h4>
+ </div>
+</ion-header>
+
+
+<ion-content>
+  <br>
+  <div class="set_width">
+    <ion-avatar class="prop_img">
+      <img src="{{prop_img}}">
+    </ion-avatar>
+      <div class="row_">
+        <img src="assets/images/bed.svg" width="17">
+        <p class="assc">{{beds}}</p>
+        <div class="vertical"></div>
+        <img src="assets/images/bath.svg" width="17" style="margin-left: 10px;">
+        <p class="assc">{{baths}}</p>
+        <div class="vertical"></div>
+        <img src="assets/images/location.svg" width="17" style="margin-left: 10px;">
+        <p class="assc">{{size | number:'1.0-0':'en'}}</p>
+      </div>
+        <p class="address">{{address}}</p>
+        <p class="title_">{{property_title}}</p>
+        <ion-item lines="none" style="margin-top: -5px;">
+        <button class="view_document" (click)="document()">View Document</button>
+        <button class="view_document" slot="end" (click)="liquidate()">Liquidate</button>
+      </ion-item>
+    </div>
+  <br><br>
+  <div class="documents_sec">
+    <h4 class="title" style="padding-top:15px">Documents</h4>
+    <ion-row class="ion-padding" style="margin-top:-10px">
+      <ion-col size="5.8" class="items ion-no-padding">
+        <div class="row_d">
+        <p class="download">Download</p>
+        <ion-icon name="cloud-download-outline"></ion-icon>
+        </div>
+        <p class="name_file">5 YR Financial Proforma.xlsx(Restricted)</p>
+      </ion-col>
+      <ion-col size="0.2"></ion-col>
+      <ion-col size="5.8" class="items ion-no-padding">
+        <div class="row_d">
+        <p class="download">Download</p>
+        <ion-icon name="cloud-download-outline"></ion-icon>
+        </div>
+        <p class="name_file">Independent Market Report.pdf(Restricted)</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-padding" style="margin-top:-22px">
+      <ion-col size="5.8" class="items ion-no-padding">
+        <div class="row_d">
+        <p class="download">Download</p>
+        <ion-icon name="cloud-download-outline"></ion-icon>
+        </div>
+        <p class="name_file">Investment Memorandum .pdf(Restricted)</p>
+      </ion-col>
+      <ion-col size="0.2"></ion-col>
+      <ion-col size="5.8" class="items ion-no-padding">
+        <div class="row_d">
+        <p class="download">Download</p>
+        <ion-icon name="cloud-download-outline"></ion-icon>
+        </div>
+        <p class="name_file">Third party valuation.pdf(Restricted)</p>
+      </ion-col>
+    </ion-row>
+  </div>
+  <br><br>
+
+  <div class="balance_div">
+    <h4 class="sheet_heading">Balance Sheet</h4>
+    <p class="title_ balance_title">A Beautiful Mountain Top House 5 Year Lease Signed</p>
+    <ion-row class="row_sheet ion-no-padding">
+      <ion-col size="5.5"><p class="sheet_inner_heading">Investment</p></ion-col>
+      <ion-col size="1"><p class="dot">:</p></ion-col>
+      <ion-col size="5.5"><p class="price">$ {{purchase_price}}</p></ion-col>
+    </ion-row>
+
+    <ion-row class="row_sheet ion-no-padding">
+      <ion-col size="5.5"><p class="sheet_inner_heading active">Total Investment</p></ion-col>
+      <ion-col size="1"><p class="dot">:</p></ion-col>
+      <ion-col size="5.5"><p class="price active">$ {{purchase_price}}</p></ion-col>
+    </ion-row>
+
+    <ion-row class="row_sheet ion-no-padding">
+      <ion-col size="5.5"><p class="sheet_inner_heading">Rental Income</p></ion-col>
+      <ion-col size="1"><p class="dot">:</p></ion-col>
+      <ion-col size="5.5"><p class="price">$ {{income}}</p></ion-col>
+    </ion-row>
+
+    <ion-row class="row_sheet ion-no-padding">
+      <ion-col size="5.5"><p class="sheet_inner_heading active">Total Rental Income</p></ion-col>
+      <ion-col size="1"><p class="dot">:</p></ion-col>
+      <ion-col size="5.5"><p class="price active">$ {{income}}</p></ion-col>
+    </ion-row>
+
+    <ion-row class="row_sheet ion-no-padding">
+      <ion-col size="5.5"><p class="sheet_inner_heading">Profit</p></ion-col>
+      <ion-col size="1"><p class="dot">:</p></ion-col>
+      <ion-col size="5.5"><p class="price">$ {{share}}</p></ion-col>
+    </ion-row>
+
+    <ion-row class="row_sheet ion-no-padding" style="border-bottom: none;">
+      <ion-col size="5.5"><p class="sheet_inner_heading active">Fiat Wallet</p></ion-col>
+      <ion-col size="1"><p class="dot">:</p></ion-col>
+      <ion-col size="5.5"><p class="price active">$ {{balance}}</p></ion-col>
+    </ion-row>
+
+  </div>
+  <br>
+</ion-content>

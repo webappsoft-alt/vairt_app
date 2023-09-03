@@ -1,0 +1,77 @@
+<ion-header class="ion-no-border">
+  <ion-slides  pager=true class="ion-no-padding slides"  [pager]="true" [options]="opts">
+    <ion-slide *ngFor="let property_images of property_images;let i=index">      
+      <ion-grid  class="background-img" [style.background-image]="'url(' + property_images + ')'">
+        <img src="assets/images/left-arrow-white.svg" class="back_arrow" style="width: 30px;" (click)="back()" [ngClass]="{'ios_header_backbtn':ios_header==true}">
+        <ion-buttons  (click)="home()" class="home_btn"  [ngClass]="{'ios_header_css_back':ios_header==true}">
+          <ion-icon name="home" class="home_icon"></ion-icon>
+        </ion-buttons>
+      </ion-grid>
+    </ion-slide>
+  </ion-slides> 
+</ion-header>
+
+  <ion-content class="ion-padding">
+     <p class="address">#{{this.title}}</p>
+      <p class="type">{{address}}</p>    
+      <ion-row class="ion-no-padding" style="margin-top: -10px;">
+        <ion-col size="6">
+          <p class="sub_title">Purchase Price </p>
+          <button class="price_btn" style="margin-top: -10px;">${{purchase_price}}</button>
+        </ion-col> 
+        <ion-col size="6">
+          <p class="sub_title" style="text-align: right;">Remaining Share</p>
+          <button class="price_btn right">${{remaining_share}} </button>
+        </ion-col>
+      </ion-row>
+      <div class="hori_divider"></div>
+      <h4 class="heading">Investment Amount</h4> 
+      <p class="type">Next tell us how much you'd like to invest</p>
+      <p class="prim_lbl">(Minimum Investment: $ {{min_amount}})</p>
+      <!-- <ion-input type="text" [(ngModel)]="investment_amount"></ion-input> -->
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex">
+          <img src="assets/images/investment_amount.svg" width="20" class="input_img"/>
+        </ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">Investment Amount</p>
+          <ion-input
+           (keypress)="check_amount_($event,investment_amount)"
+            (keyup) ="check_min()"
+            type="number"
+            [(ngModel)]="investment_amount"
+            class="input">
+          </ion-input>
+        </ion-col>
+      </ion-row>
+      <p class="error_message" *ngIf="showerror">{{error_message}}</p>
+      <br>  
+      <ion-row class="heading_row ion-no-padding"><p style="margin-top: 6px; ">Distributions</p></ion-row><br>
+      <ion-radio-group [(ngModel)]="distribution">
+      <ion-row class="ion-no-padding adjust">
+        <ion-col size="1"><ion-radio value="0" mode="md"></ion-radio></ion-col>
+        <ion-col size="11"><p class="txt">i want to reinvest my distributions.</p></ion-col>
+      </ion-row>
+      <ion-row class="ion-no-padding adjust">
+        <ion-col size="1"><ion-radio value="1" mode="md"></ion-radio></ion-col>
+        <ion-col size="11"><p class="txt">i want my distributions paid out in cash.</p></ion-col>
+      </ion-row>
+    </ion-radio-group>
+    <br>
+    <ion-row class="ion-no-padding adjust">
+      <ion-col size="1"><ion-checkbox [(ngModel)]="investment_verification" mode="md"></ion-checkbox></ion-col>
+      <ion-col size="11"><p class="txt">Verification of Investment amount.</p></ion-col>
+    </ion-row>
+
+    <p class="info">certify that the total amount of my investment in this offering does not exceed 10% of the greater of my annual income or net worth, determined as provided in Rule 501 of Regulation D*, unless I am investing via an entity in which case I certify that the total amount of this investment in this offering does not exceed 10% of the greater of the entity's annual revenue or net assets at the most recently completed fiscal year end..</p>
+      <div class="hori_divider"></div>
+      <br>
+      <button class="form_btn ion-activatable ripple-parent" (click)="next()" ><ion-spinner *ngIf="loading"></ion-spinner>
+        <span *ngIf="!loading" class="submit-txt"> Continue
+      <ion-ripple-effect></ion-ripple-effect></span></button><br>
+      <div class="row" (click)="cancel_inves()">
+        <img src="assets/images/cancel.png" width="20" style="margin-top: 2px;">
+        <button class="trans_btn" style="color:#b8babb;width: auto;margin-top: 0px;">Cancel Investment</button>
+      </div>
+    
+    </ion-content>

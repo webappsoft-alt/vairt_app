@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-grid class="background1" [ngClass]="{'ios_header_css':ios_header==true}">
+      <ion-buttons (click)="back()">
+        <img src="assets/images/arr_back.png" width="20">
+      </ion-buttons>
+      <h4 class="heading">Support</h4>
+    </ion-grid>  
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="ion-padding"><br>
+  <ion-row class="ion-no-padding">
+    <ion-col size="6" class="ion-no-padding" (click)="submit_ticket()">
+      <ion-card mode="ios">
+        <div class="cirle">
+          <ion-icon name="add-outline"></ion-icon>
+        </div>
+        <h4 class="txt">Add Ticket</h4>
+      </ion-card>
+    </ion-col>
+    <ion-col size="6" class="ion-no-padding">
+      <ion-card mode="ios">
+        <div class="cirle">
+          <p class="count">0</p>
+        </div>
+        <h4 class="txt">Solved Tickets</h4>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="ion-no-padding">
+    <ion-col size="6" class="ion-no-padding">
+      <ion-card mode="ios">
+        <div class="cirle">
+          <p class="count">{{new_tickets}}</p>
+        </div>
+        <h4 class="txt">New Tickets</h4>
+      </ion-card>
+    </ion-col>
+    <ion-col size="6" class="ion-no-padding">
+      <ion-card mode="ios">
+        <div class="cirle">
+          <p class="count">{{unresolved}}</p>
+        </div>
+        <h4 class="txt">Unsolved Tickets</h4>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <div class="hori"></div>
+  <p class="grey_color">All Tickets</p>
+  <div class="hori"></div><br>
+  <ion-card class="card" *ngFor="let ticket of tickets">
+    <ion-card-header style="width: 100%;height: 55px">
+    <ion-item lines="none" class="ion-no-padding transs">
+      <ion-icon name="calendar-clear-outline" style="color:white;margin-top:-25px"></ion-icon> 
+      <p class="time">{{ticket.dateadded}}</p>
+      <p class="txt1" slot="end">Ticket ID: {{ticket.id}}</p>   
+    </ion-item>
+    </ion-card-header>
+    <ion-card-content>
+      <p class="title">{{ticket.title}}</p>
+      <p class="des">{{ticket.des}}</p><br>
+     <ion-item lines="none" class="ion-no-padding" style="margin-top: -20px;">
+
+      <p class="primary" slot="start">Priority</p>
+      <p class="des" slot="start" style="margin-left: 10px;">{{ticket.priority}}</p>
+
+      <p class="primary" slot="end">Status</p>
+      <p class="des" slot="end" style="margin-left: 10px;">{{ticket.status}}</p>
+    </ion-item>
+
+    <button class="form_btn" (click)="support_view(ticket)" style="width: 100px;height: 40px;float: left;margin-left: 0px;">View</button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

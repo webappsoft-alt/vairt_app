@@ -1,0 +1,84 @@
+.ios_header_css{
+    padding-top: 20px;
+    padding-left: 10px;
+}
+.heading_{
+    color:black;
+    font-family: 'poppins bold';
+    font-size: 15px;
+    padding-top: 20px;
+}
+.heading{
+    font-family: 'poppins semibold';
+    text-align: center;
+    color:white;
+    font-size: 16px;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: -20px;
+}
+.form_btn{
+    width: 150px;
+    margin-top: 20px;
+    height: 40px;
+}
+.des{
+    color:black;
+    font-family: 'poppins regular';
+    margin-top: 0px;
+    font-size: 12px;
+    margin-left: 18px;
+}
+ion-item.trans1{
+    --background:transparent
+}
+.tran_heading{
+    font-size: 14px;
+    font-family: 'poppins regular';
+    margin-left: 10px;
+    color:#575962
+}
+.trans_value{
+    font-size: 13px;
+    font-family: 'poppins regular';
+}
+ion-content{
+    --overflow:hidden;
+}
+ion-item.trans1{
+    --background:transparent;
+  }
+  .tran_heading{
+    text-align: left;
+    color: #000000;
+    font-size: 0.8rem;
+    margin-left: 10px;
+  }
+  .tran_value{
+    text-align: right;
+    margin-right: 5px;
+    color: #838485;
+    font-size: 0.9rem;
+    padding-top: 4px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 60%;
+    font-family: 'poppins regular';
+  }
+  .status_approve_color{
+    color:var(--ion-color-success);
+  }
+  .status_rejected_color{
+   color:var(--ion-color-danger);
+ }
+ .txt{
+     color:var(--ion-color-danger);
+     text-align: center;
+     margin-top: 20px;
+ }
+ .recent-trans{
+    background:#F4F3FB;
+    margin-top: 15px;
+    box-shadow: none;
+}

@@ -1,0 +1,55 @@
+<ion-header class="ion-no-border">
+  <div class="background2">
+    <ion-row class="ion-padding" [ngClass]="{'ios_header_css_row':ios_header==true}">
+      <ion-col size="9">
+        <img src="assets/images/left-arrow-white.svg" class="back_arrow" style="width: 30px;margin-left: 0px;margin-top: 0px;" (click)="back()">
+      </ion-col>
+      <ion-col size="3" (click)="logout()"><img src="assets/images/logout_white.png" width="25" style="float: right;">
+      </ion-col>
+    </ion-row>
+    <h4 class="amount">${{balance}}</h4>
+    <p class="amount_txt">Available Balance</p>
+    <ion-item class="trans ion-no-padding" lines="none">
+      <ion-row class="ion-no-padding" style="width: 100%;">
+        <ion-col size="6" class="border" (click)="top_up()"><img src="assets/images/wallet_up.png" class="center"
+            width="32" style="margin-top: -7px;">
+          <p class="top">Topup</p>
+        </ion-col>
+        <ion-col size="6" (click)="top_down()"><img src="assets/images/wallet_down.png" class="center" width="32"
+            style="margin-top: 4px;">
+          <p class="top">Topdown</p>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </div>
+</ion-header>
+
+
+<ion-content>
+  <div class="no_data_div" *ngIf="no_data">
+    <img src="assets/images/no-data.png" width="100">
+    <p class="no_data_txt">No {{title}} Found</p>
+  </div>
+  <div *ngIf="!no_data">
+  <h4 class="month">{{title}}</h4>
+    <ion-card mode='ios' *ngFor="let investment of investments;let i=index">
+      <div class="row">
+        <img src="assets/images/process.png" class="process_img">
+        <p class="success" *ngIf="investment.stages!='10'">In Process on step {{investment.stages}}</p>
+        <p class="success" *ngIf="investment.stages=='10'">Process Completed</p>
+
+        <p class="date">{{investment.date_added}}</p>
+      </div>
+      <p class="title">{{investment.title}}</p>
+      <p class="heading" style="margin-top:-3px">Propety Value: <span>${{investment.property_value}}</span></p>
+      <p class="heading">Shares: <span>${{investment.shares}}</span></p>
+      <p class="heading">Purchase Price: <span>${{investment.purchase_price}}</span></p>
+      <p class="heading">Amount: <span>${{investment.price | number:'1.2-2':'en'}}</span></p>
+
+      <img src="assets/images/complete_purchase.png" class="center" style="width: 50%;margin-top:-5px"
+        *ngIf="investment.stages!='10'"
+        (click)="complete_purchase(investment.title,investment.property_images,
+  investment.address,investment.purchase_price,investment.remaining_share,investment.stages,investment.invoice_id,investment.property_id)">
+    </ion-card>
+  </div>
+</ion-content>

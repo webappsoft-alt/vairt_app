@@ -1,0 +1,44 @@
+ion-content{
+    --background:#f7f7f7
+}
+.row_center{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.Location{
+    font-family: 'poppins semibold';
+    color:#333;
+    font-size: 22px;
+}
+.sub_heading{
+    font-family: 'poppins regular';
+    color:#333;
+    font-size: 13px;
+    text-align: center;
+    margin-top: 0px;
+    width: 90%;
+}
+.form_btn{
+    position: fixed;
+    bottom: 0;
+    margin-bottom: 35px;
+    height: 45px;
+    width: 80%;
+    left: 50%;
+    transform: translateX(-50%)
+}
+.skip_btn{
+    font-family: "poppins semibold";
+      float: right;
+      color:var(--ion-color-primary);
+      width: 50px;
+      margin-top: 0px;
+      height: 50px;
+  }
+  .ios_header_css_{
+    margin-top: 15px;
+}

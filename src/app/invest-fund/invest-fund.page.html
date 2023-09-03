@@ -1,0 +1,148 @@
+<ion-header class="ion-no-border">
+  <ion-slides
+    pager="true"
+    class="ion-no-padding slides"
+    [pager]="true"
+    [options]="opts"
+  >
+    <ion-slide *ngFor="let property_images of property_images;let i=index">
+      <ion-grid
+        class="background-img"
+        [style.background-image]="'url(' + property_images + ')'">
+        <img
+          src="assets/images/left-arrow-white.svg"
+          class="back_arrow"
+          style="width: 30px"
+          (click)="back()"
+          [ngClass]="{'ios_header_backbtn':ios_header==true}"/>
+        <ion-buttons
+          (click)="home()"
+          class="home_btn"
+          [ngClass]="{'ios_header_css_back':ios_header==true}">
+          <ion-icon name="home" class="home_icon"></ion-icon>
+        </ion-buttons>
+      </ion-grid>
+    </ion-slide>
+  </ion-slides>
+</ion-header>
+<ion-content class="ion-padding">
+  <p class="address">#{{this.title}}</p>
+  <p class="type">{{address}}</p>
+
+  <ion-row class="ion-no-padding" style="margin-top: -10px">
+    <ion-col size="6">
+      <p class="sub_title">Purchase Price</p>
+      <button class="price_btn" style="margin-top: -10px">
+        ${{purchase_price}}
+      </button>
+    </ion-col>
+    <ion-col size="6">
+      <p class="sub_title" style="text-align: right">Remaining Share</p>
+      <button class="price_btn right">${{remaining_share}}</button>
+    </ion-col>
+  </ion-row>
+
+  <div class="hori_divider"></div>
+  <h4 class="heading">Fund Your Investment</h4>
+  <p class="type">
+    As the final step in process, provide your Payment type. All information and
+    transaction are encrypted.
+  </p>
+
+  <!-- <ion-row style="margin-top: -20px;">
+        <ion-col size="6"><p class="lbl">Share To Buy</p></ion-col>
+        <ion-col size="6"><p class="lbl">Price</p></ion-col>
+      </ion-row> -->
+
+  <!-- <ion-row style="margin-top: -20px;">
+        <ion-col size="6"><ion-input type="number" readonly [(ngModel)]="share_amount"></ion-input></ion-col>
+        <ion-col size="6"><ion-input type="number"  readonly [(ngModel)]="investment_amount"></ion-input></ion-col>
+      </ion-row> -->
+    
+  <ion-row class="background1 ion-no-padding">
+    <ion-col size="auto" style="height: 70px; display: flex">
+      <img src="assets/images/share_amount.svg" width="20" class="input_img"/>
+    </ion-col>
+    <ion-col size="9" style="height: 70px">
+      <p class="input_lbl">Share To Buy</p>
+        <!-- <ion-input *ngIf="check_from=='home'"
+        type="number"
+        [(ngModel)]="share_amount"
+        (ionChange)="change()"
+        class="input">
+      </ion-input> -->
+    
+      <ion-input *ngIf="check_from=='flip'"
+      type="number"
+      readonly
+      [(ngModel)]="share_amount"
+      class="input">
+    </ion-input>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="background1 ion-no-padding">
+    <ion-col size="auto" style="height: 70px; display: flex"
+      ><img src="assets/images/amount.svg" width="20" class="input_img"
+    /></ion-col>
+    <ion-col size="9" style="height: 70px">
+      <p class="input_lbl">Price</p>
+      <!-- <ion-input
+        *ngIf="check_from=='home'"
+        type="number"
+        [(ngModel)]="investment_amount"
+        class="input">
+    </ion-input> -->
+
+    <ion-input
+    *ngIf="check_from=='flip'"
+    type="number"
+    readonly
+    [(ngModel)]="investment_amount"
+    class="input">
+</ion-input>
+
+    </ion-col>
+  </ion-row>
+
+  <br />
+  <div class="hori_divider"></div>
+  <p class="lbl">Payment Type</p>
+  <ion-radio-group [(ngModel)]="payment_type" (ionChange)="change_payment()">
+    <ion-item lines="none">
+      <div
+        class="background"
+        style="margin-left: 0px"
+        [ngClass]="{'non-active':payment_type=='fiat'}">
+        <ion-radio value="deposit" mode="md"></ion-radio>
+        <p class="payment_txt">Deposit Fund</p>
+      </div>
+
+      <div
+        class="background"
+        [ngClass]="{'non-active':payment_type=='deposit'}">
+        <ion-radio value="fiat" mode="md"></ion-radio>
+        <p class="fiat_txt">Fiat Money</p>
+        <p class="payment_txt" style="margin-top: 0px">Total Balance</p>
+        <p class="payment_txt" style="margin-top: -10px">{{balance}} USD</p>
+      </div>
+    </ion-item>
+  </ion-radio-group>
+  <br /><br />
+
+  <button class="form_btn ion-activatable ripple-parent" (click)="next()">
+    <ion-spinner *ngIf="loading"></ion-spinner>
+    <span *ngIf="!loading" class="submit-txt">
+      Continue <ion-ripple-effect></ion-ripple-effect
+    ></span></button
+  ><br />
+  <div class="row" (click)="cancel_inves()">
+    <img src="assets/images/cancel.png" width="20" style="margin-top: 2px" />
+    <button
+      class="trans_btn"
+      style="color: #b8babb; width: auto; margin-top: 0px">
+      Cancel Investment
+    </button>
+  </div>
+  <br/>
+</ion-content>

@@ -1,0 +1,339 @@
+<ion-header class="ion-no-border">
+  <div class="background2">
+    <ion-row class="ion-padding" [ngClass]="{'ios_header_css_row':ios_header==true}">
+      <ion-col size-xs="9.6" size-sm="9.6" size-md="10" size-lg="10"><img src="assets/images/setting_white.png" width="22" (click)="setting()"></ion-col>
+      <ion-col size-xs="1.2" size-sm="1.2" size-md="1" size-lg="1" (click)="noti()"><img src="assets/images/bell.png" width="25" style="float: right;margin-right: 5px;position: relative;">
+      <div class="noti"></div>
+      </ion-col>
+      <ion-col size-xs="1.2" size-sm="1.2" size-md="1" size-lg="1" (click)="logout()"><img src="assets/images/logout_white.png" width="25" style="float: right;"></ion-col>
+    </ion-row>
+    <h4 class="amount">${{balance}}</h4>
+    <p class="amount_txt">Available Balance</p>
+    <ion-item class="trans ion-no-padding" lines="none">
+      <ion-row class="ion-no-padding" style="width: 100%;">
+        <ion-col size="6" class="border" (click)="top_up()">
+          <img src="assets/images/wallet_up.png" class="center" width="32" style="margin-top: -2px;">
+          <p class="top">Topup</p>
+        </ion-col>
+        <ion-col size="6" (click)="top_down()" style="height: 51px;"><img src="assets/images/wallet_down.png" class="center" width="32"
+            style="margin-top: 9px;">
+          <p class="top">Topdown</p>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </div>
+</ion-header>
+<ion-content class="ion-padding">
+
+      <p class="title" >Employment Status</p>
+      <ion-select [(ngModel)]="status" (ionChange)="status_type($event)" placeholder="Select Status">
+        <ion-select-option value="self_employed">Self-Employed</ion-select-option>
+        <ion-select-option value="retired">Retired</ion-select-option>
+        <ion-select-option value="student">Student</ion-select-option>
+        <ion-select-option value="not_employed">Not Employed</ion-select-option>
+      </ion-select>
+
+    <!-------------Self Employed ------------->
+    
+      <div *ngIf="self_employed==true">
+      <h4 class="lbl">Employment info</h4>
+    
+      <!-- <p class="title" >Business Name</p>
+      <ion-input [(ngModel)]="business_name" type="text"></ion-input> -->
+
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/business_name.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">Business Name</p>
+          <ion-input
+            type="text"
+            [(ngModel)]="business_name"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+      
+      <!-- <p class="title" >Your Title</p>
+      <ion-input [(ngModel)]="title" type="text"></ion-input> -->
+
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/tin_title.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">Your Title</p>
+          <ion-input
+            type="text"
+            [(ngModel)]="title"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <!-- <p class="title" >Industry / Business Type</p>
+      <ion-input [(ngModel)]="business_type" type="text"></ion-input> -->
+
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/business_type.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">Industry / Business Type</p>
+          <ion-input
+            type="text"
+            [(ngModel)]="business_type"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+
+    </div>
+
+    <!-------------Retired ------------->
+    
+    <div *ngIf="retired==true">
+      <h4 class="lbl">Most Recent Employer Info </h4>
+    
+      <!-- <p class="title" >Most Recent Employer</p>
+      <ion-input [(ngModel)]="recent_employer" type="text"></ion-input> -->
+
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/user.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">Most Recent Employer</p>
+          <ion-input
+            type="text"
+            [(ngModel)]="recent_employer"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+      
+      <!-- <p class="title" >Most Recent Position Held</p>
+      <ion-input [(ngModel)]="position_held" type="text"></ion-input> -->
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/positive-vote.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">Most Recent Position Held</p>
+          <ion-input
+            type="text"
+            [(ngModel)]="position_held"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <!-- <p class="title" >Industry / Business Type</p>
+      <ion-input [(ngModel)]="business_type" type="text"></ion-input> -->
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/business_type.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">Industry / Business Type</p>
+          <ion-input
+            type="text"
+            [(ngModel)]="business_type"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <!-- <p class="title" >Source of Income</p>
+      <ion-input [(ngModel)]="source_income" type="text"></ion-input> -->
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/net_income.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">Source of Income</p>
+          <ion-input
+            type="text"
+            [(ngModel)]="source_income"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+
+    </div>
+
+    <!-------------Student ------------->
+    
+    <div *ngIf="student==true">
+      <h4 class="lbl">Student Info </h4>
+    
+      <!-- <p class="title" >School</p> -->
+      <!-- <ion-input [(ngModel)]="school" type="text"></ion-input> -->
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/school.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">School</p>
+          <ion-input
+            type="text"
+            [(ngModel)]="school"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+    
+      <!-- <p class="title" >Source of Income</p>
+      <ion-input [(ngModel)]="source_income" type="text"></ion-input> -->
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/net_income.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">Source Income</p>
+          <ion-input
+            type="text"
+            [(ngModel)]="school_source_income"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+    </div>
+
+      <!-------------Not Emplyed ------------->
+    
+      <div *ngIf="not_employed==true">
+        <p class="title" style="margin-top: 20px;">Source of Income</p>
+        <!-- <ion-input [(ngModel)]="source_income" type="text"></ion-input> -->
+        <ion-row  class="background ion-no-padding">
+          <ion-col size="auto" style="height: 70px; display: flex"
+            ><img src="assets/images/net_income.svg" width="20" class="input_img"
+          /></ion-col>
+          <ion-col size="9" style="height: 70px">
+            <p class="input_lbl">Income</p>
+            <ion-input
+              type="text"
+              [(ngModel)]="source_income"
+              class="input"
+            ></ion-input>
+          </ion-col>
+        </ion-row>
+      </div>
+
+      <!-------------Checkbox of home adress--------->
+
+      <div *ngIf="self_employed==true ">
+      <ion-row lines="none">
+        <ion-col size="auto"><ion-checkbox mode="md" style="margin-top: 25px;" [(ngModel)]="work_address"></ion-checkbox></ion-col>
+        <ion-col size="10"><p class="title" style="margin-left: 10px;margin-top: 15px;">Check this box if your work address is the same as your home address.</p></ion-col>
+      </ion-row>
+      <div *ngIf="!work_address">
+      <!-- <h4 class="title" style="font-size: 14px;">Address</h4>
+      <ion-input type="text" [(ngModel)]="autocomplete.input"
+        (ionInput)="UpdateSearchResults()" (ionClear)="ClearAutocomplete()">
+      </ion-input> -->
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/pin.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">Address</p>
+          <ion-input
+            type="text"
+            [(ngModel)]="autocomplete.input"
+            (ionInput)="UpdateSearchResults()" 
+            (ionClear)="ClearAutocomplete()"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+      <ion-list [hidden]="autocompleteItems.length == 0">
+        <ion-item lines="none " class="ion-no-padding" *ngFor="let item of autocompleteItems" tappable
+          (click)="SelectSearchResult(item)">
+          <p class="desc">{{ item.description }}</p>
+       </ion-item>
+      </ion-list>
+
+      <!-- <h4 class="title" style="font-size: 14px;">Country</h4>
+      <ion-item lines="none" class="ion-no-padding country_itm" (click)="countryList()" style="border:1px solid silver">
+        <p style="margin-left:10px">{{country}}</p>
+      </ion-item> -->
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/country.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">Country</p>
+          <ion-input
+            type="text"
+            readonly (click)="countryList()"
+            [(ngModel)]="country"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <!-- <p class="title" style="font-size: 14px;">State</p>
+      <ion-input type="text" [(ngModel)]="state" value="{{state}}"></ion-input>
+
+      <p class="title" style="font-size: 14px;">City</p>
+      <ion-input type="text" [(ngModel)]="city" value="{{city}}"></ion-input>
+
+      <p class="title" style="font-size: 14px;">Zip Code</p>
+      <ion-input type="text" [(ngModel)]="postalCode" value="{{postalCode}}"></ion-input> -->
+      
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/city.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">City</p>
+          <ion-input
+            type="text"
+            [(ngModel)]="city"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/city.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">State</p>
+          <ion-input
+            type="text"
+            [(ngModel)]="state"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+  
+       <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/zip-code.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">Zip Code</p>
+          <ion-input
+            type="text"
+            [(ngModel)]="postalCode"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+  
+    </div>
+  </div>
+      <br><br>
+      <button class="form_btn ion-activatable ripple-parent" (click)="next()"><ion-spinner *ngIf="loading"></ion-spinner>
+        <span *ngIf="!loading" class="submit-txt"> Next
+          <ion-ripple-effect></ion-ripple-effect></span></button>
+          <br>
+          <div class="row" (click)="cancel_inves()">
+            <img src="assets/images/cancel.png" width="20" style="margin-top: 2px;">
+            <button class="trans_btn" style="color:#b8babb;width: auto;margin-top: 0px;">Cancel Investment</button>
+         </div><br>
+  </ion-content>

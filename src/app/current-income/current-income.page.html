@@ -1,0 +1,20 @@
+<ion-content>
+  <ion-grid class="background1" style="position: fixed;width: 100%;" [ngClass]="{'ios_header_css':ios_header==true}"> <br>
+    <img src="assets/images/current_income.png" class="center" width="70"><br>
+    <h4 class="heading"> {{name}} ! You're doing great </h4>
+    <p class="sub-heading">Please select the values of your current net assets.</p>
+  </ion-grid>
+  <ion-grid class="content_grid ion-no-padding"> <br> 
+    <h4 class="title">What is your current annual income?</h4>
+    <div style="width: 90%;margin-left: 5%;">
+    <ion-input type="text" readonly (click)="current_income_model()" [(ngModel)]="income" [ngModelOptions]="{standalone: true}"></ion-input>
+    <h4 class="title" style="margin-left: 0px;">What is your current net worth?</h4>
+    <ion-input type="text" readonly [(ngModel)]="worth" (click)="net_worth_model()" [ngModelOptions]="{standalone: true}"></ion-input>
+  </div>
+  <br><br>
+  <button class="form_btn ion-activatable ripple-parent" (click)="next()"><ion-spinner *ngIf="loading"></ion-spinner>
+    <span *ngIf="!loading" class="submit-txt"> NEXT
+      <ion-ripple-effect></ion-ripple-effect></span></button>
+      <br><br><br><br><br><br>
+  </ion-grid>
+</ion-content>

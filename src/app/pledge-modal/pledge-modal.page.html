@@ -1,0 +1,49 @@
+<ion-header class="ion-no-border">
+  <ion-item lines="none" style="border-bottom: 1px solid #dcdcdc;">
+    <h4 class="title">Buyer Information</h4>
+    <ion-icon name="close" slot="end" (click)="close()"></ion-icon>
+  </ion-item>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <p class="lbl">First Name</p>
+  <ion-input type="text" [(ngModel)]="first_name"></ion-input>
+ 
+  <p class="lbl">Last Name</p>
+  <ion-input type="text" [(ngModel)]="last_name"></ion-input>
+
+  <p class="lbl" style="font-family: 'poppins bold';">Contact Information</p>
+
+  <p class="lbl">Email</p>
+  <ion-input type="email" [(ngModel)]="email"></ion-input>
+
+  <p class="lbl">Phone Number</p>
+  <ion-input type="text" [(ngModel)]="phone_no"></ion-input>
+ 
+  <p class="lbl">Country</p>
+  <ion-input type="text" (click)="countryList()" [(ngModel)]="user_country"></ion-input>
+
+  <p class="lbl">Address</p>
+  <ion-input type="text" [(ngModel)]="autocomplete.input" (ionInput)="UpdateSearchResults()"></ion-input>
+  <ion-list [hidden]="autocompleteItems.length == 0" class="list">
+    <ion-item *ngFor="let item of autocompleteItems" tappable (click)="SelectSearchResult(item)">
+      <p class="ite_name">{{ item.description }}</p>
+    </ion-item>
+  </ion-list>
+  
+  <p class="lbl">City</p>
+  <ion-input type="text" [(ngModel)]="city"></ion-input>
+
+  <p class="lbl">State</p>
+  <ion-input type="text"  [(ngModel)]="state"></ion-input>
+
+
+  <p class="lbl">Zip Code</p>
+  <ion-input type="text"  [(ngModel)]="zip"></ion-input>
+
+  <br><br>
+  <button class="form_btn ion-activatable ripple-parent" (click)="next()"><ion-spinner *ngIf="loading"></ion-spinner>
+    <span *ngIf="!loading" class="submit-txt"> Submit
+      <ion-ripple-effect></ion-ripple-effect></span></button>
+  
+</ion-content>

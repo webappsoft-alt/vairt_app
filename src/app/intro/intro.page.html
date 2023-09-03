@@ -1,0 +1,42 @@
+<ion-content>
+  <ion-buttons class="skip_btn" (click)="move()" [ngClass]="{'ios_header_css_':ios_header==true}">
+    <p>Skip</p>
+  </ion-buttons>
+  <ion-slides [options]="slideOptions" pager="true" #slideWithNav style="margin-top: 60px;">
+    <ion-slide>
+          <div class="center">
+            <img src="assets/images/intro/intro1.png" class="intro_img">
+            <p class="heading fade-in">Buy or Rent a House</p>
+            <p class="sub-heading fade-in">Buying or renting a house with Vairt App is as easy as 1,2,3 !</p>
+          </div>
+    </ion-slide>
+ 
+    <ion-slide>
+          <div class="center">
+            <img src="assets/images/intro/intro2.png" class="intro_img">
+            <p class="heading">Streamlined Workflow</p>
+            <p class="sub-heading">Easily manage and keep track of all your transactions at one place.</p>
+          </div>
+    </ion-slide>
+
+    <ion-slide>
+          <div class="center">
+            <img src="assets/images/intro/intro3.png" class="intro_img">
+            <p class="heading">One App, Many Solutions</p>
+            <p class="sub-heading">Provides countless opportunities to achieve your goals</p>
+          </div>
+    </ion-slide>
+
+    <ion-slide>
+          <div class="center">
+            <img src="assets/images/intro/intro4.png" class="intro_img">
+            <p class="heading">Hassle-free Search</p>
+            <p class="sub-heading">Our top of the line search engine provides best possible results to suit your needs on the fly!</p>
+            <button class="form_btn left_rigt ion-activatable ripple-parent" (click)="move()">
+                <ion-icon name="arrow-forward-outline"></ion-icon>
+                <ion-ripple-effect></ion-ripple-effect>
+            </button>
+          </div>
+    </ion-slide>
+   </ion-slides>
+</ion-content>

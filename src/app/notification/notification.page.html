@@ -1,0 +1,45 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="header">
+    <ion-item lines="none" style="margin-top:12px">
+    <ion-buttons class="close_btn" (click)="close()">
+      <ion-icon name="close" class="close"></ion-icon>
+    </ion-buttons>
+    <ion-title mode="ios">Notifications</ion-title>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div *ngIf="loading" class="skelton_div">
+    <ion-list>  
+      <ion-item  *ngFor = "let skelton of skelton" style="margin-top: 10px;">
+        <ion-skeleton-text animated style="width: 20%;margin-top: -50px;" slot="end"> </ion-skeleton-text>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div *ngIf="!loading" class="left_rigt">
+    <div *ngFor="let noti of notification" class="main">
+      <div class="ion-no-padding row">
+        <p class="time">{{noti.datetime}}</p>
+      </div>
+        <p class="des">{{noti.comment}}</p>
+    </div>
+    <div class="center_loader1">
+        <lottie-player *ngIf="loading_more" src="assets/loader1.json" background="transparent" speed="1" class="loader"
+          style="width: 100px; height: 100px;margin-top: -50px;" loop autoplay></lottie-player>
+    </div>
+  </div>
+  <ion-infinite-scroll threshold="200px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

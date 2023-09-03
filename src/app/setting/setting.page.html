@@ -1,0 +1,56 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-item lines="none" class="transparent">
+      <img src="assets/images/settings.png" width="20">
+      <p class="title">Setting</p>
+      <img src="assets/images/close.png" (click)="close()" slot="end" class="close" width="20" >
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item lines="none"><p class="heading">Tap to sync now</p></ion-item>
+  <p class="des">Last automatic sync: Just now</p>
+  <h4 class="main-heading">USER SETTINGS</h4>
+  <ion-item lines="none" style="border:1px solid #d4d4d4;height:45px" (click)="email_()">
+    <p class="sub-title" slot="start">Email</p>
+    <p class="des" style="margin-top: 10px;" slot="end">{{email_stauts}}</p>
+    <ion-icon name="chevron-forward-outline" slot="end" style="color:#dedfe0;margin-top: 8px;"></ion-icon>
+  </ion-item>
+  <ion-item (click)="phone()" lines="none" style="border-bottom:1px solid #d4d4d4;height:45px">
+    <p class="sub-title" slot="start">Phone</p>
+    <p class="des" style="margin-top: 10px;" slot="end">{{phone_connected}}</p>
+    <ion-icon name="chevron-forward-outline" slot="end" style="color:#dedfe0;margin-top: 8px;"></ion-icon>
+  </ion-item>
+  
+  <!-- <h4 class="main-heading">ACCOUNT SETTINGS</h4> -->
+  <ion-item lines="none" (click)="change_currency()" style="border-bottom:1px solid #d4d4d4;height:45px">
+    <p class="sub-title" slot="start">Default Currency</p>
+    <p class="des" style="margin-top: 10px;margin-right: 15px;" slot="end">USD</p>
+    <!-- <ion-icon name="chevron-forward-outline" slot="end" style="color:#dedfe0"></ion-icon> -->
+  </ion-item>
+
+  <ion-item (click)="transaction()" lines="none" style="border-bottom:1px solid #d4d4d4;height:45px">
+    <p class="sub-title" slot="start" style="margin-top:10px">Transaction</p>
+    <ion-icon name="chevron-forward-outline" slot="end" style="color:#dedfe0"></ion-icon>
+  </ion-item>
+
+  <!-- <h4 class="main-heading">APP SETTINGS</h4>
+  <ion-item lines="none" style="border:1px solid #d4d4d4" (click)="noti()">
+    <p class="sub-title" slot="start">Notifications</p>
+    <ion-icon name="chevron-forward-outline" slot="end" style="color:#dedfe0"></ion-icon>
+  </ion-item> -->
+
+  <h4 class="main-heading">HELP</h4>
+  <ion-item lines="none" style="border-bottom:1px solid #d4d4d4;height:45px" (click)="feedback()">
+    <p class="sub-title" slot="start" style="margin-top:10px">Send feedback</p>
+  </ion-item>
+  <ion-item lines="none" style="border-bottom:1px solid #d4d4d4;margin-bottom: 10px;height: 45px;" (click)="privacy()">
+    <p class="sub-title" slot="start" style="margin-top:10px">Privacy policy</p>
+  </ion-item>
+  <ion-item class="transparent" lines="none" style="margin-top: -10px;margin-top: -10px;position: fixed;
+  bottom: 0; width: 100%;">
+    <p slot="start" class="main-heading" style="margin-left: 0px;" (click)="signout()">Signout</p>
+    <p slot="end" class="main-heading">{{email}}</p>
+  </ion-item>
+</ion-content> 

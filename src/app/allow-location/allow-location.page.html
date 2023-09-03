@@ -1,0 +1,16 @@
+
+<ion-content class="ion-padding">
+  <ion-buttons class="skip_btn" (click)="move()" [ngClass]="{'ios_header_css_':ios_header==true}">
+    <p>Skip</p>
+  </ion-buttons>
+  <div class="row_center">
+  <lottie-player  autoplay loop src="assets/location.json" style="width: 300px;height: 300px;">
+  </lottie-player>
+  <h4 class="Location">Allow Location</h4>
+  <p class="sub_heading">Vairt uses your device’s location services. For best experience, Please turn them on</p>
+  </div>
+  <button class="form_btn ion-activatable ripple-parent" (click)="next()"><ion-spinner *ngIf="loading"></ion-spinner>
+    <span *ngIf="!loading" class="submit-txt"> 
+      Turn On Location
+    <ion-ripple-effect></ion-ripple-effect></span></button>
+</ion-content>

@@ -1,0 +1,160 @@
+<ion-header class="ion-no-border">
+  <ion-item lines="none" style="margin-top:12px">
+    <ion-buttons class="close_btn" (click)="close()">
+      <ion-icon name="close" class="close"></ion-icon>
+    </ion-buttons>
+    <ion-title mode="ios">Flip Properties</ion-title>
+   </ion-item>
+</ion-header>
+
+<ion-content>
+
+    <!-- Skeleton screen -->
+  <div *ngIf="data_loading" class="skelton_div">
+    <p>
+      <ion-skeleton-text animated style="width: 88%; margin-left: 6%;"></ion-skeleton-text>
+    </p>
+      <ion-skeleton-text animated style="width: 92%; margin-left: 6%;height:200px ;"></ion-skeleton-text>
+    <p>
+      <ion-skeleton-text animated style="width: 88%; margin-left: 6%;"></ion-skeleton-text>
+    </p>
+    <p>
+      <ion-skeleton-text animated style="width: 88%; margin-left: 6%;"></ion-skeleton-text>
+    </p>
+    <ion-row>  
+      <ion-col size="4">
+        <p>
+          <ion-skeleton-text animated style="width: 88%; margin-left: 6%;"></ion-skeleton-text>
+        </p>
+        <p >     
+          <ion-skeleton-text animated style="width: 88%; margin-left: 6%;"></ion-skeleton-text>
+        </p>
+      </ion-col>
+      <ion-col size="4">
+        <p>
+          <ion-skeleton-text animated style="width: 88%; margin-left: 6%;"></ion-skeleton-text>
+        </p>
+        <p >     
+          <ion-skeleton-text animated style="width: 88%; margin-left: 6%;"></ion-skeleton-text>
+        </p>
+      </ion-col>
+      <ion-col size="4">
+        <p>
+          <ion-skeleton-text animated style="width: 88%; margin-left: 6%;"></ion-skeleton-text>
+        </p>
+        <p >     
+          <ion-skeleton-text animated style="width: 88%; margin-left: 6%;"></ion-skeleton-text>
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>  
+      <ion-col size="6">
+        <p>
+          <ion-skeleton-text animated style="width: 88%; margin-left: 6%;"></ion-skeleton-text>
+        </p>
+        <p >     
+          <ion-skeleton-text animated style="width: 88%; margin-left: 6%;"></ion-skeleton-text>
+        </p>
+      </ion-col>
+      <ion-col size="6">
+        <p>
+          <ion-skeleton-text animated style="width: 88%; margin-left: 6%;"></ion-skeleton-text>
+        </p>
+        <p >     
+          <ion-skeleton-text animated style="width: 88%; margin-left: 6%;"></ion-skeleton-text>
+        </p>
+      </ion-col>
+    </ion-row>
+
+    <p >
+      <ion-skeleton-text animated style="width:70% ;margin-left: 15%; height: 36px;"></ion-skeleton-text>
+    </p>
+  </div>
+  
+  <div *ngIf="!data_loading" style="margin-bottom: 50px;">
+    <p class="name">{{title}}</p>
+    <img [defaultImage]="lazy_image" [lazyLoad]="img" class="img_prop">
+    <p class="name2">Commercial</p>
+    <p class="address">{{address}}</p>
+  
+    <ion-row class="row1">  
+      <ion-col size="4">
+        <p class="key_point">Structure</p>
+        <p class="key_point1">Equity</p>
+        <div class="line"></div>
+      </ion-col>
+      <ion-col size="4">
+        <p class="key_point">Total Size</p>
+        <p class="key_point1">$ {{size | number:'1.0-0':'en'}}</p>
+        <div class="line"></div>
+      </ion-col>
+      <ion-col size="4">
+        <p class="key_point">Offering Price</p>
+      <p class="key_point1">${{offering_price}} per Unit</p>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row style="width: 88%; margin-left: 5%;">
+      <ion-col  size="6">
+        <p class="key_point">Change 24H</p>
+        <p class="key_point1">N/A</p>
+        <div class="line"></div>
+      </ion-col>
+      <ion-col  size="6">
+        <p class="key_point">Token Outstanding</p>
+        <p class="key_point1">391,904.76[ARDS]</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-button color="primary" class="learn_btn ion-activatable" (click)="invest()">
+        Invest
+      <ion-ripple-effect></ion-ripple-effect>
+    </ion-button>
+
+    <ion-row class="line2">
+      <ion-col class="containers" size="2">
+        <p>Token Name</p>
+      </ion-col>
+      <ion-col class="containers" size="2">
+        <p>Property Address</p>
+      </ion-col>
+      <ion-col class="containers" size="2">
+        <p>Tokenised Value</p>
+      </ion-col>
+      <ion-col class="containers" size="2">
+        <p>Total Supply</p>
+      </ion-col>
+      <ion-col class="containers" size="2">
+        <p>Available for Sale</p>
+      </ion-col>
+      <ion-col class="containers" size="2">
+        <p>Per Token price</p>
+      </ion-col>
+    </ion-row>
+
+    <div class="list" *ngFor="let properties of properties;let i = index" [ngClass]="(i % 2 == 0) ? 'list' : 'list2'">
+    <ion-row (click)="active_item(i,properties)" [ngClass]="active_index_item == i ? 'active' : 'transparent'">
+      <ion-col class="list_name" size="2">
+        <p class="list_name">{{properties.token_name}}</p>
+      </ion-col>
+      <ion-col size="2">
+        <p class="list_name">{{properties.cut_address}}</p>
+      </ion-col>
+      <ion-col class="list_name" size="2">
+        <p class="list_name">{{properties.tokenized}}</p>
+      </ion-col>
+      <ion-col size="2">
+        <p class="list_name">{{properties.total_supply}}</p>
+      </ion-col>
+      <ion-col class="list_name" size="2">
+        <p class="list_name">{{properties.available_price}}</p>
+      </ion-col>
+      <ion-col size="2">
+        <p class="list_name">${{properties.per_token}}</p>
+      </ion-col>
+    </ion-row>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,64 @@
+<ion-content class="ion-no-padding"><br><br>
+  <h4 class="heading">Smart move Micheal !</h4><br><br>
+  <p class="sub-heading">We want to know more about your preferred exit strategy.</p><br>
+  <ion-grid class="grey ion-no-padding">
+    <ion-radio-group [(ngModel)]="years"><br>
+      <p class="sub-heading1">When would you need to exit this investment?</p>
+      <ion-row class="ion-no-padding">
+        <ion-col size="1"><ion-radio value="1"></ion-radio></ion-col>
+        <ion-col size="11"><p class="txt">Less than 1 year</p></ion-col>
+      </ion-row>
+    
+      <ion-row class="ion-no-padding">
+        <ion-col size="1"><ion-radio value="1-3"></ion-radio></ion-col>
+        <ion-col size="11"><p class="txt">1-3 Years</p></ion-col>
+      </ion-row>
+
+      <ion-row class="ion-no-padding">
+        <ion-col size="1"><ion-radio value="3-5"></ion-radio></ion-col>
+        <ion-col size="11"><p class="txt">3-5 Years</p></ion-col>
+      </ion-row>
+
+      <ion-row class="ion-no-padding">
+        <ion-col size="1"><ion-radio value="5-7"></ion-radio></ion-col>
+        <ion-col size="11"><p class="txt">5-7 Years</p></ion-col>
+      </ion-row>
+
+      <ion-row class="ion-no-padding">
+        <ion-col size="1"><ion-radio value="7-10"></ion-radio></ion-col>
+        <ion-col size="11"><p class="txt">7-10 Years</p></ion-col>
+      </ion-row>
+
+      <ion-row class="ion-no-padding">
+        <ion-col size="1"><ion-radio value="10+"></ion-radio></ion-col>
+        <ion-col size="11"><p class="txt">10+ Years</p></ion-col>
+      </ion-row>
+    </ion-radio-group>
+  </ion-grid>
+
+  <p class="sub-heading2">You selected an investment time horizon indicated above. The investment you
+    have selected has an anticipated hold period of at least 5 years, and as this is an illiquid investment,
+    you may not be able to sell or otherwise exit your investment for some time. 
+  </p><br>
+  <p class="sub-heading1" style="margin-left: 5%;width: 90%;">Please select one of the following:</p>
+  
+  <ion-radio-group [(ngModel)]="investment"><br>
+  <ion-row class="ion-no-padding adjust">
+    <ion-col size="1"><ion-radio value="comfortable"></ion-radio></ion-col>
+    <ion-col size="11"><p class="txt">i'm comfortable with the investment time horizon</p></ion-col>
+  </ion-row>
+
+  <ion-row class="ion-no-padding adjust">
+    <ion-col size="1"><ion-radio value="not_comfortable"></ion-radio></ion-col>
+    <ion-col size="11"><p class="txt">i'm not comfortable with having my money locked up for the investment time horizon</p></ion-col>
+  </ion-row>
+
+</ion-radio-group>
+
+<br><br>
+<button class="form_btn ion-activatable ripple-parent" (click)="next()"><ion-spinner *ngIf="loading"></ion-spinner>
+  <span *ngIf="!loading" class="submit-txt"> NEXT
+    <ion-ripple-effect></ion-ripple-effect></span></button>
+    <br><br>
+    
+</ion-content>

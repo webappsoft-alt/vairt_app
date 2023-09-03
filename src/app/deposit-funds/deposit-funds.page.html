@@ -1,0 +1,21 @@
+<ion-content>
+  <ion-grid class="background1" style="position: fixed;width: 100%;height: 200px;" > <br>
+    <ion-buttons (click)="back()" [ngClass]="{'ios_header_css':ios_header==true}">
+      <img src="assets/images/left-arrow-white.svg" class="back_arrow" style="width: 30px;">
+    </ion-buttons>
+    <h4 class="heading">Deposit</h4>
+  <p class="sub-heading">Transfer funds directly from your personal account. In order to transfer funds, add your FIAT account so we can create funds transfer information. Funds deposit should be made from the same bank account each time.</p>
+  </ion-grid>
+  <ion-grid class="content_grid ion-no-padding" [ngClass]="{'content_grid_ios':ios_header==true}">  
+    <ion-select mode="md" [(ngModel)]="region">
+      <ion-select-option *ngFor="let regions of regions" value="{{regions.id}}">{{regions.name}}</ion-select-option>
+    </ion-select>
+    <ion-item lines="none">
+      <p class="dollar">$</p>
+      <ion-input [(ngModel)]="amount" type="number" placeholder="Amount"></ion-input>
+    </ion-item>
+    <button class="form_btn ion-activatable ripple-parent" (click)="next()"><ion-spinner *ngIf="loading"></ion-spinner>
+      <span *ngIf="!loading" class="submit-txt"> Proceed
+        <ion-ripple-effect></ion-ripple-effect></span></button>
+  </ion-grid>
+</ion-content>

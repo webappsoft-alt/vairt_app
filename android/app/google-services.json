@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "149144825431",
+    "project_id": "vairt-app",
+    "storage_bucket": "vairt-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:149144825431:android:18fcb353f3422469f0bd12",
+        "android_client_info": {
+          "package_name": "com.vairt.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "149144825431-pbvhgb7u3f6l81b8dr0f8rs5blu8o66b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvLpbD3WpH8wmAk3FxGYbdcE7Kiy6j_Ag"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "149144825431-pbvhgb7u3f6l81b8dr0f8rs5blu8o66b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

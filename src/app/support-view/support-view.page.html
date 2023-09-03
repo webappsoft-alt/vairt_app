@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-grid class="background1" [ngClass]="{'ios_header_css':ios_header==true}">
+      <ion-buttons (click)="back()">
+        <img src="assets/images/arr_back.png" width="20">
+      </ion-buttons>
+      <h4 class="heading">Support View</h4>
+    </ion-grid>  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h4 class="sub-heading">Subject</h4>
+  <ion-input readonly value="{{title}}"></ion-input>
+  <h4 class="sub-heading">Priority Level</h4>
+  <ion-input readonly value="{{priority}}"></ion-input>
+  <h4 class="sub-heading">Message</h4>
+  <ion-textarea readonly value="{{des}}"></ion-textarea>
+
+  <p class="sub-heading">Attachment</p>
+    <img src="{{pic}}" class="attach">
+
+    <ion-textarea [(ngModel)]="comment"></ion-textarea> <br>
+    <button class="form_btn" (click)="send_comment()">Comment</button>
+
+    <div *ngFor="let comments of comments" style="border-bottom: 1px solid #dcdcdc;margin-top: 30px;">
+      <p class="heading_black">{{comments.username}} {{comments.datetime}}</p>
+      <p class="sub-heading" style="font-family: 'poppins regular';margin-top:-10px;margin-left: 20px;margin-right: 10px;">{{comments.comments}}</p>
+    </div>
+</ion-content>

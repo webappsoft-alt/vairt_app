@@ -1,0 +1,179 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="header">
+    <ion-item lines="none" style="margin-top:15px">
+    <ion-buttons class="close_btn" (click)="close()">
+      <ion-icon name="close" class="close"></ion-icon>
+    </ion-buttons>
+    <ion-title mode="ios">All Transaction</ion-title>
+    </ion-item>
+    <img src="assets/images/all_transaction.png" width="60" class="center" style="margin-top:0px">
+    <p class="sub_heading">All Transaction list that you made while using vairt</p>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<br>
+<h4 class="list_heading">Transaction List</h4>
+  <ion-card mode="md" class="recent-trans" *ngFor="let transactions of transactions">
+
+    <ion-item lines="none" class="ion-no-padding trans_" style="border-bottom: 1px solid #74D7F1;
+    ">
+      <ion-icon name="id-card-outline" class="tran_icon_left" slot="start"></ion-icon>
+      <ion-label slot="start">
+      <h4 class="tran_heading">Trx ID</h4>
+      <h4 class="tran_value" style="color:#74D7F1">{{transactions.trx_id}}</h4>
+     </ion-label>
+      <ion-icon name="calendar-outline" class="tran_icon_right" slot="end"></ion-icon>
+      <ion-label slot="end">
+      <h4 class="tran_heading">Date</h4>
+      <h4 class="tran_value">{{transactions.date}}</h4>
+      </ion-label>
+    </ion-item>
+
+    <ion-item lines="none" class="ion-no-padding trans_">
+      <ion-icon name="card-outline" class="tran_icon_left" slot="start"></ion-icon>
+      <ion-label slot="start">
+      <h4 class="tran_heading">Debit/Credit:</h4>
+      <h4 class="tran_value">{{transactions.c_type}}</h4>
+      </ion-label>
+      </ion-item>
+
+    <ion-item lines="none" class="ion-no-padding trans_">
+      <ion-icon name="logo-usd" class="tran_icon_left" slot="start"></ion-icon>
+      <ion-label slot="start">
+      <h4 class="tran_heading">Amount</h4>
+      <h4 class="tran_value">{{transactions.amount}}</h4>
+     </ion-label>
+    </ion-item>
+
+    <ion-item lines="none" class="ion-no-padding trans_">
+      <ion-icon name="reader-outline" class="tran_icon_left" slot="start"></ion-icon>
+      <ion-label slot="start" class="ion-text-wrap">
+      <h4 class="tran_heading">Title</h4>
+      <h4 class="tran_value">{{transactions.description}}</h4>
+     </ion-label>
+    </ion-item>
+
+    <ion-item lines="none" class="ion-no-padding trans_">
+      <ion-icon name="stats-chart-outline" class="tran_icon_left" slot="start"></ion-icon>
+      <ion-label slot="start" class="ion-text-wrap">
+      <h4 class="tran_heading" style="margin-top: 10px;">Status</h4>
+      <p class="tran_value status_approve_color" *ngIf="transactions.status=='Success'" slot="end">
+        {{transactions.status}}</p>
+      <p class="tran_value status_rejected_color" *ngIf="transactions.status=='Rejected'" slot="end">
+        {{transactions.status}}</p>
+
+       <p class="tran_value status_rejected_btn" *ngIf="transactions.status=='Incomplete'" slot="end" (click)="incomplete(transactions.deposit_id,transactions.stage)">
+          {{transactions.status}}</p>
+        <p class="tran_value status_approve_color" *ngIf="transactions.status=='Pending Status'" slot="end">
+          {{transactions.status}}</p>
+     </ion-label>
+    </ion-item>
+
+  
+      
+      <!-- <div style="border-bottom:1px solid #f3f3f3">
+      <div class="trans_row" style="margin-top:-7px;">
+       <ion-icon name="id-card-outline" class="tran_icon_left"></ion-icon>
+        <h4 class="tran_heading left">Trx ID</h4>
+        <ion-icon name="calendar-outline" class="tran_icon_right"></ion-icon>
+        <h4 class="tran_heading">Date</h4>
+      </div>
+      <div class="trans_row">
+        <h4 class="tran_value" style="color:#74D7F1">{{transactions.trx_id}}</h4>
+        <h4 class="tran_value">{{transactions.date}}</h4>
+      </div>
+      </div> -->
+
+      <!-- <div style="border-bottom:1px solid #f3f3f3">
+      <div class="trans_row">
+        <ion-icon name="logo-usd" class="tran_icon_left"></ion-icon>
+        <h4 class="tran_heading left">Amount</h4>
+        <ion-icon name="card-outline" class="tran_icon_right" style="margin-right:95px"></ion-icon>
+        <h4 class="tran_heading">Debit/Credit:</h4>
+      </div>
+       <div class="trans_row">
+        <h4 class="tran_value">{{transactions.amount}}</h4>
+        <h4 class="tran_value">{{transactions.c_type}}</h4>
+      </div>
+      </div>
+
+      <div style="border-bottom:1px solid #f3f3f3">
+         <div class="trans_row" style="margin-top:6px">
+        <ion-icon name="reader-outline" class="tran_icon_left"></ion-icon>
+        <h4 class="tran_heading left">Title</h4>
+        </div>
+        <p class="des">{{transactions.description}}</p>
+       </div>
+
+        <div style="border-bottom:1px solid #f3f3f3">
+        <div class="trans_row" style="margin-top:10px">
+        <ion-icon name="stats-chart-outline" class="tran_icon_left"></ion-icon>
+        <h4 class="tran_heading left">Status:</h4>
+       </div>
+       <p class="tran_value status_approve_color" *ngIf="transactions.status=='Success'" slot="end">
+          {{transactions.status}}</p>
+        <p class="tran_value status_rejected_color" *ngIf="transactions.status=='Rejected'" slot="end">
+          {{transactions.status}}</p>
+
+         <p class="tran_value status_rejected_btn" *ngIf="transactions.status=='Incomplete'" slot="end" (click)="incomplete(transactions.deposit_id,transactions.stage)">
+            {{transactions.status}}</p>
+          <p class="tran_value status_approve_color" *ngIf="transactions.status=='Pending Status'" slot="end">
+            {{transactions.status}}</p>
+        </div> -->
+
+    </ion-card>
+  <ion-infinite-scroll threshold="600px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <!-- <ion-grid class="background1" style="position: fixed;width: 100%;height: 200px;" [ngClass]="{'ios_header_css':ios_header==true}"> <br>
+    <ion-buttons (click)="back()">
+      <ion-icon name="arrow-back-outline" style="color:white;font-size: 30px;"></ion-icon>
+    </ion-buttons>
+    <h4 class="heading">All Transactions</h4>
+  </ion-grid>
+  <ion-grid class="content_grid ion-no-padding" [ngClass]="{'content_grid_ios':ios_header==true}"> 
+    <p *ngIf="no_trans==true" class="txt">No Transactions</p>
+    <ion-card class="recent-trans" *ngFor="let transactions of transactions">
+        
+      <ion-item class="ion-no-padding trans1" lines="none">
+      <h4 class="tran_heading">Date:</h4>
+      <p class="tran_value" slot="end">{{transactions.date}}</p>
+     </ion-item>
+    
+      <ion-item class="ion-no-padding trans1" lines="none" style="margin-top: -23px;">
+      <h4 class="tran_heading">Trx ID:</h4>
+      <p class="tran_value" slot="end">{{transactions.trx_id}}</p>
+     </ion-item>
+    
+     <ion-item class="ion-no-padding trans1" lines="none" style="margin-top: -23px;">
+      <h4 class="tran_heading">Description:</h4>
+      <p class="tran_value" slot="end">{{transactions.description}}</p>
+     </ion-item>
+    
+     <ion-item class="ion-no-padding trans1" lines="none" style="margin-top: -23px;">
+      <h4 class="tran_heading">Amount:</h4>
+      <p class="tran_value" slot="end">{{transactions.amount}}</p>
+     </ion-item>
+    
+     <ion-item class="ion-no-padding trans1" lines="none" style="margin-top: -23px;">
+      <h4 class="tran_heading">Debit/Credit:</h4>
+      <p class="tran_value" slot="end">{{transactions.c_type}}</p>
+     </ion-item>
+
+     <ion-item class="ion-no-padding trans1" lines="none" style="margin-top: -23px;">
+      <h4 class="tran_heading">Status:</h4>
+      <p class="tran_value status_approve_color" *ngIf="transactions.status=='Success'" slot="end">
+        {{transactions.status}}</p>
+      <p class="tran_value status_rejected_color" *ngIf="transactions.status=='Rejected'" slot="end">
+        {{transactions.status}}</p>
+
+       <p class="tran_value status_rejected_btn" *ngIf="transactions.status=='Incomplete'" slot="end" (click)="incomplete(transactions.deposit_id,transactions.stage)">
+          {{transactions.status}}</p>
+        <p class="tran_value status_approve_color" *ngIf="transactions.status=='Pending Status'" slot="end">
+          {{transactions.status}}</p>
+     </ion-item>
+   </ion-card>
+  </ion-grid> -->
+</ion-content>

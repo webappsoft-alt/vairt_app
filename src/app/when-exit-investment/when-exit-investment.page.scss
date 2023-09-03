@@ -1,0 +1,75 @@
+.heading{
+    font-family: 'poppins semibold';
+    text-align: center;
+    color:white;
+    font-size: 16px;
+    width: 80%;
+    margin-left: 10%;
+}
+.sub-heading{
+    color:white;
+    font-family: 'poppins regular';
+    text-align: center;
+    margin-top: -7px;
+    font-size: 10px;
+    width: 90%;
+    margin-left: 5%;
+}
+.title{
+    color:#666666;
+    font-size: 14px;
+    margin-left: 15px;
+    margin-right: 20px;
+    font-family: 'poppins regular';
+}
+.sub-heading1{
+    color:#666666;
+    font-family: 'poppins semibold';
+    margin-top: -3px;
+    margin-left: 0px;
+}
+.txt{
+    font-family: 'poppins regular';
+    margin-top: -2px; 
+    color:#68686A;
+    font-size: 14px;
+}
+ion-content{
+    --overflow:hidden
+}
+ion-radio{
+    width:17px;
+    height:17px;
+    --border-width: 1px;
+
+}
+.grey{
+    background:#F2F2F2;
+    border-top:1px solid #C9C9C9;
+    border-bottom: 1px solid #C9C9C9;
+    padding-left: 50px;
+}
+.white{
+    background:white;
+    padding-left: 50px;
+}
+.background1{
+    height:250px
+}
+.content_grid{
+    margin-top: 230px;
+}
+.hori_bar{
+    border-bottom: 1px solid #dcdcdc;
+}
+.des{
+    color:#68686A;
+    font-family: 'poppins regular';
+    width: 90%;
+    margin-left: 5%;
+    text-align: justify;
+    font-size: 13px;
+}
+.ios_header_css{
+    padding-top:20px;
+}

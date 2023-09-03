@@ -1,0 +1,17 @@
+
+<ion-content class="ion-padding">
+  <ion-buttons class="skip_btn" (click)="move()" [ngClass]="{'ios_header_css_':ios_header==true}">
+    <p>Skip</p>
+  </ion-buttons>
+  <div class="row_center">
+  <lottie-player  autoplay loop src="assets/notification.json" style="width: 300px;height: 300px;">
+  </lottie-player>
+  <h4 class="Location">Allow Notification</h4>
+  <p class="sub_heading">These Notifications are important for your experience. If you change these settings it may take a few minutes to update.
+  </p>
+  </div>
+  <button class="form_btn ion-activatable ripple-parent" (click)="next()"><ion-spinner *ngIf="loading"></ion-spinner>
+    <span *ngIf="!loading" class="submit-txt"> 
+      Turn On Notifications
+    <ion-ripple-effect></ion-ripple-effect></span></button>
+</ion-content>

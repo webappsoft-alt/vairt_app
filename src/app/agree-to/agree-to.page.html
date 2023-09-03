@@ -1,0 +1,20 @@
+<ion-content>
+  <ion-grid class="background1" style="position: fixed;width: 100%;" [ngClass]="{'ios_header_css':ios_header==true}"> <br>
+    <img src="assets/images/agree.png" class="center" width="50"><br>
+    <h4 class="heading"> Start Investing in Real Estate Assets </h4>
+  </ion-grid>
+  <ion-grid class="content_grid ion-no-padding"> <br> <br> 
+    <div style="width: 90%;margin-left: 5%;">
+      <p class="sub-heading" style="color:#666666;text-align: left;">Read the information below and check the boxes to confirm.After you complete your investment, copies of all doucments will be accessible on your dashboard</p><br>
+        <ion-row class="ion-no-padding">
+          <ion-col size="1" style="padding-top: 2px;" ><ion-checkbox mode="md" (ionChange)="agree_()" mode="md" [(ngModel)]="agree"></ion-checkbox></ion-col>
+          <ion-col size="11"><p class="txt">Agree to T&Cs</p></ion-col>
+        </ion-row>
+  </div>
+  <br><br>
+      <button class="form_btn ion-activatable ripple-parent" (click)="next()"><ion-spinner *ngIf="loading"></ion-spinner>
+        <span *ngIf="!loading" class="submit-txt"> Continue
+          <ion-ripple-effect></ion-ripple-effect></span></button>
+          <br><br><br><br><br><br>
+</ion-grid>
+</ion-content>

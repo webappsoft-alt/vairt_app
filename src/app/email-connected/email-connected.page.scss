@@ -1,0 +1,60 @@
+ion-buttons{
+    width: 50px;
+    height: 50px;
+    margin-left: 15px;
+}
+ion-content{
+    --background:#f6f6f6
+}
+ion-icon{
+    color:#000000
+}
+.back_heading{
+    font-family: 'poppins bold';
+    font-size: '16px';
+    margin-left: 10px;
+    color:var(--ion-color-primary)
+}
+.heading{
+    text-align: center;
+    font-family: 'poppins bold';
+    font-size: '0.4rem';
+}
+.icon{
+    margin-top: 50px;
+}
+.des{
+    font-family: 'poppins regular';
+    margin-left: 10px;
+    color:var(--ion-color-tertiary)
+}
+.unlink{
+    font-family: 'poppins bold';
+    color:var(--ion-color-primary);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.arrow_img{
+    margin-top: 65px;
+    height: 30px;
+}
+.form_btn{
+    width: 90%;
+    margin-left: 5%;
+}
+ion-title{
+    text-align: center;
+    color:var(--ion-color-tertiary)
+}
+ion-checkbox{
+    --border-color: #dcdcdc;
+    --border-width: 1px;
+}
+ion-spinner{
+    --color:var(--ion-color-primary);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+ 
+}

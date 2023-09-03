@@ -1,0 +1,50 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="header">
+    <ion-item lines="none" style="margin-top:12px">
+    <ion-buttons class="close_btn" (click)="close()">
+      <ion-icon name="close" class="close"></ion-icon>
+    </ion-buttons>
+    <ion-title mode="ios">Funds Request</ion-title>
+    </ion-item>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+    <br><br>
+    <ion-textarea type="number" [(ngModel)]="amount" placeholder="$ 0"></ion-textarea><br>
+
+    <ion-row  class="background ion-no-padding">
+      <ion-col size="auto" style="height: 70px; display: flex"
+        ><img src="assets/images/email.svg" width="20" class="input_img"
+      /></ion-col>
+      <ion-col size="9" style="height: 70px">
+        <p class="input_lbl">Email</p>
+        <ion-input
+          type="text"
+          [(ngModel)]="email_address"
+          class="input"
+        ></ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row  class="background ion-no-padding">
+      <ion-col size="auto" style="height: 70px; display: flex"
+        ><img src="assets/images/memo.png" class="memo_img"
+      /></ion-col>
+      <ion-col size="9" style="height: 70px">
+        <p class="input_lbl">Memo</p>
+        <ion-input
+          type="text"
+          [(ngModel)]="memo"
+          class="input"
+        ></ion-input>
+      </ion-col>
+    </ion-row>
+    <br><br>
+        <button class="form_btn ion-activatable ripple-parent" (click)="next()"><ion-spinner *ngIf="loading"></ion-spinner>
+          <span *ngIf="!loading" class="submit-txt"> 
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+        <ion-ripple-effect></ion-ripple-effect></span></button>
+     <br><br>
+  </ion-content>

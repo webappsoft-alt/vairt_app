@@ -1,0 +1,70 @@
+<ion-header class="ion-no-border">
+  <br>
+<ion-item lines="none">
+  <img src="assets/images/property_detail/fin_1.png" width="50">
+  <p class="prop_title">Transaction Detail</p>
+  <ion-buttons (click)="close()" slot="end" (click)="close()"><ion-icon name="close" ></ion-icon></ion-buttons>
+</ion-item>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-row>
+  <ion-col size="6"><p class="lbl">Investment amount</p></ion-col>
+  <ion-col size="6"><p class="value">${{initial_invest}}</p></ion-col>
+</ion-row>
+<ion-row>
+  <ion-col size="6"><p class="lbl">Purchase costs</p></ion-col>
+  <ion-col size="6"><p class="value">${{purchase_costs | number:'1.2-2':'en'}} </p></ion-col>
+  <!-- <ion-col size="6"><p class="inner_lbl">This semi-detached spacious home is located near downtown</p></ion-col>
+  <ion-col size="6"><p class="inner_value">$890,000</p></ion-col> -->
+</ion-row>
+
+<ion-row *ngFor = 'let trans of transaction_detail'>
+  <ion-col size="6"><p class="inner_lbl">{{trans.name}}</p></ion-col>
+  <ion-col size="6"><p class="inner_value">${{trans.charges | number:'1.2-2':'en'}}</p></ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col size="6"><p class="lbl">Transaction costs</p></ion-col>
+  <ion-col size="6"><p class="value">${{transaction_cost | number:'1.2-2':'en'}}</p></ion-col>
+</ion-row>
+<ion-row>
+  <ion-col size="6"><p class="inner_lbl">Vairt fee (1.5 %)</p></ion-col>
+  <ion-col size="6"><p class="inner_value">${{vairt_fee | number:'1.2-2':'en'}}</p></ion-col>
+</ion-row>
+<ion-row>
+  <ion-col size="6"><p class="inner_lbl">Bank Trx Charges/ Credit Card (3%)</p></ion-col>
+  <ion-col size="6"><p class="inner_value">${{vat | number:'1.2-2':'en'}}</p></ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col size="6"><p class="lbl" style="color:var(--ion-color-primary)">Total acquisition cost</p></ion-col>
+  <ion-col size="6"><p class="value" style="color:var(--ion-color-primary)">$ {{total_acquistion_cost | number:'1.2-2':'en'}}</p></ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col size="6"><p class="lbl">Number of shares</p></ion-col>
+  <ion-col size="6"><p class="value">${{number_of_shares | number:'1.4-4':'en'}}</p></ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col size="6"><p class="lbl">Property price per share </p></ion-col>
+  <ion-col size="6"><p class="value">$ {{property_price_per_share | number:'1.4-4':'en'}}</p></ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col size="6"><p class="lbl">Purchase cost per share</p></ion-col>
+  <ion-col size="6"><p class="value">$ {{purchase_cost_per_share | number:'1.4-4':'en'}}</p></ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col size="6"><p class="lbl">Transaction cost per share</p></ion-col>
+  <ion-col size="6"><p class="value">${{transaction_cost_per_share | number:'1.4-4':'en'}}</p></ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col size="6"><p class="lbl" style="color:var(--ion-color-primary)">Total price per share</p></ion-col>
+  <ion-col size="6"><p class="value" style="color:var(--ion-color-primary)">$ {{total_price_share | number:'1.4-4':'en'}}</p></ion-col>
+</ion-row>
+
+</ion-content>

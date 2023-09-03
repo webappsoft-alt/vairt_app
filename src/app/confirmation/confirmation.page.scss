@@ -1,0 +1,72 @@
+.heading{
+    font-family: 'poppins semibold';
+    text-align: center;
+    color:white;
+    font-size: 16px;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 10px;
+}
+.sub-heading{
+    color:#333;
+    font-family: 'poppins regular';
+    text-align: left;
+    margin-top: 0px;
+    font-size: 12px;
+    width: 90%;
+}
+
+.billed{
+    margin-left: 10px;
+    font-family: "poppins semibold";
+    font-size: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+.lbl{
+    font-size: 16px;
+    color:var(--ion-color-primary);
+
+}
+
+.title{
+    color:black;
+    font-family: 'poppins regular';
+    font-size: 14px;
+    border-bottom:1px solid #dcdcdc;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-bottom: 10px;
+}
+.table_lbl{
+    color:#333;
+    font-family: 'poppins regular';
+    font-size: 14px;
+    margin-left: 10px;
+}
+.value{
+    color:black;
+    font-family: 'poppins regular';
+    font-size: 14px;
+    margin-left: 10px;
+
+}
+.form_btn{
+    width: 50%;
+    height: 45px;
+    margin-bottom: 15px;
+}
+
+ion-toolbar.header{
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+ion-title{
+    font-family: 'poppins regular';
+    font-size: 15px;
+}
+ion-input{
+    font-family: 'poppins regular';
+}

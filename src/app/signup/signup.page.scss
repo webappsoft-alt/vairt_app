@@ -1,0 +1,430 @@
+// .heading{
+//     font-family: 'poppins semibold';
+//     text-align: center;
+//     color:white;
+//     font-size: 16px;
+// }
+// .sub-heading{
+//     color:white;
+//     font-family: 'poppins regular';
+//     text-align: center;
+//     margin-top: -7px;
+//     font-size: 10px;
+// }
+
+// ion-content{
+//     width: 100%;
+//     height: 100%;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     flex-direction: column;
+//     --overflow: hidden;
+// }
+
+
+// .p-cont{
+//     width: 100%;
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     margin-bottom: 10px;
+//     font-family: 'poppins regular';
+// }
+// .logo-cont{
+//     width: 100%;s
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+// }
+
+// .logo{
+//     text-align: center;
+//     width: 220px;
+//     margin-bottom: 30px;
+ 
+// }
+
+// .top{
+//     padding: 40px 20px 0px 20px;
+//    width: 100%;
+//    height: auto;
+
+
+// }
+
+// .bottom{
+//     width: 100%;
+//  height: auto;
+//  position: absolute;
+//  bottom: 7px;
+//  left: 0;
+//  display: flex;
+//  align-items: center;
+//  justify-content: center;
+//  flex-direction: column;
+//  padding: 0px 20px;
+//  font-family: 'poppins regular';
+// }
+
+
+
+
+// .jjj{
+// width: 100%;
+// height: 48px;
+// border: 1px solid silver;
+// display: flex;
+// align-items: center;
+// justify-content: space-between;
+// margin-top: 20px;
+// font-family: 'poppins regular';
+// }
+// .jjj ion-input{
+//     width: 100%;
+//     height: 100%;
+//     border: none;
+//     font-family: 'poppins regular';
+//     --padding-start:10px;
+// }
+
+// .ripple-parent {
+//     position: relative;
+//     overflow: hidden;
+//   }
+
+// .ion-activatable{
+//       width: 100%;
+//       height: 50px;
+//       margin-top: 30px;
+//       font-size: 18px;
+//       font-weight: 500;
+     
+//     }
+//  .ion-activatable:focus{
+//       border: none;
+//       outline: none;
+//   }
+
+
+// .for-cont{
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     font-family: 'poppins regular';
+// }
+//   .forget{
+//   cursor: pointer;
+//       color: rgb(143, 143, 143);
+//       justify-self: center;
+//       text-align: center;
+//       font-family: 'poppins regular';
+//   }
+
+
+//   .forget:focus{
+//       border: none;
+//       outline: none;
+//   }
+
+
+// .bottom p:focus{
+//     border: none;
+//     outline: none;
+// }
+
+//   .names{
+//     border:none;
+//     margin: 0 !important;
+//     padding: 0 !important;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+//     width: 100%;
+//     height: auto;
+//     margin-top: 20px;
+//     font-family: 'poppins regular';
+// }
+
+//   .sss{
+//     // border:1px solid silver;
+//     height: 42px;
+//     width: 100%;
+//   }
+//     .sss:nth-child(2){
+//         margin-left: 20px;
+//     }
+
+// ion-input{
+//     --padding-start:10px;
+//     font-family: 'poppins regular';
+//     border:1px solid silver;
+
+// }
+
+// .lbl{
+//     font-family: 'poppins regular';
+//     color:#68686A ;
+// }
+ion-content{
+    --overflow:scroll;
+}
+.circles{
+    width: 90%;
+    margin-left: 5%;
+    height: auto;
+    margin-top: 20px;
+}
+
+
+.circle-cont{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-size: 15px;
+    opacity: 0.7;
+    margin-top: 15px;
+    font-size: 12px;
+    font-family: 'poppins regular';
+}
+
+
+.circle{
+    margin-right: 15px;
+    width: 10px;
+    height: 10px;
+    border: 1px solid black;
+    border-radius: 50%;
+    background-color: white;
+    font-family: 'poppins regular';
+}
+// ion-button{
+//     font-family: 'poppins bold';
+//     width: 80%;
+//     margin-left: 5%;
+// }
+// .bottom_txt{
+//     cursor: pointer;
+//     color:var(--ion-color-primary);
+//     font-family: 'poppins regular';
+//     text-decoration: none;
+//     outline: none;
+// }
+
+// p{
+//     font-family: 'poppins regular';
+// }
+// ion-icon{
+//     font-size: 18px;
+// }
+// ion-row{
+//     width: 100%;
+//     margin-left: 0px;
+// }
+// .error-message{
+//     color:var(--ion-color-danger);
+//     font-family: 'poppins regular';
+//     border: 1px solid var(--ion-color-danger);
+// }
+// .error-message1{
+//     font-family: 'poppins semibold';
+//     color:var(--ion-color-danger);
+
+// }
+
+// ion-item.phone{
+//     border:1px solid silver;
+//     height: 48px;
+
+// }
+.phone_row{
+    height: 55px;
+    background:#f5f5f5;
+   // padding-right: 12px;
+
+}
+// .center{
+//     display: block;
+//     margin-left: auto;
+//     margin-right: auto;
+// }
+.code{
+    margin-top: 4px;
+}
+.code-error{
+    margin-top: 0px;
+}
+.phone_input{
+    border: none;
+    margin-top: -6px 
+}
+.error-phone-input{
+    border: none;
+    margin-top: -8px 
+}
+// .background1{
+//     height:250px
+// }
+// .content_grid{
+//     margin-top: 230px;
+// }
+ion-row.row_phone{
+    // background:1px solid silver;
+    font-family: 'poppins regular';
+    // height: 50px;
+    background:#f5f5f5;
+    border-radius: 10px;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: -6px;
+    height: 65px;
+
+}
+// .ios_header_css{
+//     padding-top:20px;
+// }
+
+
+.heading{
+    font-family: 'poppins semibold';
+    // margin-top: -10px;
+    text-align: left;
+    margin-left: 5%;
+    color:#333
+}
+.sub-heading{
+    font-family: 'poppins regular';
+    margin-top: 10px;
+    text-align: left;  
+    width: 90%;
+    margin-left: 5%;
+}
+.center{
+   margin-top: 0px;
+   margin-left: 0px;
+}
+ion-input{
+    font-family: 'poppins regular';
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0;
+    margin-left: 2px;
+    color:#333;
+    font-size: 14px;
+    margin-top: -23px;
+  }
+
+.input_img{
+    margin-top: -5px;
+    margin-left: 12px;
+  }
+  .input_lbl{
+    margin-top: 5px;
+    color: #333;
+    font-size: 14px;
+    font-family: 'poppins regular';
+    margin-left: 10px;
+  }
+  ion-row.background{
+    background:#f5f5f5;
+    border-radius: 10px;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: -8px;
+    height: 65px;
+  }
+
+.lbl{
+    font-family: 'poppins semibold';
+    color:#9A9A9A ;
+}
+.error-message{
+    color:var(--ion-color-danger);
+    font-family: 'poppins regular';
+    border: 1px solid var(--ion-color-danger);
+}
+.error-message1{
+    font-family: 'poppins regular';
+    color:var(--ion-color-danger);
+    margin-left: 6%;
+    margin-bottom: 0px;
+    font-size: 12px;
+}
+.bottom_txt{
+    cursor: pointer;
+    color:var(--ion-color-primary);
+    font-family: 'poppins regular';
+    text-decoration: none;
+    outline: none;
+    letter-spacing: 2.0px;
+    margin-top: -7px;
+}
+ion-item.itm{
+    margin-left: 40%;
+}
+.caret_icon{
+    color:var(--ion-color-primary);
+    margin-left: 10px;
+    margin-top: -6px;
+}
+.form_btn{
+    width: 54px;
+    height: 54px;
+    border-radius: 50px;
+    margin-left: 5%;
+    margin-top: 25px;
+    box-shadow: 0 0 10px #ccc;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.left_rigt {
+//transition: 0.5s;
+animation: left_rigt ease 1s;
+-webkit-animation: left_rigt ease 1s;
+-moz-animation: left_rigt ease 1s;
+-o-animation: left_rigt ease 1s;
+-ms-animation: left_rigt ease 1s;
+}
+@keyframes left_rigt {
+0% {
+  margin-left: -50%;
+}
+100% {
+  margin-left: 5%;
+}
+}
+ion-spinner{
+width: 20px;
+}
+.bottom{
+    //  width: 100%;
+    //  height: auto;
+    //  position: absolute;
+    //  bottom: 7px;
+    //  left: 0;
+    //  display: flex;
+    //  align-items: center;
+    //  justify-content: center;
+    //  flex-direction: column;
+    //  padding: 0px 20px;
+        font-family: 'poppins regular';
+        margin-top: 25px;
+        margin-left: 5%;
+        margin-bottom: 15px;
+    }
+    
+    .row_bottom{
+     display: flex;
+     align-items: center;
+     flex-direction: row;
+    }
+    ion-datetime{
+        font-family: 'poppins regular';
+        font-size: 13px;
+        margin-left: -5px;
+    }
+    .margin{
+        margin-bottom: 80%;
+    }

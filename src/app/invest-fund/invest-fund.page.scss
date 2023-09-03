@@ -1,0 +1,199 @@
+ion-content{
+    font-family: 'poppins regular';
+}
+.background-img{
+    height: 250px;
+    background-size: cover;
+    background-position: center; 
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+ion-slides.images {
+    background: transparent;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    top: -48px;
+}
+.set-height{
+    width: 93%;
+    margin-left: 0%;
+}
+.address{
+    font-family: "poppins semibold";
+    white-space: break-spaces;
+    font-family: 'poppins semibold';
+}
+.type{
+    color:#b8babb;
+    margin-top: -5px;
+    font-size: 13px;
+}
+.sub_title{
+    color:#333;
+    font-size: 13px;
+    height: 10px;
+}
+.price_btn{
+    background: var(--ion-color-primary);
+    color:white;
+    text-align: center;
+    width: auto;
+    padding: 8px 10px;
+    border-radius: 5px;
+}
+.right{
+    float: right;
+    margin-right: 20px;margin-top: -2px;
+}
+
+.hori_divider{
+    width: 100%;
+    height: 1px;
+    background-color: #dcdcdc;
+    margin-top: 10px;
+}
+.heading{
+    color:var(--ion-color-primary);
+    margin-left: 10px;
+    font-size: 15px;
+}
+ion-select{
+    --padding-start:10px;
+    font-family: 'poppins regular';
+    border:1px solid silver;
+    width: 94%;
+    margin-left: 3%;
+}
+
+.lbl{
+    font-family: 'poppins regular';
+    color:#9A9A9A ;
+    margin-left: 10px;
+    margin-top: 30px;
+    font-size: 13px;
+}
+
+.trans_btn{
+    background:transparent;
+    border:none;
+    outline: none;
+    text-align: center;
+    width: 100%;
+    color:var(--ion-color-primary);
+    margin-top: 15px;
+}   
+.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.info{
+    color: #858587;
+    font-family: 'poppins regular';
+    text-align: justify;
+    width: 90%;
+    margin-left: 5%;  
+    margin-top: 5px;
+    font-size: 12px;
+}
+.prim_lbl{
+    color: var(--ion-color-primary);
+    font-size: 12px;
+    margin-top: 30px;
+    text-align: right;
+    margin-right: 10px;
+}
+.adjust{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 10px;
+}
+ion-radio{
+    width:17px;
+    height:17px
+}
+ion-checkbox{
+    width:17px;
+    height:17px;
+    --border-color:#dcdcdc;
+    --border-width: 1px;
+}
+
+.txt{
+    margin-top: -2px;
+}
+.background{
+    background:var(--ion-color-primary);
+    width: 50%;
+    margin-left: 10px;
+    height: 110px;
+    border-radius: 5px;
+}
+ion-radio{
+    --color-checked	:white;
+    --color:white;
+    float: right;
+    margin-right: 10px;
+}
+.payment_txt{
+    color:white;
+    font-family: 'poppins regular';
+    font-size: 13px;
+    text-align: center;
+    margin-top: 45px;
+}
+.fiat_txt{
+    text-align: center;
+    color:white;
+    font-family: 'poppins regular';
+    margin-top: 10px;
+    font-size: 13px;
+    margin-left: 10px;
+}
+.non-active{
+    background:#B7DCEE;
+    width: 50%;
+    margin-left: 10px;
+    height: 110px;
+    border-radius: 5px;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.input_lbl{
+    margin-top: 5px;
+    color: #333;
+    font-size: 14px;
+    font-family: 'poppins regular';
+    margin-left: 10px;
+  }
+  ion-row.background1{
+    background:#f5f5f5;
+    border-radius: 10px;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 12px;
+    height: 65px;
+  }
+
+.lbl{
+    font-family: 'poppins semibold';
+    color:#9A9A9A ;
+}
+ion-input{
+    font-family: 'poppins regular';
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 0;
+    margin-left: 2px;
+    color:#333;
+    font-size: 14px;
+    margin-top: -20px;
+  }
+  ion-buttons.ios_header_css_back{
+    margin-top: 40px;
+}

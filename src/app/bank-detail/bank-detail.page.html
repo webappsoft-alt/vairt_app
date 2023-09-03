@@ -1,0 +1,25 @@
+<ion-content>
+  <ion-grid class="background1" style="position: fixed;width: 100%;height: 200px;" [ngClass]="{'ios_header_css':ios_header==true}"> <br>
+    <ion-buttons (click)="back()">
+      <ion-icon name="arrow-back-outline" style="color:white;font-size: 30px;"></ion-icon>
+    </ion-buttons>
+    <h4 class="heading">Post Wire</h4>
+  </ion-grid>
+  <ion-grid class="content_grid ion-no-padding" [ngClass]="{'content_grid_ios':ios_header==true}"> 
+    <h4 class="heading" style="color:black; margin-top: 20px;">Deposit Confirmation Detail </h4>
+    <p class="sub-heading">Please use the following form to confirm your deposit. Make sure to fill out the form with   exact details
+      of your deposit so we are able to locate your payment and add VRT balance in the account
+      as soon as possible. Once your deposit confirmation is received,
+      we should process your order within 24 Hours.</p>
+    <ion-input [(ngModel)]="bank_name" placeholder="Bank Name"></ion-input>
+    <ion-input [(ngModel)]="account_name" placeholder="Account Name"></ion-input>
+    <ion-input [(ngModel)]="bank_address" placeholder="Bank Address"></ion-input>
+    <ion-input [(ngModel)]="country" readonly (click)="countryList()" placeholder="Country"></ion-input>
+    <ion-input [(ngModel)]="account_no" type="number" placeholder="Bank Account no."></ion-input>
+    <ion-textarea [(ngModel)]="detail"></ion-textarea>
+    <button class="form_btn ion-activatable ripple-parent" (click)="next()"><ion-spinner *ngIf="loading"></ion-spinner>
+      <span *ngIf="!loading" class="submit-txt"> Proceed
+        <ion-ripple-effect></ion-ripple-effect></span></button>
+     <br><br>
+  </ion-grid>
+</ion-content>

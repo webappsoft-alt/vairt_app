@@ -1,0 +1,22 @@
+<ion-content>
+  <ion-grid class="background1" style="position: fixed;width: 100%;height: 200px;" [ngClass]="{'ios_header_css':ios_header==true}"> <br>
+    <ion-buttons (click)="back()">
+      <ion-icon name="arrow-back-outline" style="color:white;font-size: 30px;"></ion-icon>
+    </ion-buttons>
+    <h4 class="heading">Bank Detail</h4>
+  </ion-grid>
+  <ion-grid class="content_grid ion-no-padding" [ngClass]="{'content_grid_ios':ios_header==true}"> 
+    <h4 class="heading" style="color:black; margin-top: 20px;">Withdraw Confirmation Detail </h4>
+    <p class="sub-heading">Please update bank details from which you want to make transactions.</p>
+    <ion-input [(ngModel)]="bank_name" placeholder="Bank Name"></ion-input>
+    <ion-input [(ngModel)]="iban" placeholder="IBAN / Routing Number "></ion-input>
+    <ion-input [(ngModel)]="bank_account" placeholder="Bank Account"></ion-input>
+    <ion-input [(ngModel)]="branch_name"  placeholder="Branch Name"></ion-input>
+    <ion-input [(ngModel)]="address" type="text" placeholder="Bank Address"></ion-input>
+    <ion-input [(ngModel)]="holder_name" type="text" placeholder="Bank account holder name"></ion-input>
+    <button class="form_btn ion-activatable ripple-parent" (click)="next()"><ion-spinner *ngIf="loading"></ion-spinner>
+      <span *ngIf="!loading" class="submit-txt"> NEXT
+        <ion-ripple-effect></ion-ripple-effect></span></button>
+     <br><br>
+  </ion-grid>
+</ion-content>

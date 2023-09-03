@@ -1,0 +1,298 @@
+<!-- <ion-content>
+  <ion-grid class="background1" style="position: fixed;width: 100%;" [ngClass]="{'ios_header_css':ios_header==true}"><br>
+    <img src="assets/images/signup.png" class="center" width="50">
+    <h4 class="heading">Start to earn a secondary Income!</h4>
+    <p class="sub-heading">It would only take few moments to get you onboard.</p>
+  </ion-grid>
+<ion-grid class="content_grid">
+
+<form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)" style="width: 95%;margin-left: 2.5%;">
+  <ion-row class="ion-no-padding">
+  <ng-container *ngFor="let validation of validation_messages.first_name">
+  <ion-col size="6"><p class="lbl" [ngClass]="{'error-message1' : validations_form.get('first_name').hasError(validation.type) && (validations_form.get('first_name').dirty || validations_form.get('first_name').touched)}">First Name *</p></ion-col>
+  </ng-container>
+  <ng-container *ngFor="let validation of validation_messages.last_name">
+  <ion-col size="6"><p class="lbl" [ngClass]="{'error-message1' : validations_form.get('last_name').hasError(validation.type) && (validations_form.get('last_name').dirty || validations_form.get('last_name').touched)}">Last Name *</p></ion-col>
+</ng-container>
+</ion-row>
+ <ion-row class="ion-no-padding" style="margin-top: -15px;">
+  <ng-container *ngFor="let validation of validation_messages.first_name">
+  <ion-col size="6"><ion-input  type="text" formControlName="first_name" class="sss" name="First Name" [ngClass]="{'error-message' : validations_form.get('first_name').hasError(validation.type) && (validations_form.get('first_name').dirty || validations_form.get('first_name').touched)}"></ion-input></ion-col>  
+  </ng-container>
+  <ng-container *ngFor="let validation of validation_messages.last_name">
+  <ion-col  size="6"><ion-input  type="text" formControlName="last_name" class="sss" name="Last Name" [ngClass]="{'error-message' : validations_form.get('last_name').hasError(validation.type) && (validations_form.get('last_name').dirty || validations_form.get('last_name').touched)}"></ion-input></ion-col>
+</ng-container>
+</ion-row>
+  <p class="lbl" style="margin-left: 5px">Birth Date</p>
+  <ion-row class="ion-no-padding" style="margin-top: -10px;"> 
+    <ion-col size="4"><ion-input type="tel" formControlName="day" placeholder="Day" maxlength="2" class="sss"></ion-input></ion-col>
+    <ion-col size="4"><ion-input type="tel" maxlength="2"  formControlName="month" placeholder="Month" class="sss"></ion-input></ion-col>
+    <ion-col size="4"><ion-input type="tel" maxlength="4"  formControlName="year" placeholder="Year" class="sss"></ion-input></ion-col>
+  </ion-row>
+   <p class="lbl">Phone *</p>
+  <ng-container *ngFor="let validation of validation_messages.phone">
+      <ion-row class="ion-no-padding row_phone" formGroupName="country_phone"  >
+        <span (click)="countryList()" style="margin-top: 13px;">
+        <ion-col size="auto" class="phone_row" style="padding-top: 13px;padding-left:10px;padding-bottom:10px">
+          <img src="{{flag}}" width="22" height="16">
+        </ion-col>
+        <ion-col size="auto" class="phone_row" style="padding-top: 13px;padding-left:10px;padding-right: 10px;padding-bottom:10px">
+          <img src="assets/images/dropdown.png" width="10">
+        </ion-col>
+        </span>
+        <ion-col size="auto" class="code">{{code}}</ion-col>
+        <ion-col size="7">
+          <ion-input style="border:none;margin-top:-2px" [ngClass]="{'error-message' : validations_form.get('country_phone').get('phone').hasError(validation.type) && (validations_form.get('country_phone').get('phone').dirty || validations_form.get('country_phone').get('phone').touched)}"
+          placeholder="{{ validations_form.value.country_phone.country.sample_phone }}" type="number" formControlName="phone" type="tel" [(ngModel)]="phone_no" value="{{phone_no}}"></ion-input>
+        </ion-col>
+      </ion-row>
+      
+  </ng-container>
+   <ng-container *ngFor="let validation of validation_messages.email">
+    <p class="lbl" [ngClass]="{'error-message1' : validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)}">Email *</p>
+    </ng-container>
+    <ng-container *ngFor="let validation of validation_messages.email">
+    <ion-item lines="none" class="jjj" [ngClass]="{'error-message' : validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)}">
+      <ion-input formControlName="email" (keyup)="onFocusPlaceEmail(validations_form.value)"  type="email" name="email" [ngClass]="{'error-message' : validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)}" (focusout)="check_email(validations_form.value)"></ion-input>
+    </ion-item>
+    </ng-container>
+    <p class="error-message1" style="font-size: 13px;font-family: 'poppins regular';" *ngIf="email_exist==true">Email Aready Exist, Please Register with new email</p>
+ <ng-container *ngFor="let validation of validation_messages.password">
+  <p class="lbl" [ngClass]="{'error-message1' : validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)}">Password *</p>
+  </ng-container>
+  <ng-container *ngFor="let validation of validation_messages.password">
+  <ion-item lines="none" class="jjj" [ngClass]="{'error-message' : validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)}">
+    <ion-input type="password" (keyup)="onFocusPlace(validations_form.value)" formControlName="password" name="password" [ngClass]="{'error-message' : validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)}"></ion-input>
+  </ion-item>
+  </ng-container>
+   <div class="circles">
+    <div class="circle-cont"><div class="circle" *ngIf="lowercase==false"></div><ion-icon name="checkmark-done-outline" *ngIf="lowercase==true" color="success"></ion-icon>One lowercase character</div>
+    <div class="circle-cont"><div class="circle" *ngIf="uppercase==false"></div><ion-icon name="checkmark-done-outline" *ngIf="uppercase==true" color="success"></ion-icon>One uppercase character</div>
+    <div class="circle-cont"><div class="circle" *ngIf="digit==false"></div><ion-icon name="checkmark-done-outline" *ngIf="digit==true" color="success"></ion-icon>One number</div>
+    <div class="circle-cont"><div class="circle" *ngIf="total_digit==false"></div><ion-icon name="checkmark-done-outline" *ngIf="total_digit==true" color="success"></ion-icon>At least 8 characters</div>
+</div>   
+ <button class="form_btn ion-activatable ripple-parent" [ngClass]="{'disable_btn' : !validations_form.valid }" [disabled]="!validations_form.valid" ><ion-spinner *ngIf="loading"></ion-spinner>
+  <span *ngIf="!loading" class="submit-txt"> LET'S GET STARTED
+    <ion-ripple-effect></ion-ripple-effect></span></button>
+ </form>
+<p style="text-align: center;">Already have an account? <span class="bottom_txt" [routerLink]="['/login']">Sign in</span></p><br><br><br><br><br><br>
+</ion-grid>
+</ion-content> -->
+
+<ion-header class="ion-no-border">
+  <img src="assets/images/logo4.png" width="150" class="center" />
+ 
+</ion-header>
+<ion-content>
+  <h3 class="heading ">Sign Up</h3>
+  <p class="sub-heading ">Start to Earn a secondary income.</p>
+  <p class="sub-heading " style="font-size: 13px; margin-top: -15px">
+    It would only take few moments to get you onboard.
+  </p><br>
+  <form
+    [formGroup]="validations_form"
+    (ngSubmit)="onSubmit(validations_form.value)"
+    [ngClass]="{'margin':isKeyboardHide==false}"
+  >
+    <ng-container *ngFor="let validation of validation_messages.first_name">
+      <ion-row
+        lines="none"
+        class="background ion-no-padding"
+        [ngClass]="{'error-message' : validations_form.get('first_name').hasError(validation.type) && (validations_form.get('first_name').dirty || validations_form.get('first_name').touched)}"
+      >
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/user.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">First Name</p>
+          <ion-input
+            type="text"
+            formControlName="first_name"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+    <br />
+    <ng-container *ngFor="let validation of validation_messages.last_name">
+      <ion-row
+        lines="none"
+        class="background ion-no-padding"
+        [ngClass]="{'error-message' : validations_form.get('last_name').hasError(validation.type) && (validations_form.get('last_name').dirty || validations_form.get('last_name').touched)}"
+      >
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/user1.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">Last Name</p>
+          <ion-input
+            type="text"
+            formControlName="last_name"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+    <br />
+
+    <ng-container *ngFor="let validation of validation_messages.dob">
+      <ion-row
+        lines="none"
+        class="background ion-no-padding"
+        [ngClass]="{'error-message' : validations_form.get('dob').hasError(validation.type) && (validations_form.get('dob').dirty || validations_form.get('dob').touched)}"
+      >
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/calendar.svg" width="25" class="input_img"
+        /></ion-col>
+        <ion-col size="10" style="height: 70px">
+          <p class="input_lbl">Date Of Birth</p>
+          <ion-datetime
+            displayFormat="YYYY MM DD"
+            formControlName="dob"
+            [(ngModel)]="dob"
+            class="input"
+            style="margin-top: -20px"
+          ></ion-datetime>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+    <br />
+
+
+    <!-- <ng-container *ngFor="let validation of validation_messages.phone">
+      <ion-row class="ion-no-padding row_phone" formGroupName="country_phone" [ngClass]="{'error-message' : validations_form.get('country_phone').get('phone').hasError(validation.type) && (validations_form.get('country_phone').get('phone').dirty || validations_form.get('country_phone').get('phone').touched)}"> -->
+        <ng-container *ngFor="let validation of validation_messages.phone">
+        <ion-row class="ion-padding background" formGroupName="country_phone" [ngClass]="{'error-message' : validations_form.get('country_phone').get('phone').hasError(validation.type) && (validations_form.get('country_phone').get('phone').dirty || validations_form.get('country_phone').get('phone').touched)}">
+         <span (click)="countryList()" class=" ion-activatable ripple-parent" style="margin-left: -15px;margin-top: -3px;">
+          <ion-col size="auto" class="phone_row" style="padding-left: 18px">
+            <img
+              src="{{flag}}"
+              width="22"
+              height="16"
+              style="margin-top: 11px"
+            />
+          </ion-col>
+          <ion-col
+            size="auto"
+            class="phone_row"
+            style="
+              padding-top: 13px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-bottom: 10px;"
+          >
+            <img src="assets/images/dropdown.png" width="10" />
+          </ion-col>
+          <ion-ripple-effect></ion-ripple-effect>
+        </span>
+        <ion-col size="auto" class="code" [ngClass]="{'code-error' : validations_form.get('country_phone').get('phone').hasError(validation.type) && (validations_form.get('country_phone').get('phone').dirty || validations_form.get('country_phone').get('phone').touched)}">
+          {{code}}
+        </ion-col>
+        <ion-col size="7">
+          <ion-input class="phone_input" style="border: none;" [ngClass]="{'error-message error-phone-input' : validations_form.get('country_phone').get('phone').hasError(validation.type) && (validations_form.get('country_phone').get('phone').dirty || validations_form.get('country_phone').get('phone').touched)}" 
+      placeholder="{{ validations_form.value.country_phone.country.sample_phone }}" type="tel" formControlName="phone" [(ngModel)]="phone_no" value="{{phone_no}}"></ion-input>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+    <br />
+
+    <ng-container *ngFor="let validation of validation_messages.email">
+      <ion-row
+        lines="none"
+        class="background ion-no-padding"
+        [ngClass]="{'error-message' : validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)}"
+      >
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/email.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">Email</p>
+          <ion-input
+            type="email"
+            formControlName="email"
+            class="input" (focusout)="check_email(validations_form.value)"
+            (keyup)="onFocusPlaceEmail(validations_form.value)"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+    <p class="error-message1" *ngIf="email_exist==true">Email Aready Exist, Please Register with new email</p>
+    <br />
+
+    <ng-container *ngFor="let validation of validation_messages.password">
+      <ion-row
+        class="background ion-no-padding"
+        [ngClass]="{'error-message' : validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)}"
+      >
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/password.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">Password</p>
+          <ion-input
+            type="password"
+            formControlName="password"
+            class="input"
+            (keyup)="onFocusPlace(validations_form.value)"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+    </ng-container>
+
+    <div class="circles">
+      <div class="circle-cont">
+        <div class="circle" *ngIf="lowercase==false"></div>
+        <ion-icon
+          name="checkmark-done-outline"
+          *ngIf="lowercase==true"
+          color="success"
+        ></ion-icon
+        >One lowercase character
+      </div>
+      <div class="circle-cont">
+        <div class="circle" *ngIf="uppercase==false"></div>
+        <ion-icon
+          name="checkmark-done-outline"
+          *ngIf="uppercase==true"
+          color="success"
+        ></ion-icon
+        >One uppercase character
+      </div>
+      <div class="circle-cont">
+        <div class="circle" *ngIf="digit==false"></div>
+        <ion-icon
+          name="checkmark-done-outline"
+          *ngIf="digit==true"
+          color="success"
+        ></ion-icon
+        >One number
+      </div>
+      <div class="circle-cont">
+        <div class="circle" *ngIf="total_digit==false"></div>
+        <ion-icon
+          name="checkmark-done-outline"
+          *ngIf="total_digit==true"
+          color="success"
+        ></ion-icon
+        >At least 8 characters
+      </div>
+    </div>
+    <!-- [disabled]="!validations_form.valid" -->
+    <button
+      class="form_btn ion-activatable ripple-parent"    
+    >
+      <ion-spinner *ngIf="loading"></ion-spinner>
+      <span *ngIf="!loading" class="submit-txt">
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+        <ion-ripple-effect></ion-ripple-effect
+      ></span>
+    </button>
+    <div class="bottom" *ngIf="isKeyboardHide==true">
+      <p class="sub_heading">Already have an account?</p>
+      <div class="row_bottom" (click)="login()">
+        <span class="bottom_txt">Sign in</span>
+        <ion-icon name="caret-forward-outline" class="caret_icon"></ion-icon>
+      </div>
+    </div>
+  </form>
+</ion-content>

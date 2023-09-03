@@ -1,0 +1,44 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="header">
+    <ion-item lines="none" style="margin-top:12px">
+    <ion-buttons class="close_btn" (click)="close()">
+      <ion-icon name="chevron-back-outline" class="close"></ion-icon>
+    </ion-buttons>
+    <ion-title mode="ios">Google Authentication</ion-title>
+   </ion-item><br>
+  </ion-toolbar>
+</ion-header> 
+
+<ion-content class="ion-padding">
+  <h4 class="black_heading">Validation and Contract signing method</h4>
+  <p class="sub_heading" style="margin-left: 0px;">Please add either your mobile or a two factor authentication method. One of these is required for signing contracts.</p>
+  <br>
+  <p class="lbl">Google Authenticator</p><br>
+  <div class="form_btn" style="display:flex;flex-direction: row;justify-content: center;width: 90%;
+  align-items: center" (click)="google_auth()">
+    <ion-icon name="call-outline" class="phone_icon"></ion-icon>
+    <span style="font-size: 14px;">Enable Two-factor Authentication</span>
+  </div>
+  <br>
+  <ion-row  class="background ion-no-padding">
+    <ion-col size="auto" style="height: 70px; display: flex"
+      ><img src="assets/images/mobile.svg" width="20" class="input_img"
+    /></ion-col>
+    <ion-col size="9" style="height: 70px">
+      <p class="input_lbl">Phone Number</p>
+      <ion-input
+        type="tel"
+        [(ngModel)]="phone"
+        class="input"
+      ></ion-input>
+    </ion-col>
+  </ion-row>
+  <br>
+    <button class="form_1 ion-activatable ripple-parent"  (click)="phone_save()">
+      <ion-spinner *ngIf="loading"></ion-spinner>
+      <span *ngIf="!loading" class="submit-txt">
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+        <ion-ripple-effect></ion-ripple-effect
+      ></span>
+    </button>
+</ion-content>

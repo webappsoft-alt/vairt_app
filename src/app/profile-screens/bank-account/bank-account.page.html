@@ -1,0 +1,108 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="header">
+    <ion-item lines="none" style="margin-top:12px">
+    <ion-buttons class="close_btn" (click)="close()">
+      <ion-icon name="chevron-back-outline" class="close"></ion-icon>
+    </ion-buttons>
+    <ion-title mode="ios">Bank Account</ion-title>
+   </ion-item><br>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- <div *ngIf="bank_main==true">
+  <h4 class="heading_black">Bank Accounts and Distributions</h4>
+  <p class="sub_heading" style="margin-left: 0px;margin-top: -5px">Link a bank account to fund your investments and send distributions to.</p>
+  <h4 class="heading_black" style="font-size: 14px;margin-top: 20px;">How would you like to add your bank account?</h4>
+  <p class="sub_heading" style="margin-left: 0px;margin-top: -5px;">We offer two ways for you to add your bank account safely and securely.</p>
+
+  <div class="hori"></div><br>
+  <ion-radio-group [(ngModel)]="bank_distribution">
+  <ion-row class="ion-no-padding">
+    <ion-col size="1"><ion-radio value="instant" mode="md"></ion-radio></ion-col>
+    <ion-col size="11"><p class="lbl_checkbox">Instant Account Verification</p></ion-col>
+  </ion-row>
+  <p class="sub_heading" style="margin-top:-3px">Instant account verification allows you to use your bank login to link your account.</p>
+
+  <ion-row class="ion-no-padding">
+    <ion-col size="1"><ion-radio value="account_number" mode="md"></ion-radio></ion-col>
+    <ion-col size="11"><p class="lbl_checkbox">Enter Account Number and Routing Number</p></ion-col>
+  </ion-row>
+  <p class="sub_heading" style="margin-top:-3px">Enter your account number, routing number, and an image of a voided check to verify your account.</p>
+</ion-radio-group>
+  <br>
+
+    <button class="form_btn ion-activatable ripple-parent" (click)="bank_continue()">
+      <ion-spinner *ngIf="loading"></ion-spinner>
+      <span *ngIf="!loading" class="submit-txt">
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+        <ion-ripple-effect></ion-ripple-effect
+      ></span>
+    </button>
+  </div>
+  <div *ngIf="instant_show==true">
+    <h4 class="heading_black">Link Your Bank Account</h4>
+    <p class="sub_heading" style="margin-left: 0px;">Choose your bank and follow the instructions below to link your bank account. Alternatively, you can link your account by uploading an image of a voided check.</p><br>
+    <button class="cancel_btn ion-activatable ripple-parent" (click)="cancel()">CANCEL
+      <ion-ripple-effect></ion-ripple-effect></button>
+  </div> -->
+
+  <!-- <div *ngIf="routing_number==true"> -->
+    <h4 class="heading_black">Link Your Bank Account</h4>
+    <p class="sub_heading" style="margin-left: 0px;">Enter your routing number, account number, and upload an image of a voided check to link your account. Alternatively, you can link your account using Instant Account Verification.</p>
+
+    <p class="lbl">Account Type</p>
+    <ion-radio-group [(ngModel)]="account_type">
+      <ion-row class="ion-no-padding">
+        <ion-col size="1"><ion-radio value="checking_account"></ion-radio></ion-col>
+        <ion-col size="11"><p class="lbl_checkbox">Checking Account</p></ion-col>
+      </ion-row>
+    
+      <ion-row class="ion-no-padding">
+        <ion-col size="1"><ion-radio value="saving_account"></ion-radio></ion-col>
+        <ion-col size="11"><p class="lbl_checkbox">Saving Account</p></ion-col>
+      </ion-row>
+    </ion-radio-group>
+    <img src="assets/images/check.jpeg">
+    <br> <br>
+    <p class="lbl">Add Detail</p>
+    <ion-row  class="background ion-no-padding">
+      <ion-col size="auto" style="height: 70px; display: flex"
+        ><img src="assets/images/route.svg" width="20" class="input_img"
+      /></ion-col>
+      <ion-col size="9" style="height: 70px">
+        <p class="input_lbl">Routing Number</p>
+        <ion-input
+          type="text"
+          [(ngModel)]="routing_num"
+          class="input"
+        ></ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row  class="background ion-no-padding">
+      <ion-col size="auto" style="height: 70px; display: flex"
+        ><img src="assets/images/computer.svg" width="20" class="input_img"
+      /></ion-col>
+      <ion-col size="9" style="height: 70px">
+        <p class="input_lbl">Account Number</p>
+        <ion-input
+          type="text"
+          [(ngModel)]="acc_no"
+          class="input"
+        ></ion-input>
+      </ion-col>
+    </ion-row>
+    <br>
+    <p class="lbl">Upload Check Image</p>
+    <img src="{{check_img}}" (click)="uplod_chk()" class="center" style="max-height: 150px;">
+    <br>
+    
+    <ion-item lines="none">
+      <button class="form_btn ion-activatable ripple-parent" style="width: 45%;" (click)="bank_save()">SAVE
+        <ion-ripple-effect></ion-ripple-effect></button>
+    <button class="cancel_btn ion-activatable ripple-parent" style="width: 45%;" (click)="close()">CANCEL
+      <ion-ripple-effect></ion-ripple-effect></button>
+    </ion-item>
+  <!-- </div> -->
+</ion-content>

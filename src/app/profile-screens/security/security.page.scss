@@ -1,0 +1,26 @@
+ion-title{
+    font-family: 'poppins regular';
+    font-size: 15px;
+}
+.heading_black{
+    color:#333;
+    font-family: 'poppins regular';
+    font-size: 15px;
+}
+.sub_heading{
+    font-family: "poppins semibold";
+    font-size: 14px;
+    margin-top: -10px;
+    width: 62%;
+}
+ion-toggle{
+    --handle-width:20px;
+    --handle-height:20px;
+    height: 25px;
+    width: 45px;
+    margin-right: -20px;
+
+}
+ion-item.border_bottom{
+    border-bottom: 1px solid #dcdcdc;
+}

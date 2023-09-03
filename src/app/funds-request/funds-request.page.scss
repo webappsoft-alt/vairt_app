@@ -1,0 +1,88 @@
+.ios_header_css{
+    padding-top: 20px;
+    padding-left: 10px;
+}
+.heading_{
+    color:black;
+    font-family: 'poppins bold';
+    font-size: 15px;
+    padding-top: 20px;
+}
+.heading{
+    font-family: 'poppins semibold';
+    text-align: center;
+    color:white;
+    font-size: 16px;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: -20px;
+}
+.form_btn{
+    width: 150px;
+    margin-top: 20px;
+    height: 40px;
+}
+.des{
+    color:black;
+    font-family: 'poppins regular';
+    margin-top: 0px;
+    font-size: 12px;
+    margin-left: 18px;
+}
+ion-textarea{
+    font-family: "poppins bold";
+    font-size: 20px;
+    text-align: center;
+    // border: 1px solid #dcdcdc;
+    width: 80%;
+    margin-left: 10%;
+    padding-top: 20px;
+    height: 95px;
+    background: #f5f5f5;
+    border-radius: 10px;
+    color:#333
+}
+.circle{
+    display: flex;
+    border-radius: 20px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--ion-color-primary);
+    align-items: center;
+    justify-content: center;
+}
+
+ion-title{
+    font-family: 'poppins regular';
+    font-size: 15px;
+}
+
+ion-input{
+    font-family: 'poppins regular';
+}
+ion-item.sc-ion-input-md-h:not(.item-label), ion-item:not(.item-label) .sc-ion-input-md-h{
+    --padding-start:10px;  
+}
+ion-item.sc-ion-input-ios-h:not(.item-label), ion-item:not(.item-label) .sc-ion-input-ios-h{
+    --padding-start:10px;  
+}
+
+.memo_img{
+    width: 20px;
+    height: 20px;
+    margin-top: 20px;
+    margin-left: 15px;
+}
+.form_btn{
+    width: 54px;
+    height: 54px;
+    border-radius: 50px;
+    margin-top: 15px;
+    box-shadow: 0 0 10px #ccc;
+}
+.caret_icon{
+    color:white;
+}
+ion-spinner{
+    width: 20px;
+  }

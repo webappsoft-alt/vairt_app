@@ -1,0 +1,98 @@
+<ion-header class="ion-no-border">
+  <div class="background2">
+    <ion-row class="ion-padding" [ngClass]="{'ios_header_css_row':ios_header==true}">
+      <ion-col size-xs="9.6" size-sm="9.6" size-md="10" size-lg="10"><img src="assets/images/setting_white.png" width="22" (click)="setting()"></ion-col>
+      <ion-col size-xs="1.2" size-sm="1.2" size-md="1" size-lg="1" (click)="noti()"><img src="assets/images/bell.png" width="25" style="float: right;margin-right: 5px;position: relative;">
+      <div class="noti"></div>
+      </ion-col>
+      <ion-col size-xs="1.2" size-sm="1.2" size-md="1" size-lg="1" (click)="logout()"><img src="assets/images/logout_white.png" width="25" style="float: right;"></ion-col>
+    </ion-row>
+    <h4 class="amount">${{balance}}</h4>
+    <p class="amount_txt">Available Balance</p>
+    <ion-item class="trans ion-no-padding" lines="none">
+      <ion-row class="ion-no-padding" style="width: 100%;">
+        <ion-col size="6" class="border" (click)="top_up()">
+          <img src="assets/images/wallet_up.png" class="center" width="32" style="margin-top: -2px;">
+          <p class="top">Topup</p>
+        </ion-col>
+        <ion-col size="6" (click)="top_down()" style="height: 51px;"><img src="assets/images/wallet_down.png" class="center" width="32"
+            style="margin-top: 9px;">
+          <p class="top">Topdown</p>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+    <ion-item lines="none" class="search" [ngClass]="{'ios_search':ios_header==true}">
+      <ion-icon name="search" style="color:#D9D9DA;font-size: 20px;margin-top: -7px;"></ion-icon>
+      <ion-input type="text" placeholder="Search" (ionInput)="getItems($event)"></ion-input>
+    </ion-item>
+  </div>
+</ion-header>
+ 
+<ion-content>
+  <!-- Skeleton screen -->
+<div *ngIf="data_loading" class="skelton_div">
+<ion-list style="margin-top: 50px;">
+  <ion-item  lines="none" *ngFor = "let skelton of skelton" style="margin-top: 10px;">
+    <ion-avatar slot="start" style="width: 90px;">
+      <ion-skeleton-text animated></ion-skeleton-text>
+    </ion-avatar>
+    <ion-label>
+      <h3>
+        <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+      </h3>
+      <p>
+        <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+      </p>
+      <p>
+        <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+      </p>
+    </ion-label>
+  </ion-item>
+</ion-list>
+</div>
+  <div *ngIf="!data_loading" style="margin-bottom: 15px;">
+  <br><br>
+
+    <h4 class="month">Residual Properties</h4>
+        <div class="property"  *ngFor="let property of properties;let i=index">
+          <ion-row (click)="prop_detail(property,property.transaction)" style="width: 95%;margin-left: 2.5%;">
+            <ion-col size-xs="3.5" size-sm="3.5" size-md="3" size-lg="3">
+              <ion-avatar>
+                <img  [defaultImage]="lazy_image" [lazyLoad]="property.img" class="img_prop">
+                <ion-icon name="heart-outline" class="icn" *ngIf="property.like==false" (click)="fvt(i,property.id)"></ion-icon>
+                <ion-icon name="heart" class="icn" *ngIf="property.like==true" (click)="un_fvt(i,property.id)"></ion-icon>
+              </ion-avatar>
+              <p class="property_status_live" *ngIf="property.property_type!='Funded'">Live</p>
+              <p class="property_status" *ngIf="property.property_type=='Funded'">Funded</p>
+            </ion-col>
+            <ion-col size-xs="8.5" size-sm="8.5" size-md="9" size-lg="9">
+              <p class="name">{{property.title}}</p>
+              <p class="address">{{property.address}}</p>
+              <ion-item lines="none" class="ion-no-padding" style="width: 100%;">
+                <img src="assets/images/investment.png" class="prop_type">
+                <p class="investment_inome">{{property.gross_yield | number:'1.2-2':'en'}}%</p>
+                <p class="div_percent" slot="end" style="margin-right: -10px;">Gross Yield</p>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </div>
+        <div class="center_loader1">
+          <lottie-player *ngIf="loading_more" src="assets/loader1.json"  background="transparent"  speed="1" class="loader" style="width: 100px; height: 100px;margin-top: -70px;" loop autoplay></lottie-player>
+        </div>
+       </div>
+       <ion-infinite-scroll threshold="15px" (ionInfinite)="load_more_residual_($event)">
+        <ion-infinite-scroll-content
+          loadingSpinner="bubbles"
+          loadingText="">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+</ion-content>
+
+
+<div class="bottom_footer">
+  <img src="assets/images/home_.png" width="40" (click)="home('home')">
+  <img src="assets/images/investments.png" width="40" (click)="inves('new-investments')">
+  <img src="assets/images/portfolio_active.png" width="40" (click)="portfolio('portfolio')">
+  <img src="assets/images/flip.png" width="40" (click)="flip('flip')">
+  <img src="assets/images/profile.png" width="40" (click)="profile('profile')">
+</div>

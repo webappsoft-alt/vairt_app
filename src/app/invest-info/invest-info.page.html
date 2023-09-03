@@ -1,0 +1,264 @@
+<!-- <ion-content>
+  <ion-grid class="background1" style="position: fixed;width: 100%;" [ngClass]="{'ios_header_css':ios_header==true}">
+    <ion-row class="ion-padding">
+      <ion-col size="9"><img src="assets/images/setting_white.png" width="22" routerLink="/setting"></ion-col>
+      <ion-col size="3" (click)="logout()"><img src="assets/images/logout_white.png" width="25" style="float: right;"></ion-col>
+    </ion-row>
+    <h4 class="amount">${{balance}}</h4><p class="amount_txt">Available Balance</p>
+    <ion-item class="trans ion-no-padding">
+      <ion-row class="ion-no-padding" style="width: 100%;">
+        <ion-col size="6" class="border" (click)="top_up()"><img src="assets/images/wallet_up.png" class="center" width="32" style="margin-top: -7px;">
+        <p class="top">Topup</p>
+        </ion-col>
+        <ion-col size="6" (click)="top_down()"><img src="assets/images/wallet_down.png" class="center" width="32" style="margin-top: 4px;">
+          <p class="top">Topdown</p>
+          </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-grid>
+<ion-grid class="content_grid ion-no-padding" style="width: 100%;" [ngClass]="{'content_grid_ios':ios_header==true}">
+  <br>
+  <ion-slides pager=true class="ion-no-padding slides">
+    <ion-slide *ngFor = "let property_image of property_images">
+      <div class="set-height">
+      <img src="{{property_image}}">
+      </div>
+    </ion-slide>
+
+  </ion-slides>
+      <p class="address">#{{this.title}}</p>
+      <p class="type">{{address}}</p>
+      
+      <ion-row class="ion-padding" style="margin-top: -30px;">
+        <ion-col size="6">
+          <p class="sub_title">Purchase Price </p>
+          <button class="price_btn" style="margin-top: -10px;">${{purchase_price}}</button>
+        </ion-col>
+        <ion-col size="6">
+          <p class="sub_title" style="text-align: right;">Remaining Share</p>
+          <button class="price_btn right">${{remaining_share}} </button>
+        </ion-col>
+      </ion-row>
+      <div class="hori_divider"></div>
+      <h4 class="heading">Info</h4>
+      <p class="info">Congratulations on selecting your next investment. In order to proceed our broker dealer requires some additional information. Please verify your account information.</p>
+      <br>
+      <ion-row class="heading_row ion-no-padding"><p style="margin-top: 6px; ">Personal Information</p></ion-row><br>
+
+      <ion-row style="margin-top: -20px;">
+        <ion-col size="6"><p class="lbl">First Name</p></ion-col>
+        <ion-col size="6"><p class="lbl">Last Name</p></ion-col>
+      </ion-row>
+
+      <ion-row style="margin-top: -20px;">
+        <ion-col size="6"><ion-input type="text" #firstname  [(ngModel)]="first_name"></ion-input></ion-col>
+        <ion-col size="6"><ion-input type="text" [(ngModel)]="last_name"></ion-input></ion-col>
+      </ion-row>
+      <br>
+      <ion-row class="heading_row ion-no-padding"><p style="margin-top: 6px; ">Contact Information</p></ion-row><br>
+
+      <ion-row style="margin-top: -20px;">
+        <ion-col size="6"><p class="lbl">Phone Number</p></ion-col>
+        <ion-col size="6"><p class="lbl">Country of Residence</p></ion-col>
+      </ion-row>
+
+      <ion-row style="margin-top: -20px;">
+        <ion-col size="6"><ion-input type="text"  [(ngModel)]="phone_no"></ion-input></ion-col>
+        <ion-col size="6"><ion-input type="text" readonly (click)="countryList()" [(ngModel)]="user_country"></ion-input></ion-col>
+      </ion-row>
+
+      <ion-row style="margin-top: -20px;">
+        <ion-col size="6"><p class="lbl">Address</p></ion-col>
+        <ion-col size="6"><p class="lbl">City</p></ion-col>
+      </ion-row>
+
+      <ion-row style="margin-top: -20px;">
+        <ion-col size="6"><ion-input type="text" (ionInput)="UpdateSearchResults()"  [(ngModel)]="user_address"></ion-input></ion-col>
+        <ion-col size="6"><ion-input type="text"  [(ngModel)]="city"></ion-input></ion-col>
+      </ion-row>
+      <ion-list [hidden]="autocompleteItems.length == 0" class="list">
+        <ion-item *ngFor="let item of autocompleteItems" tappable (click)="SelectSearchResult(item)">
+          <p class="ite_name">{{ item.description }}</p>
+        </ion-item>
+      </ion-list>
+
+      <ion-row style="margin-top: -20px;">
+        <ion-col size="6"><p class="lbl">Zip Code</p></ion-col>
+      </ion-row>
+      <ion-row style="margin-top: -20px;">
+        <ion-col size="6"><ion-input type="text" [(ngModel)]="zip"></ion-input></ion-col>
+      </ion-row>
+
+      <div class="hori_divider"></div>
+
+      <br><br>
+      <button class="form_btn ion-activatable ripple-parent" (click)="next()" ><ion-spinner *ngIf="loading"></ion-spinner>
+        <span *ngIf="!loading" class="submit-txt"> Continue
+          <ion-ripple-effect></ion-ripple-effect></span></button><br>
+
+      <ion-row>
+        <ion-col size="4"></ion-col>
+        <ion-col size="auto"><img src="assets/images/cancel.png" width="20" style="margin-top: 2px;"></ion-col>
+        <ion-col size="auto" (click)="cancel_inves()"><button class="trans_btn" style="color:#b8babb;width: auto;margin-top: 0px;">Cancel Investment</button></ion-col>
+        <ion-col size="4"></ion-col>
+        </ion-row><br><br><br>
+    </ion-grid>
+    </ion-content> -->
+
+    <ion-header class="ion-no-border">
+    <ion-slides  pager=true class="ion-no-padding slides"  [pager]="true" [options]="opts">
+      <ion-slide *ngFor="let property_images of property_images;let i=index">      
+        <ion-grid  class="background-img" [style.background-image]="'url(' + property_images + ')'">
+          <img src="assets/images/left-arrow-white.svg" class="back_arrow" style="width: 30px;" (click)="back()" [ngClass]="{'ios_header_backbtn':ios_header==true}">
+          <ion-buttons  (click)="home()" class="home_btn"  [ngClass]="{'ios_header_css_back':ios_header==true}">
+            <ion-icon name="home" class="home_icon"></ion-icon>
+          </ion-buttons>
+        </ion-grid>
+      </ion-slide>
+    </ion-slides> 
+    </ion-header>
+
+    <ion-content class="ion-padding">
+      <p class="address">#{{this.title}}</p>
+      <p class="type">{{address}}</p>
+      <ion-row class="ion-no-padding" style="margin-top: -10px;">
+        <ion-col size="6">
+          <p class="sub_title">Purchase Price </p>
+          <button class="price_btn">${{purchase_price}}</button>
+        </ion-col>
+        <ion-col size="6">
+          <p class="sub_title" style="text-align: right;">Remaining Share</p>
+          <button class="price_btn right">${{remaining_share}} </button>
+        </ion-col>
+      </ion-row>
+      <div class="hori_divider"></div>
+      <h4 class="heading">Info</h4>
+      <p class="info">Congratulations on selecting your next investment. In order to proceed our broker dealer requires some additional information. Please verify your account information.</p>
+      <br>
+      <ion-row class="heading_row ion-no-padding">
+        <p class="heading_">Personal Information</p>
+      </ion-row>
+      <br>
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/user.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">First Name</p>
+          <ion-input
+            type="text"
+            [(ngModel)]="first_name"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/user1.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">Last Name</p>
+          <ion-input
+            type="text"
+            [(ngModel)]="last_name"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <br><br>
+      <ion-row class="heading_row ion-no-padding">
+        <p class="heading_">Contact Information</p>
+      </ion-row>
+      <br>
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/phone.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">Phone</p>
+          <ion-input
+            type="tel"
+            [(ngModel)]="phone_no"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/country.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">Country of Residence</p>
+          <ion-input
+            type="text"
+            readonly (click)="countryList()"
+            [(ngModel)]="user_country"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/pin.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">Address</p>
+          <ion-input
+            type="text"
+            [(ngModel)]="user_address"
+            (ionInput)="UpdateSearchResults()" (ionClear)="ClearAutocomplete()"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+      
+
+      <ion-list [hidden]="autocompleteItems.length == 0" class="list">
+        <ion-item lines="none " class="ion-no-padding" *ngFor="let item of autocompleteItems" tappable
+         (click)="SelectSearchResult(item)">
+         <p class="desc">{{ item.description }}</p>
+       </ion-item>
+     </ion-list>
+
+     <ion-row  class="background ion-no-padding">
+      <ion-col size="auto" style="height: 70px; display: flex"
+        ><img src="assets/images/city.svg" width="20" class="input_img"
+      /></ion-col>
+      <ion-col size="9" style="height: 70px">
+        <p class="input_lbl">City</p>
+        <ion-input
+          type="text"
+          [(ngModel)]="city"
+          class="input"
+        ></ion-input>
+      </ion-col>
+    </ion-row>
+
+     <ion-row  class="background ion-no-padding">
+      <ion-col size="auto" style="height: 70px; display: flex"
+        ><img src="assets/images/zip-code.svg" width="20" class="input_img"
+      /></ion-col>
+      <ion-col size="9" style="height: 70px">
+        <p class="input_lbl">Zip Code</p>
+        <ion-input
+          type="text"
+          [(ngModel)]="zip"
+          class="input"
+        ></ion-input>
+      </ion-col>
+    </ion-row>
+    
+    <br><br>
+    <button class="form_btn ion-activatable ripple-parent" (click)="next()" ><ion-spinner *ngIf="loading"></ion-spinner>
+      <span *ngIf="!loading" class="submit-txt"> Continue
+        <ion-ripple-effect></ion-ripple-effect></span></button><br>
+
+      <div class="row" (click)="cancel_inves()">
+      <img src="assets/images/cancel.png" width="20" style="margin-top: 2px;">
+      <button class="trans_btn" style="color:#b8babb;width: auto;margin-top: 0px;">Cancel Investment</button>
+     </div><br><br><br>
+    </ion-content>

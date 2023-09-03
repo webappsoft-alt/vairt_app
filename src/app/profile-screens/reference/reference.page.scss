@@ -1,0 +1,49 @@
+ion-title{
+    font-family: 'poppins regular';
+    font-size: 15px;
+    margin-left: -15px;
+}
+.heading_black{
+    color:#333;
+    font-family: 'poppins regular';
+    font-size: 15px;
+}
+.sub_heading{
+    font-family: 'poppins regular';
+    font-size: 12px;
+    margin-left: 20px;
+}
+.lbl{
+    color:var(--ion-color-primary);
+    font-size: 13px;
+    font-family: 'poppins bold';
+}
+.grey_color{
+    background-color: #E0E0E0;
+    width: auto;
+    padding:14px 13px;
+}
+ion-item.sc-ion-input-md-h:not(.item-label), ion-item:not(.item-label) .sc-ion-input-md-h {
+    --padding-start: 10px;
+}
+ion-item.sc-ion-input-ios-h:not(.item-label), ion-item:not(.item-label) .sc-ion-input-ios-h {
+    --padding-start: 10px;
+}
+ion-input{
+    font-family: 'poppins regular';
+    border:1px solid #dcdcdc;
+    --padding-start:10px;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+.form_btn{
+    width: 54px;
+    height: 54px;
+    border-radius: 50px;
+    margin-left: 5%;
+    margin-top: 25px;
+    box-shadow: 0 0 10px #ccc;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

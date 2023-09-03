@@ -1,0 +1,143 @@
+<ion-header class="ion-no-border">
+  <br>
+<ion-item lines="none" style="border-bottom: 1px solid #f3f3f3;">
+  <img src="assets/images/property_detail/fin_2.png" width="50">
+  <p class="prop_title">Sale Breakdown</p>
+  <ion-buttons (click)="close()" slot="end" (click)="close()"><ion-icon name="close" ></ion-icon></ion-buttons>
+</ion-item>
+</ion-header>
+
+<ion-content class="ion-padding">
+<ion-row style="margin-top: -10px;">
+  <ion-col size="3.5"></ion-col>
+  <ion-col size="2.8" class="heading" style="color:var(--ion-color-primary)">Total</ion-col>
+  <ion-col size="2.8" class="heading">Vairt</ion-col>
+  <ion-col size="2.9" class="heading">Partner</ion-col>
+</ion-row><br>
+<ion-row class="ion-no-padding" style="border-bottom: 1px solid #f3f3f3;margin-top: -10px;height: 80px;">
+  <ion-col size="3.5"><p class="lbl">Estimate Purchase Price</p></ion-col>
+  <ion-col size="2.8"><p class="value" style="color:var(--ion-color-primary)">$ {{initial_invest}}</p></ion-col>
+  <ion-col size="2.8"></ion-col>
+  <ion-col size="2.9"><p class="value">$ {{initial_invest}}</p></ion-col>
+</ion-row>
+<ion-row style="margin-top: -6px;height: 55px;"> 
+  <ion-col size="3.5"><p class="lbl">Estimate Rehab cost</p></ion-col>
+  <ion-col size="2.8"><p class="value" style="color:var(--ion-color-primary)">$ {{rehabilitation_cost}} </p></ion-col>
+  <ion-col size="2.8"></ion-col>
+  <ion-col size="2.9"><p class="value">$ {{rehabilitation_cost}}</p></ion-col>
+</ion-row>
+
+<ion-row class="border_row" style="margin-top: 5px;">
+  <ion-col size="3.5"><p class="lbl_primary" style="margin-top: 5px;">Estimate Total Investment </p></ion-col>
+  <ion-col size="2.8"><p class="value" style="color:var(--ion-color-primary);font-family: poppins semibold;margin-top:25px">$ {{total_investment}} </p></ion-col>
+  <ion-col size="2.8"></ion-col>
+  <ion-col size="2.9"><p class="value_primary" style="margin-top: 25px;">$ {{total_investment}} </p></ion-col>
+</ion-row>
+
+<ion-row style="border-bottom: 1px solid #f3f3f3;margin-top: -10px;height: 68px;margin-top: -3px;">
+  <ion-col size="3.5"><p class="lbl">Estimate Sale Price</p></ion-col>
+  <ion-col size="2.8"><p class="value" style="color:var(--ion-color-primary);">$ {{sale_price | number:'1.0-0':'en'}}</p></ion-col>
+  <ion-col size="2.8"><p class="value">$ {{sale_price/2 | number:'1.0-0':'en'}}</p></ion-col>
+  <ion-col size="2.9"><p class="value">$ {{sale_price/2 | number:'1.0-0':'en'}}</p></ion-col>
+</ion-row>
+<ion-row style="border-bottom: 1px solid #f3f3f3;margin-top: -10px;height: 62px;">
+  <ion-col size="3.5"><p class="lbl">Estimate Hold time</p></ion-col>
+  <ion-col size="2.8"><p class="value" style="color:var(--ion-color-primary);"> 1.5 Years </p></ion-col>
+  <ion-col size="2.8"></ion-col>
+  <ion-col size="2.8"></ion-col>
+</ion-row>
+<ion-row style="border-bottom: 1px solid #f3f3f3;margin-top: -10px;height: 62px;">
+  <ion-col size="3.5"><p class="lbl">Estimate Sale Costs</p></ion-col>
+  <ion-col size="2.8"><p class="value" style="color:var(--ion-color-primary);">$ {{sale_cost | number:'1.0-0':'en' }}</p></ion-col>
+  <ion-col size="2.8"></ion-col>
+  <ion-col size="2.8"></ion-col>
+
+</ion-row>
+<ion-row style="border-bottom: 1px solid #f3f3f3;margin-top: -10px;height: 62px;">
+  <ion-col size="3.5"><p class="lbl">Estimate Gross Profit</p></ion-col>
+  <ion-col size="2.8"><p class="value" style="color:var(--ion-color-primary);">$ {{gross_profit}} </p></ion-col>
+  <ion-col size="2.8"><p class="value">$ {{gross_profit/2}}</p></ion-col>
+  <ion-col size="2.9"><p class="value">$ {{gross_profit/2}}</p></ion-col>
+</ion-row>
+<ion-row style="margin-top: -5px;">
+  <ion-col size="3.5"><p class="lbl">Estimate Management</p></ion-col>
+  <ion-col size="2.8"><p class="value" style="color:var(--ion-color-primary);">$ {{estimate_management}} </p></ion-col>
+  <ion-col size="2.8"></ion-col>
+  <ion-col size="2.8"></ion-col>
+</ion-row>
+
+
+<ion-row class="border_row" style="height: 60px;">
+  <ion-col size="3.5"><p class="lbl_primary" style="margin-top: 5px;">Estimate Net Profit </p></ion-col>
+  <ion-col size="2.8"><p class="value_primary" style="margin-top: 15px;color:var(--ion-color-primary)">$ {{estimate_net_profit}} </p></ion-col>
+  <ion-col size="2.8"><p class="value" style="margin-top: 15px;">$ {{estimate_net_profit/2}}</p></ion-col>
+  <ion-col size="2.8"><p class="value" style="margin-top: 15px;">$ {{estimate_net_profit/2}}</p></ion-col>
+</ion-row>
+
+<!-- <ion-row style="margin-top: 3px;border-bottom:1px solid #dcdcdc;height: 45px;">
+  <ion-col size="9"><p class="lbl_primary" style="margin-top: 5px;">Partner</p></ion-col>
+  <ion-col size="3"><p class="value_primary" style="margin-top: 6px;">$ {{net_profit}} </p></ion-col>
+</ion-row>
+
+<ion-row style="margin-top: 3px;" *ngIf="thirty_percent!=undefined && thirty_percent_show==true">
+  <ion-col size="6"><p class="lbl">Estimate Return on Investment</p></ion-col>
+  <ion-col size="3"><p class="value" style="text-align: center;">{{roi}} %</p></ion-col>
+  <ion-col size="3"><p class="lbl" style="float: right;color:#909090">{{this.thirty_percent}}%</p></ion-col>
+</ion-row>
+<ion-row style="margin-top: -10px;"  *ngIf="fourty_percent!=undefined && fourty_percent_show==true">
+  <ion-col size="6"><p class="lbl">Estimate Return on 50,000</p></ion-col>
+  <ion-col size="3"><p class="value" style="text-align: center;">{{roi}}%</p></ion-col>
+  <ion-col size="3"><p class="lbl" style="float: right;color:#909090">{{fourty_percent}}%</p></ion-col>
+</ion-row>
+<ion-row style="margin-top: -10px;" *ngIf="fifty_percent!=undefined && fifty_percent_show==true">
+  <ion-col size="6"><p class="lbl">Estimate Return on 100,000</p></ion-col>
+  <ion-col size="3"><p class="value" style="text-align: center;">{{roi}}%</p></ion-col>
+  <ion-col size="3"><p class="lbl" style="float: right;color:#909090">{{fifty_percent}}%</p></ion-col>
+</ion-row>
+
+<ion-row class="border_row">
+  <ion-col size="9"><p class="lbl_primary" style="margin-top: 5px;">Estimate Cash Returned </p></ion-col>
+  <ion-col size="3"><p class="value_primary" style="margin-top: 6px;">${{cash_return1}}</p></ion-col>
+</ion-row> -->
+
+
+<!-- 
+<ion-row class="border_row">
+  <ion-col size="6"><p class="lbl" style="margin-top: 0px;">Estimate Total Investment </p></ion-col>
+  <ion-col size="6"><p class="value_primary" style="margin-top: 6px;">$ {{estimate_net_profit}} </p></ion-col>
+</ion-row> -->
+
+<!-- <ion-row>
+  <ion-col size="6"><p class="lbl">Net rent</p></ion-col>
+  <ion-col size="6"><p class="value" style="color:var(--ion-color-primary)">$ {{net_rent}}</p></ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col size="6"><p class="lbl">Net yield</p></ion-col>
+  <ion-col size="6"><p class="value">{{net_dividend_yield}}*</p></ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col size="6"><p class="lbl">Cost</p></ion-col>
+  <ion-col size="6"><p class="value">$ {{cost}}</p></ion-col>
+  <ion-col size="6"><p class="inner_lbl">Property Management</p></ion-col>
+  <ion-col size="6"><p class="inner_value" style="margin-top: -15px;">$ {{prop_manangement}}</p></ion-col>
+  <ion-col size="6"><p class="inner_lbl">Property Insurance / Taxes</p></ion-col>
+  <ion-col size="6"><p class="inner_value" style="margin-top: -12px;">$ {{prop_taxes}}</p></ion-col>
+</ion-row>
+
+
+
+<ion-row>
+  <ion-col size="6"><p class="lbl">Net dividend income</p></ion-col>
+  <ion-col size="6"><p class="value">$ 5,975.00000</p></ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col size="6"><p class="lbl">Net dividend yield</p></ion-col>
+  <ion-col size="6"><p class="value">{{net_dividend_yield}}*</p></ion-col>
+</ion-row>
+
+<p class="lbl_">Only 2 decimal places shown. Calculation carried on actual numbers. Some rounding discrepancies may appear.
+</p> -->
+</ion-content>

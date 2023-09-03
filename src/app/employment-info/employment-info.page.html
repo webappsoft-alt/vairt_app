@@ -1,0 +1,78 @@
+<ion-content>
+  <ion-grid class="background1" style="position: fixed;width: 100%;" [ngClass]="{'ios_header_css':ios_header==true}"> <br>
+    <img src="assets/images/emplyment_edit.png" class="center" width="50"><br>
+    <h4 class="heading"> Vairt community is better because you're in it. {{name}}!</h4>
+    <p class="sub-heading">Please provide your current employment information.</p>
+  </ion-grid>
+  <ion-grid class="content_grid ion-no-padding"> <br> 
+    <div style="width: 90%;margin-left: 5%;">
+      <p class="title" >Employment Status</p>
+      <ion-select [(ngModel)]="status" (ionChange)="status_type($event)">
+        <ion-select-option value="self_employed">Self-Employed</ion-select-option>
+        <ion-select-option value="retired">Retired</ion-select-option>
+        <ion-select-option value="student">Student</ion-select-option>
+        <ion-select-option value="not_employed">Not Employed</ion-select-option>
+      </ion-select>
+    <!-------------Self Employed ------------->
+      <div *ngIf="self_employed==true">
+      <h4 class="lbl">Employment info</h4>
+    
+      <p class="title" >Business Name</p>
+      <ion-input [(ngModel)]="business_name" type="text"></ion-input>
+      
+      <p class="title" >Your Title</p>
+      <ion-input [(ngModel)]="title" type="text"></ion-input>
+
+      <p class="title" >Industry / Business Type</p>
+      <ion-input [(ngModel)]="business_type" type="text"></ion-input>
+    </div>
+
+    <!-------------Retired ------------->
+    <div *ngIf="retired==true">
+      <h4 class="lbl">Most Recent Employer Info </h4>
+    
+      <p class="title" >Most Recent Employer</p>
+      <ion-input [(ngModel)]="recent_employer" type="text"></ion-input>
+      
+      <p class="title" >Most Recent Position Held</p>
+      <ion-input [(ngModel)]="position_held" type="text"></ion-input>
+
+      <p class="title" >Industry / Business Type</p>
+      <ion-input [(ngModel)]="business_type" type="text"></ion-input>
+
+      <p class="title" >Source of Income</p>
+      <ion-input [(ngModel)]="source_income" type="text"></ion-input>
+
+    </div>
+
+    <!-------------Student ------------->
+    
+    <div *ngIf="student==true">
+      <h4 class="lbl">Student Info </h4>
+    
+      <p class="title" >School</p>
+      <ion-input [(ngModel)]="school" type="text"></ion-input>
+    
+      <p class="title" >Source of Income</p>
+      <ion-input [(ngModel)]="source_income" type="text"></ion-input>
+
+    </div>
+
+      <!-------------Not Emplyed ------------->
+    
+      <div *ngIf="not_employed==true">
+    
+        <p class="title" >Source of Income</p>
+        <ion-input [(ngModel)]="source_income" type="text"></ion-input>
+  
+      </div>
+
+      <br><br>
+      <button class="form_btn ion-activatable ripple-parent" (click)="next()"><ion-spinner *ngIf="loading"></ion-spinner>
+        <span *ngIf="!loading" class="submit-txt"> NEXT
+          <ion-ripple-effect></ion-ripple-effect></span></button>
+          <br><br><br><br><br><br>
+          
+  </div>
+  </ion-grid>
+</ion-content>

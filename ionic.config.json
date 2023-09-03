@@ -1,0 +1,7 @@
+{
+  "name": "Vairt",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

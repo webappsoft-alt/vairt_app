@@ -1,0 +1,111 @@
+.ios_header_css{
+    padding-top:20px;
+}
+ion-buttons{
+    width: 50px;
+    height: 50px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.heading{
+    font-family: 'poppins semibold';
+    text-align: center;
+    color:white;
+    font-size: 16px;
+    width: 80%;
+    margin-left: 10%;
+}
+.sub-heading{
+    color:black;
+    font-family: 'poppins regular';
+    text-align: center;
+    margin-top: 0px;
+    font-size: 12px;
+}
+ion-card{
+     background-color: var(--ion-color-primary);
+     height: 120px;
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 0px;
+}
+.cirle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border:1px solid #ffffff;
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+    margin-top: 12px;
+}
+ion-icon{
+    font-size: 20px;
+    color:white;
+}
+.txt{
+    text-align: center;
+    color: white;
+    font-family: 'poppins bold';
+    margin-top: 15px;
+}
+.count{
+    color:white;
+    font-family: 'poppins regular';
+    font-size: 18px;
+}
+.hori{
+    background:#dcdcdc;
+    width: 100%;
+    height: 1px;
+}
+.grey_color{
+    color: #C1C1C1;
+    font-family: 'poppins regular';
+    margin-left: 10px;
+}
+ion-card-header{
+    background: var(--ion-color-primary);
+}
+.card{
+    background: white;
+    height: auto;
+    box-shadow: none;
+    width: 100%;
+    margin-left: 0px;
+    margin-top: 20px;
+}
+ion-item.transs{
+    --background: none;
+}
+.time{
+    color: white;
+    font-family: "poppins regular";
+    margin-left: 10px;
+    margin-top: -6px;
+    font-size: 14px;
+}
+.txt1{
+    float: right;
+    color:white;
+    font-family: 'poppins regular';
+    margin-top: -5px;
+}
+.title{
+    font-family: 'poppins bold';
+    color:black
+}
+ion-card-content{
+    height: auto;
+    width: 100%;
+    margin-top: 10px;
+}
+.des{
+    font-family: 'poppins regular';
+    color:black 
+}
+.primary{
+    color:var(--ion-color-primary);
+}

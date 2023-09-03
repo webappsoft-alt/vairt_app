@@ -1,0 +1,42 @@
+.primary_heading{
+    color:var(--ion-color-primary);
+    font-family: 'poppins regular';
+    text-align: center;
+    margin-top: 20px;
+    font-size: 15px;
+
+}
+.terms{
+    color:var(--ion-color-tertiary);
+    font-family: 'poppins regular';
+    text-align: center;
+    font-size: 15px;
+}
+.heading{
+    color:black;
+    font-family: 'poppins regular';
+    margin-left: 10px;
+    font-size: 14px;
+    margin-top: 20px;
+}
+.txt{
+    color:black;
+    font-family: 'poppins regular';
+    margin-left: 10px;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-right: 10px;
+    text-align: justify;
+}
+p{
+    font-family: 'poppins regular';
+    font-size: 13px;
+}
+h4{
+    font-family: 'poppins regular';
+    font-size: 16px;
+}
+.ios_header_css{
+    padding-top: 20px;
+    height: auto;
+}

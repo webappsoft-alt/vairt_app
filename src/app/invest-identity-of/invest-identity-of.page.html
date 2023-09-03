@@ -1,0 +1,50 @@
+<ion-header class="ion-no-border">
+  <div class="background2">
+    <ion-row class="ion-padding" [ngClass]="{'ios_header_css_row':ios_header==true}">
+      <ion-col size-xs="9.6" size-sm="9.6" size-md="10" size-lg="10"><img src="assets/images/setting_white.png" width="22" (click)="setting()"></ion-col>
+      <ion-col size-xs="1.2" size-sm="1.2" size-md="1" size-lg="1" (click)="noti()"><img src="assets/images/bell.png" width="25" style="float: right;margin-right: 5px;position: relative;">
+      <div class="noti"></div>
+      </ion-col>
+      <ion-col size-xs="1.2" size-sm="1.2" size-md="1" size-lg="1" (click)="logout()"><img src="assets/images/logout_white.png" width="25" style="float: right;"></ion-col>
+    </ion-row>
+    <h4 class="amount">${{balance}}</h4>
+    <p class="amount_txt">Available Balance</p>
+    <ion-item class="trans ion-no-padding" lines="none">
+      <ion-row class="ion-no-padding" style="width: 100%;">
+        <ion-col size="6" class="border" (click)="top_up()">
+          <img src="assets/images/wallet_up.png" class="center" width="32" style="margin-top: -2px;">
+          <p class="top">Topup</p>
+        </ion-col>
+        <ion-col size="6" (click)="top_down()" style="height: 51px;"><img src="assets/images/wallet_down.png" class="center" width="32"
+            style="margin-top: 9px;">
+          <p class="top">Topdown</p>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </div>
+  </ion-header>
+ <ion-content class="ion-padding">
+  <h4 class="lbl" style="margin-top: -10px;">Attach Identification Documentation</h4>
+  <p class="title">We are still unable to automatically verify your identity. At this point please provide a valid government issued ID. </p>
+  <p class="lbl">Individual Identification Documentation</p>
+  <p class="title">Please provide a copy of a valid ID. Acceptable forms of identification include a photo of a valid driver's license, social security card, birth certificate, or passport.
+  </p>
+
+  <p class="lbl">Identity Of</p>
+  <ion-select [(ngModel)]="type" (ionChange)="selct(type)">
+    <ion-select-option value="passport">Passport</ion-select-option>
+    <ion-select-option value="driving license">Driving License</ion-select-option>
+    <ion-select-option value="state id">State Id</ion-select-option>
+  </ion-select>
+  <p class="lbl">Font Image</p>
+  <img src="{{front_img_}}" width="100" height="100" class="center" (click)="front_img()">
+ <div *ngIf="type!='passport'">
+  <p class="lbl">Back Image</p>
+  <img src="{{back_img_}}" width="100" height="100" class="center" (click)="back_img()">
+</div>
+<br><br>
+  <button class="form_btn ion-activatable ripple-parent" (click)="next()"><ion-spinner *ngIf="loading"></ion-spinner>
+    <span *ngIf="!loading" class="submit-txt"> Next
+      <ion-ripple-effect></ion-ripple-effect></span></button>
+      <br><br>
+</ion-content>

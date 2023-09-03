@@ -1,0 +1,17 @@
+<ion-header class="ion-no-border">
+    <ion-grid class="background1" >
+      <ion-buttons (click)="back()" [ngClass]="{'ios_header_css':ios_header==true}">
+        <img src="assets/images/arr_back.png" width="20">
+      </ion-buttons>
+      <h4 class="heading">Pending Activation</h4>
+    </ion-grid>  
+</ion-header>
+
+<ion-content class="ion-padding">
+  <h4 class="heading" style="color:black">Your account will be activated shortly!</h4>
+  <p class="sub-heading">Thank you for your registration! Your documentations are being reviewed and we will notify you once we have reviewed them and approved your account. This may take up to 48 hours. Thank you for your cooperation.</p><br>
+  <img src="assets/images/alarm_clock.png" class="center" width="120"><br><br>
+  <button class="form_btn" routerLink="/home">Browse Properties</button><br>
+  <p class="sub-heading">Has it been longer than 48 hours?</p>
+  <p class="sub-heading" style="margin-top: -10px;">Please contact us at info@vairt.com for an update.</p>
+</ion-content>

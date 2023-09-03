@@ -1,0 +1,155 @@
+<ion-header class="ion-no-border">
+  <div class="background2">
+    <ion-row class="ion-padding" [ngClass]="{'ios_header_css_row':ios_header==true}">
+      <ion-col size-xs="9.6" size-sm="9.6" size-md="10" size-lg="10"><img src="assets/images/setting_white.png" width="22" (click)="setting()"></ion-col>
+      <ion-col size-xs="1.2" size-sm="1.2" size-md="1" size-lg="1" (click)="noti()"><img src="assets/images/bell.png" width="25" style="float: right;margin-right: 5px;position: relative;">
+      <div class="noti"></div>
+      </ion-col>
+      <ion-col size-xs="1.2" size-sm="1.2" size-md="1" size-lg="1" (click)="logout()"><img src="assets/images/logout_white.png" width="25" style="float: right;"></ion-col>
+    </ion-row>
+    <h4 class="amount">${{balance}}</h4>
+    <p class="amount_txt">Available Balance</p>
+    <ion-item class="trans ion-no-padding" lines="none">
+      <ion-row class="ion-no-padding" style="width: 100%;">
+        <ion-col size="6" class="border" (click)="top_up()">
+          <img src="assets/images/wallet_up.png" class="center" width="32" style="margin-top: -2px;">
+          <p class="top">Topup</p>
+        </ion-col>
+        <ion-col size="6" (click)="top_down()" style="height: 51px;"><img src="assets/images/wallet_down.png" class="center" width="32"
+            style="margin-top: 9px;">
+          <p class="top">Topdown</p>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="no_data_div" *ngIf="no_data">
+    <img src="assets/images/no-data.png" width="100">
+    <p class="no_data_txt">No Investment Found</p>
+  </div>
+  <!-------------------Animation Data Load ------------->
+  <div *ngIf="data_loading && !no_data">
+    <ion-card mode="ios" *ngFor="let skelton of skelton" style="margin-top: 10px;">
+      <ion-item lines="none" class="ion-no-padding" style="margin-top: 10px;">
+        <ion-avatar class="animated_avatar">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <p>
+          <ion-skeleton-text animated style="width: 90px;margin-left: 10px;"></ion-skeleton-text>
+        </p>
+        <p slot="end">
+          <ion-skeleton-text animated style="width: 50px"></ion-skeleton-text>
+        </p>
+      </ion-item>
+      <br>
+      <ion-row class="ion-no-padding" class="skelton_inves_row">
+        <ion-col size="5">
+          <ion-skeleton-text animated style="width: 100px"></ion-skeleton-text>
+        </ion-col>
+        <ion-col size="2"></ion-col>
+        <ion-col size="5">
+          <ion-skeleton-text animated class="skelton_inves_value"></ion-skeleton-text>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-no-padding" class="skelton_inves_row">
+        <ion-col size="5">
+          <ion-skeleton-text animated style="width: 100px"></ion-skeleton-text>
+        </ion-col>
+        <ion-col size="2"></ion-col>
+        <ion-col size="5">
+          <ion-skeleton-text animated class="skelton_inves_value"></ion-skeleton-text>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-no-padding" class="skelton_inves_row">
+        <ion-col size="5">
+          <ion-skeleton-text animated style="width: 100px"></ion-skeleton-text>
+        </ion-col>
+        <ion-col size="2"></ion-col>
+        <ion-col size="5">
+          <ion-skeleton-text animated class="skelton_inves_value"></ion-skeleton-text>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-no-padding" class="skelton_inves_row">
+        <ion-col size="5">
+          <ion-skeleton-text animated style="width: 100px"></ion-skeleton-text>
+        </ion-col>
+        <ion-col size="2"></ion-col>
+        <ion-col size="5">
+          <ion-skeleton-text animated class="skelton_inves_value"></ion-skeleton-text>
+        </ion-col>
+      </ion-row>
+      <ion-skeleton-text animated class="skelton_inves_btn"></ion-skeleton-text>
+    </ion-card>
+  </div>
+
+  <!-------------------Animation Data Load End------------->
+
+  <div *ngIf="!data_loading && !no_data" style="margin-bottom: 50px;">
+    <h4 class="month">My Investments</h4>
+    
+    <!--------------Invested Property --------->
+
+    <ion-card mode='ios' *ngFor="let investment of invested_property;let i=index">
+      <div class="row">
+        <img src="assets/images/process.png" class="process_img" *ngIf="investment.stages!='10'" >
+        <img src="assets/images/process_completed.png" class="process_img" *ngIf="investment.stages=='10'" >
+        <p class="complete">Invested</p>
+        <p class="date">{{investment.date_added}}</p>
+      </div>
+      <p class="title">{{investment.title}}</p>
+      <p class="heading" style="margin-top:-3px">Propety Value: <span>${{investment.property_value}}</span></p>
+      <p class="heading">Shares: <span>{{investment.shares}}</span></p>
+      <p class="heading">Purchase Price: <span>${{investment.share_price}}</span></p>
+      <p class="heading">Amount: <span>${{investment.price}}</span></p>
+
+        <button class="view_detail" *ngIf="investment.stages=='10'" (click)="purchase_complete(investment.property_images,
+        investment.beds,investment.baths,investment.size,investment.address,investment.title,
+        investment.property_id,investment.share_price,investment.shares,investment.purchaser_id)">View Detail</button>
+    </ion-card>
+
+    <!--------------Process Investments --------->
+
+    <ion-card mode='ios' *ngFor="let investment of investments;let i=index">
+      <div class="row">
+        <img src="assets/images/process.png" class="process_img" *ngIf="investment.stages!='10'" >
+        <img src="assets/images/process_completed.png" class="process_img" *ngIf="investment.stages=='10'" >
+        <p class="success">In Process on step {{investment.stages}}</p>
+
+        <p class="date">{{investment.date_added}}</p>
+      </div>
+      <p class="title">{{investment.title}}</p>
+      <p class="heading" style="margin-top:-3px">Propety Value: <span>${{investment.property_value}}</span></p>
+      <p class="heading">Shares: <span>{{investment.shares}}</span></p>
+      <p class="heading">Purchase Price: <span>${{investment.purchase_price}}</span></p>
+      <p class="heading">Amount: <span>${{investment.price}}</span></p>
+      <img src="assets/images/complete_purchase.png" class="center" style="width: 50%;margin-top:-5px"
+        *ngIf="investment.stages!='10'"
+        (click)="complete_purchase(investment.title,investment.property_images,
+        investment.address,investment.purchase_price,investment.remaining_share,investment.stages,investment.invoice_id,investment.property_id,
+        investment.minimum_investment,investment.property_price_per_share,investment.purchase_cost_per_share,
+        investment.transaction_cost_per_share,investment.net_dividend,investment.seller_id)">
+        <button class="view_detail" *ngIf="investment.stages=='10'" (click)="purchase_complete(investment.property_images,
+        investment.beds,investment.baths,investment.size,investment.address,investment.title,
+        investment.property_id,investment.price,investment.shares,investment.purchaser_id)">View Detail</button>
+    </ion-card>
+    <div class="center_loader1">
+      <lottie-player *ngIf="loading_more" src="assets/loader1.json" background="transparent" speed="1" class="loader"
+        style="width: 100px; height: 100px;margin-top: -50px;" loop autoplay></lottie-player>
+    </div>
+    <br>
+  </div>
+  <ion-infinite-scroll threshold="600px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+
+  <div class="bottom_footer">
+      <img src="assets/images/home_.png" width="40" (click)="home('home')">
+      <img src="assets/images/investments_active.png" width="40" (click)="inves('new-investments')">
+      <img src="assets/images/portfolio.png" width="40" (click)="portfolio('portfolio')">
+      <img src="assets/images/flip.png" width="40" (click)="flip('flip')">
+      <img src="assets/images/profile.png" width="40" (click)="profile('profile')">
+  </div>

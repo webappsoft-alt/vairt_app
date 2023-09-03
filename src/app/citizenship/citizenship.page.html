@@ -1,0 +1,22 @@
+<ion-content>
+  <ion-grid class="background1" style="position: fixed;width: 100%;" [ngClass]="{'ios_header_css':ios_header==true}"> <br>
+    <img src="assets/images/citizenship.png" class="center" width="50">
+    <h4 class="heading">Hi Micheal <br> Let's start with where you're from.</h4>
+    <p class="sub-heading">You are on your way of making Smart investments and seeing your wealth grow! Before we begin, we'd like to get to know you better.</p>
+  </ion-grid>
+  <ion-grid class="content_grid">
+  
+  <form style="width: 95%;margin-left: 2.5%;">
+        <p class="lbl">Citizenship *</p>
+        <ion-item class="item" lines="none" (click)="countryList()">
+          {{country_name}}
+          <ion-icon name="caret-down-outline" slot="end"></ion-icon>
+          </ion-item>
+        <button class="form_btn ion-activatable ripple-parent" (click)="verify()"><ion-spinner *ngIf="loading"></ion-spinner>
+          <span *ngIf="!loading" class="submit-txt"> NEXT
+            <ion-ripple-effect></ion-ripple-effect></span></button>
+            <p class="bottom_txt" style="text-align: center;" (click)="why_ask()">Why we ask</p>
+         </form>  
+        </ion-grid>
+  </ion-content>
+  

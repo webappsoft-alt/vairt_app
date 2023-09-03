@@ -1,0 +1,24 @@
+
+<ion-content class="ion-padding">
+  <div class="ion-no-padding row">
+    <p class="title">Authenticate Code</p>
+    <ion-buttons (click)="dismiss()" slot="end">
+      <img src="assets/images/cancel.svg" width="25">
+    </ion-buttons>
+  </div>
+  <p class="sub_title">Enter Your 2FA code for login!</p>
+  <!-- <ion-input type="number" [(ngModel)]="code"></ion-input><br> -->
+  <br>
+  <ion-row class="background ion-no-padding">
+    <ion-col size="auto" style="height: 70px;display: flex;"><img src="assets/images/guarantee.svg" width="20" class="input_img"></ion-col>
+    <ion-col size="auto" style="height: 70px;"> 
+    <p class="input_lbl">Code</p>
+      <ion-input type="number"  [(ngModel)]="code" class="input"></ion-input>
+    </ion-col>
+  </ion-row>
+
+  <button class="form_btn left_rigt ion-activatable ripple-parent" ><ion-spinner *ngIf="loading"></ion-spinner><span *ngIf="!loading" class="submit-txt"> 
+      <ion-icon name="arrow-forward-outline"></ion-icon> 
+  <ion-ripple-effect></ion-ripple-effect></span></button>
+
+</ion-content>

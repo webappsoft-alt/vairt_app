@@ -1,0 +1,44 @@
+<ion-content class="ion-padding">
+  <ion-item lines="none" (click)="back()" class="ion-no-padding" style="margin-top: 0px;">
+    <img src="assets/images/left-arrow-white.svg" class="back">
+  </ion-item>
+  <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)">
+    <h3 class="heading">Verify Your Phone <br> Number</h3>
+    <p class="subHeading">Please enter your phone number and we will text a code to verify your phone number.</p>
+    <br><br>
+    <div formGroupName="country_phone">  
+    <ion-item lines="none" class="ion-no-padding set-width" (click)="countryList()">
+      <ion-label><p class="country_color">Country</p>
+        <ion-input readonly *ngFor="let item of countries">{{item.name}}</ion-input>
+      </ion-label> 
+      </ion-item>
+    <br>
+    <ion-item lines="none" class="ion-no-padding set-width">
+      <ion-label position="floating" color="primary">Phone</ion-label>
+      <ion-input placeholder="{{ validations_form.value.country_phone.country.sample_phone }}" type="text" formControlName="phone" [(ngModel)]="phone_no" value="{{phone_no}}"></ion-input>
+    </ion-item>
+
+    <div class="validation-errors">
+          <ng-container *ngFor="let validation of validation_messages.phone">
+            <div class="error-message" *ngIf="validations_form.get('country_phone').get('phone').hasError(validation.type) && (validations_form.get('country_phone').get('phone').dirty || validations_form.get('country_phone').get('phone').touched)">
+              <ion-icon name="information-circle-outline" style="margin-top: 5px;"></ion-icon> {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+    </div>
+   
+  <button class="btn" [disabled]="!validations_form.valid" style="text-decoration: none;outline: none;">
+    <ion-spinner *ngIf="loading"></ion-spinner>
+      <span *ngIf="!loading" class="submit-txt">continue </span>
+      <ion-icon *ngIf="!loading" name="arrow-forward" class="arrowicon">
+    </ion-icon>
+  </button>
+  
+  <button class="btn" [disabled]="!validations_form.valid">
+    <ion-spinner *ngIf="loading"></ion-spinner>
+     <span *ngIf="!loading" class="submit-txt">Send</span>
+     <ion-icon *ng="!loading" name="arrow-forward"></ion-icon>
+  </button>
+  </form>
+</ion-content>
+  

@@ -1,0 +1,33 @@
+<ion-content>
+  <ion-grid class="background1" style="position: fixed;width: 100%;" [ngClass]="{'ios_header_css':ios_header==true}"> <br>
+    <img src="assets/images/identity_of.png" class="center" width="50"><br>
+    <h4 class="heading"> Micheal ! You've got all the right moves </h4>
+    <p class="sub-heading">Please provide your identification document.</p>
+  </ion-grid>
+  <ion-grid class="content_grid ion-no-padding"> <br> <br> 
+    <div style="width: 90%;margin-left: 5%;">
+      <p class="sub-heading" style="color:#A6A6A6;text-align: left;">Please provide a copy of valid ID. Acceptable forms of identification include a photo of a valid driver's license, social security card, birth certificate, or passport</p>
+
+      <p class="lbl">Identity Of</p>
+      <ion-select [(ngModel)]="type">
+        <ion-select-option value="passport">Passport</ion-select-option>
+        <ion-select-option value="driving license">Driving License</ion-select-option>
+        <ion-select-option value="state id">State Id</ion-select-option>
+      </ion-select>
+
+      <p class="lbl">Font Image</p>
+      <img src="{{front_img_}}" width="100" height="100" class="center" (click)="front_img()">
+      <div *ngIf="type!='passport'">
+      <p class="lbl">Back Image</p>
+      <img src="{{back_img_}}" width="100" height="100" class="center" (click)="back_img()">
+      </div>
+    </div>
+      <br><br>
+      <button class="form_btn ion-activatable ripple-parent" (click)="next()"><ion-spinner *ngIf="loading"></ion-spinner>
+        <span *ngIf="!loading" class="submit-txt"> Continue
+          <ion-ripple-effect></ion-ripple-effect></span></button>
+          <br><br><br><br><br><br>
+
+  
+  </ion-grid>
+</ion-content>

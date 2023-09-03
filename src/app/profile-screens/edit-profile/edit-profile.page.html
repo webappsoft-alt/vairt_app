@@ -1,0 +1,106 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="header">
+    <ion-item lines="none" style="margin-top:12px">
+    <ion-buttons class="close_btn" (click)="close()">
+      <ion-icon name="chevron-back-outline" class="close"></ion-icon>
+    </ion-buttons>
+    <ion-title mode="ios">Edit Profile</ion-title>
+   </ion-item><br>
+   <div (click)="profile_img()">
+    <ion-avatar class="center">
+      <img src="{{pic}}">
+      <ion-icon name="add" class="add_icon" *ngIf="add_icon"></ion-icon> 
+    </ion-avatar>
+  </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <br>
+  <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/user.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">First Name</p>
+          <ion-input
+            type="text"
+            [(ngModel)]="first_name"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/user1.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">Last Name</p>
+          <ion-input
+            type="text"
+            [(ngModel)]="last_name"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/phone.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">Phone</p>
+          <ion-input
+            type="tel"
+            [(ngModel)]="phone"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/pin.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">Address</p>
+          <ion-input
+            type="text"
+            [(ngModel)]="autocomplete.input"
+            (ionInput)="UpdateSearchResults()" (ionClear)="ClearAutocomplete()"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+
+      
+        <ion-list [hidden]="autocompleteItems.length == 0">
+        <ion-item lines="none " class="ion-no-padding" *ngFor="let item of autocompleteItems" tappable
+         (click)="SelectSearchResult(item)">
+         <p class="desc">{{ item.description }}</p>
+       </ion-item>
+     </ion-list>
+     <ion-row  class="background ion-no-padding">
+      <ion-col size="auto" style="height: 70px; display: flex"
+        ><img src="assets/images/zip-code.svg" width="20" class="input_img"
+      /></ion-col>
+      <ion-col size="9" style="height: 70px">
+        <p class="input_lbl">Zip Code</p>
+        <ion-input
+          type="text"
+          [(ngModel)]="zip_code"
+          class="input"
+        ></ion-input>
+      </ion-col>
+    </ion-row>
+    
+    <button class="form_btn ion-activatable ripple-parent" (click)="update_profile()">
+    <ion-spinner *ngIf="loading"></ion-spinner>
+    <span *ngIf="!loading" class="submit-txt">
+      <ion-icon name="arrow-forward-outline"></ion-icon>
+      <ion-ripple-effect></ion-ripple-effect
+    ></span>
+  </button>
+</ion-content> 
+

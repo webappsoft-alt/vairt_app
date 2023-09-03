@@ -1,0 +1,468 @@
+<ion-header class="ion-no-border" [ngClass]="{'ios_header_css':ios_header==true}">
+  <ion-item lines="none">
+    <ion-buttons (click)="back()"><ion-icon name="arrow-back"></ion-icon></ion-buttons>
+    <h4 class="heading">Personal Information </h4>
+  </ion-item>
+  <p class="sub_heading">Update or edit your personal information </p>
+
+</ion-header>
+
+<ion-content class="ion-padding">
+<!-----------------Personal Information --------->
+<div *ngIf="current_value=='personal'">
+  <div (click)="profile_img()">
+  <ion-avatar class="center">
+    <img src="{{pic}}"> 
+  </ion-avatar>
+  <p class="txt">Upload Photo</p>
+</div>
+  <br>
+  <p class="lbl">First Name </p>
+  <ion-input [(ngModel)]="first_name"></ion-input>
+  <p class="lbl">Last Name </p>
+  <ion-input [(ngModel)]="last_name"></ion-input>
+  <p class="lbl">Phone Number </p>
+  <ion-input type="tel" [(ngModel)]="phone"></ion-input>
+  <p class="lbl">Address</p>
+  <ion-input type="text" [(ngModel)]="autocomplete.input"
+    (ionInput)="UpdateSearchResults()" (ionClear)="ClearAutocomplete()">
+  </ion-input>
+   <ion-list [hidden]="autocompleteItems.length == 0">
+      <ion-item lines="none " class="ion-no-padding" *ngFor="let item of autocompleteItems" tappable
+       (click)="SelectSearchResult(item)">
+       <p class="desc">{{ item.description }}</p>
+     </ion-item>
+   </ion-list>
+
+  <p class="lbl">Zip Code </p>
+  <ion-input [(ngModel)]="zip_code"></ion-input>
+  <br><br>
+  <button class="form_btn ion-activatable ripple-parent" (click)="update_profile()"><ion-spinner *ngIf="loading"></ion-spinner>
+    <span *ngIf="!loading" class="submit-txt"> Update
+      <ion-ripple-effect></ion-ripple-effect></span></button>
+  </div>
+<!-----------Password ----------->
+<div *ngIf="current_value=='password'">
+  <p class="lbl">Current Password</p>
+  <ion-input [(ngModel)]="curr_pass" type="password"></ion-input>
+  <p class="lbl">New Password</p>
+  <ion-input [(ngModel)]="new_pass" type="password"></ion-input>
+  <p class="lbl">Confirm Password</p>
+  <ion-input [(ngModel)]="c_pass" type="password"></ion-input>
+  <br><br>
+  <button class="form_btn ion-activatable ripple-parent" (click)="update_pass()"><ion-spinner *ngIf="loading"></ion-spinner>
+    <span *ngIf="!loading" class="submit-txt"> Update
+      <ion-ripple-effect></ion-ripple-effect></span></button>
+</div>
+<!----------- Bank Account ----------->
+<div *ngIf="current_value=='bank'">
+  <div *ngIf="bank_main==true">
+  <h4 class="heading_black">Bank Accounts and Distributions</h4>
+  <p class="sub_heading" style="margin-left: 0px;margin-top: -5px">Link a bank account to fund your investments and send distributions to.</p>
+  <h4 class="heading_black" style="font-size: 14px;margin-top: 20px;">How would you like to add your bank account?</h4>
+  <p class="sub_heading" style="margin-left: 0px;margin-top: -5px;">We offer two ways for you to add your bank account safely and securely.</p>
+
+  <div class="hori"></div><br>
+  <ion-radio-group [(ngModel)]="bank_distribution">
+  <ion-row class="ion-no-padding">
+    <ion-col size="1"><ion-radio value="instant" mode="md"></ion-radio></ion-col>
+    <ion-col size="11"><p class="lbl_checkbox">Instant Account Verification</p></ion-col>
+  </ion-row>
+  <p class="sub_heading" style="margin-top:-3px">Instant account verification allows you to use your bank login to link your account.</p>
+
+  <ion-row class="ion-no-padding">
+    <ion-col size="1"><ion-radio value="account_number" mode="md"></ion-radio></ion-col>
+    <ion-col size="11"><p class="lbl_checkbox">Enter Account Number and Routing Number</p></ion-col>
+  </ion-row>
+  <p class="sub_heading" style="margin-top:-3px">Enter your account number, routing number, and an image of a voided check to verify your account.</p>
+</ion-radio-group>
+
+<button class="form_btn ion-activatable ripple-parent" (click)="bank_continue()">CONTINUE
+    <ion-ripple-effect></ion-ripple-effect></button>
+  </div>
+
+  <div *ngIf="instant_show==true">
+    <h4 class="heading_black">Link Your Bank Account</h4>
+    <p class="sub_heading" style="margin-left: 0px;">Choose your bank and follow the instructions below to link your bank account. Alternatively, you can link your account by uploading an image of a voided check.</p><br>
+    <button class="cancel_btn ion-activatable ripple-parent" (click)="cancel()">CANCEL
+      <ion-ripple-effect></ion-ripple-effect></button>
+  </div>
+
+  <div *ngIf="routing_number==true">
+    <h4 class="heading_black">Link Your Bank Account</h4>
+    <p class="sub_heading" style="margin-left: 0px;">Enter your routing number, account number, and upload an image of a voided check to link your account. Alternatively, you can link your account using Instant Account Verification.</p>
+
+    <p class="lbl">Account Type</p>
+    <ion-radio-group [(ngModel)]="account_type">
+      <ion-row class="ion-no-padding">
+        <ion-col size="1"><ion-radio value="checking_account"></ion-radio></ion-col>
+        <ion-col size="11"><p class="lbl_checkbox">Checking Account</p></ion-col>
+      </ion-row>
+    
+      <ion-row class="ion-no-padding">
+        <ion-col size="1"><ion-radio value="saving_account"></ion-radio></ion-col>
+        <ion-col size="11"><p class="lbl_checkbox">Saving Account</p></ion-col>
+      </ion-row>
+    </ion-radio-group>
+    <img src="assets/images/check.jpeg">
+    <p class="lbl">Routing Number</p>
+    <ion-input [(ngModel)]="routing_num" type="number"></ion-input>
+    <p class="lbl">Account Number</p>
+    <ion-input [(ngModel)]="acc_no" type="number"></ion-input>
+    <p class="lbl">Upload Check Image</p>
+    <img src="{{check_img}}" (click)="uplod_chk()">
+    <br>
+    
+    <ion-item lines="none">
+      <button class="form_btn ion-activatable ripple-parent" style="width: 45%;" (click)="bank_save()">SAVE
+        <ion-ripple-effect></ion-ripple-effect></button>
+    <button class="cancel_btn ion-activatable ripple-parent" style="width: 45%;" (click)="cancel()">CANCEL
+      <ion-ripple-effect></ion-ripple-effect></button>
+    </ion-item>
+  </div>
+</div>
+<!---------------------->
+
+<!----------------Google Authentictor -------->
+<div *ngIf="current_value=='google_auth'">
+  <h4 class="black_heading">Validation and Contract signing method</h4>
+  <p class="sub_heading" style="margin-left: 0px;">Please add either your mobile or a two factor authentication method. One of these is required for signing contracts.</p>
+  <br>
+  <p class="lbl">Google Authenticator</p>
+  <div class="form_btn" style="display:flex;flex-direction: row;justify-content: center;width: 100%;
+  align-items: center" (click)="google_auth()">
+    <ion-icon name="call-outline" class="phone_icon"></ion-icon>
+    <span style="font-size: 14px;">Enable Two-factor Authentication</span>
+  </div>
+  <p class="lbl">Phone Number</p>
+  <ion-input [(ngModel)]="phone" type="tel"></ion-input><br>
+  <button class="form_btn ion-activatable ripple-parent" style="width: 45%;" (click)="phone_save()">SAVE
+    <ion-ripple-effect></ion-ripple-effect></button>
+</div>
+<!-------------------------------------------->
+
+<!----------------Security -------->
+<div *ngIf="current_value=='security'">
+  <ion-item lines="none" class="ion-no-padding">
+    <p class="heading_black">Login</p>
+    <ion-toggle mode="ios" [(ngModel)]="login_security" slot="end" (click)="login_sec()"></ion-toggle>
+  </ion-item>
+  <ion-item lines="none" class="ion-no-padding">
+    <p class="heading_black">Transaction Confirmations</p>
+    <ion-toggle mode="ios" [(ngModel)]="trans_security" slot="end" (click)="trans_sec()"></ion-toggle>
+  </ion-item>
+  <ion-item lines="none" class="ion-no-padding">
+    <p class="heading_black">Keep Session Alive</p>
+    <ion-toggle mode="ios" [(ngModel)]="session_security" (click)="session_alive()" slot="end"></ion-toggle>
+  </ion-item>
+  <ion-item lines="none" class="ion-no-padding">
+    <p class="heading_black">Send Email on Login</p>
+    <ion-toggle mode="ios" [(ngModel)]="send_email_security" (click)="send_email_sec()" slot="end"></ion-toggle>
+  </ion-item>
+  <ion-item lines="none" class="ion-no-padding">
+    <p class="heading_black">Detect IP Address Change</p>
+    <ion-toggle mode="ios" [(ngModel)]="ip_address_security" slot="end"></ion-toggle>
+  </ion-item>
+</div>
+<!--------------------------------------------->
+
+<!------------------Preferences --------------->
+<div *ngIf="current_value=='pref'">
+<ion-item lines="none" class="ion-no-padding">
+<p class="lbl">Profile</p>
+<button slot="end" (click)="support()" class="form_btn" style="width: auto;height: 35px;padding: 0px 20px;">Support</button>
+</ion-item>
+
+<ion-item>
+<div class="circle">
+  <ion-icon name="person-circle-outline" class="profile_icon"></ion-icon>
+</div>
+<ion-label>
+  <h4 class="heading_black" style="margin-left: 10px;">Account Type</h4>
+  <p class="sub_heading" style="margin-left: 12px;margin-top: -5px;">Individual</p>
+</ion-label>
+</ion-item>
+
+<ion-item>
+  <div class="circle">
+    <ion-icon name="people-outline" class="profile_icon"></ion-icon>
+  </div>
+  <ion-label>
+    <h4 class="heading_black" style="margin-left: 10px;">First Name</h4>
+    <p class="sub_heading" style="margin-left: 12px;margin-top: -5px;">{{first_name}}</p>
+  </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <div class="circle">
+      <ion-icon name="people-outline" class="profile_icon"></ion-icon>
+    </div>
+    <ion-label>
+      <h4 class="heading_black" style="margin-left: 10px;">Last Name</h4>
+      <p class="sub_heading" style="margin-left: 12px;margin-top: -5px;">{{last_name}}</p>
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <div class="circle">
+      <ion-icon name="clipboard-outline" class="profile_icon"></ion-icon>
+    </div>
+    <ion-label>
+      <h4 class="heading_black" style="margin-left: 10px;">Contact Info</h4>
+      <p class="sub_heading" style="margin-left: 12px;margin-top: -5px;">{{address}}</p>
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <div class="circle">
+      <ion-icon name="flag-outline" class="profile_icon"></ion-icon>
+    </div>
+    <ion-label>
+      <h4 class="heading_black" style="margin-left: 10px;">Country of residence</h4>
+      <p class="sub_heading" style="margin-left: 12px;margin-top: -5px;">{{user_country}}</p>
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <div class="circle">
+      <ion-icon name="call-outline" class="profile_icon"></ion-icon>
+    </div>
+    <ion-label>
+      <h4 class="heading_black" style="margin-left: 10px;">Phone</h4>
+      <p class="sub_heading" style="margin-left: 12px;margin-top: -5px;">{{phone}}</p>
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <div class="circle">
+      <ion-icon name="golf-outline" class="profile_icon"></ion-icon>
+    </div>
+    <ion-label>
+      <h4 class="heading_black" style="margin-left: 10px;">State</h4>
+      <p class="sub_heading" style="margin-left: 12px;margin-top: -5px;">{{user_state}}</p>
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <div class="circle">
+      <ion-icon name="book-outline" class="profile_icon"></ion-icon>
+    </div>
+    <ion-label>
+      <h4 class="heading_black" style="margin-left: 10px;">Zip</h4>
+      <p class="sub_heading" style="margin-left: 12px;margin-top: -5px;">{{zip_code}}</p>
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <div class="circle">
+      <ion-icon name="location-outline" class="profile_icon"></ion-icon>
+    </div>
+    <ion-label>
+      <h4 class="heading_black" style="margin-left: 10px;">Address</h4>
+      <p class="sub_heading" style="margin-left: 12px;margin-top: -5px;">{{address}}</p>
+    </ion-label>
+  </ion-item>
+
+  <p class="lbl">Suitability Information</p>
+  <ion-item>
+    <div class="circle">
+      <ion-icon name="cart-outline" class="profile_icon"></ion-icon>
+    </div>
+    <ion-label  class="ion-text-wrap">
+      <h4 class="heading_black" style="margin-left: 10px;">What is your primary reason for making this investment?</h4>
+      <p class="sub_heading" style="margin-left: 12px;margin-top: -5px;">Create an additional source of income</p>
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <div class="circle" style="background: transparent;"></div>
+    <ion-label class="ion-text-wrap">
+      <h4 class="heading_black" style="margin-left: 10px;">  Please indicate your level of experience with each of the following investment types:</h4>
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <div class="circle">
+      <ion-icon name="cart-outline" class="profile_icon"></ion-icon>
+    </div>
+    <ion-label  class="ion-text-wrap">
+      <h4 class="heading_black" style="margin-left: 10px;">Stocks</h4>
+      <p class="sub_heading" style="margin-left: 12px;margin-top: -5px;">{{stocks}}</p>
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <div class="circle">
+      <ion-icon name="copy-outline" class="profile_icon"></ion-icon>
+    </div>
+    <ion-label  class="ion-text-wrap">
+      <h4 class="heading_black" style="margin-left: 10px;">Bonds</h4>
+      <p class="sub_heading" style="margin-left: 12px;margin-top: -5px;">{{bonds}}</p>
+    </ion-label>
+  </ion-item>
+
+
+  <ion-item>
+    <div class="circle">
+      <ion-icon name="cash-outline" class="profile_icon"></ion-icon>
+    </div>
+    <ion-label  class="ion-text-wrap">
+      <h4 class="heading_black" style="margin-left: 10px;">Private Equity</h4>
+      <p class="sub_heading" style="margin-left: 12px;margin-top: -5px;">{{privacy_equity}}</p>
+    </ion-label>
+  </ion-item>
+
+
+  <ion-item>
+    <div class="circle">
+      <ion-icon name="card-outline" class="profile_icon"></ion-icon>
+    </div>
+    <ion-label  class="ion-text-wrap">
+      <h4 class="heading_black" style="margin-left: 10px;">Venture Capital</h4>
+      <p class="sub_heading" style="margin-left: 12px;margin-top: -5px;">{{venture_capital}}</p>
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <div class="circle">
+      <ion-icon name="briefcase-outline" class="profile_icon"></ion-icon>
+    </div>
+    <ion-label  class="ion-text-wrap">
+      <h4 class="heading_black" style="margin-left: 10px;">Restaurant / Small Business</h4>
+      <p class="sub_heading" style="margin-left: 12px;margin-top: -5px;">{{business}}</p>
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <div class="circle">
+      <ion-icon name="reader-outline" class="profile_icon"></ion-icon>
+    </div>
+    <ion-label  class="ion-text-wrap">
+      <h4 class="heading_black" style="margin-left: 10px;">Real Estate</h4>
+      <p class="sub_heading" style="margin-left: 12px;margin-top: -5px;">{{real_estate}}</p>
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <div class="circle">
+      <ion-icon name="time-outline" class="profile_icon"></ion-icon>
+    </div>
+    <ion-label  class="ion-text-wrap">
+      <h4 class="heading_black" style="margin-left: 10px;">When would you need to exit this investment? </h4>
+      <p class="sub_heading" style="margin-left: 12px;margin-top: -5px;">{{exit_investment}} Years</p>
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <div class="circle">
+      <ion-icon name="bar-chart-outline" class="profile_icon"></ion-icon>
+    </div>
+    <ion-label  class="ion-text-wrap">
+      <h4 class="heading_black" style="margin-left: 10px;">You selected an investment time horizon indicated above. The investment you have selected has an anticipated hold period of at least 5 years, and as this is an illiquid investment, you may not be able to sell or otherwise exit your investment for some time.</h4>
+      <p class="sub_heading" style="margin-left: 12px;margin-top: -5px;">I am comfortable with the investment time horizon</p>
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <div class="circle">
+      <ion-icon name="bar-chart-outline" class="profile_icon"></ion-icon>
+    </div>
+    <ion-label  class="ion-text-wrap">
+      <h4 class="heading_black" style="margin-left: 10px;">Please indicate what investments you would be comfortable with. Select all that apply.</h4>
+      <p class="sub_heading" style="margin-left: 12px;margin-top: -5px;">A high risk investment for a high potential return</p>
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <div class="circle">
+      <ion-icon name="barcode-outline" class="profile_icon"></ion-icon>
+    </div>
+    <ion-label  class="ion-text-wrap">
+      <h4 class="heading_black" style="margin-left: 10px;">What is your current net worth?</h4>
+      <p class="sub_heading" style="margin-left: 12px;margin-top: -5px;">${{net_worth}}</p>
+    </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <div class="circle">
+      <ion-icon name="barcode-outline" class="profile_icon"></ion-icon>
+    </div>
+    <ion-label  class="ion-text-wrap">
+      <h4 class="heading_black" style="margin-left: 10px;">What is your current income?</h4>
+      <p class="sub_heading" style="margin-left: 12px;margin-top: -5px;">${{current_income}}</p>
+    </ion-label>
+  </ion-item>
+
+  <p class="lbl">Employment History</p>
+  <ion-item>
+    <div class="circle">
+      <ion-icon name="people-outline" class="profile_icon"></ion-icon>
+    </div>
+    <ion-label>
+      <h4 class="heading_black" style="margin-left: 10px;">Employment Status</h4>
+      <p class="sub_heading" style="margin-left: 12px;margin-top: -5px;">{{employment_status}}
+      </p>
+    </ion-label>
+  </ion-item>
+</div>
+<!--------------------------------------------->
+
+<!----------------Google Authentictor -------->
+<div *ngIf="current_value=='ref_manag'">
+  <h4 class="black_heading">Referral Management</h4>
+  <p class="sub_heading" style="margin-left: 0px;">Here you can see referral information.</p><br>
+  <p class="lbl">Your referral link</p>
+  <ion-item lines="none" class="ion-no-padding">
+    <div class="grey_color">https://vairt.com/join/</div>
+    <ion-input type="text" [(ngModel)]="referral"></ion-input>
+  </ion-item>
+  <br> <br>
+  <button class="form_btn" style="width: 50%;" (click)="refferal_save()"><ion-spinner *ngIf="loading1"></ion-spinner>
+    <span *ngIf="!loading1" class="submit-txt">Save</span></button>
+</div>
+</ion-content>
+
+
+<ion-toolbar class="ion-no-border footer_android" [ngClass]="{'footer':ios_header==true}">
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button (click)="personal()">
+      <img src="assets/images/footer/personal_info.png" width="40"  *ngIf="personal_info==false">
+      <img src="assets/images/footer/personal_info_active.png" width="40" *ngIf="personal_info==true">
+    </ion-tab-button>
+
+    <ion-tab-button (click)="password_()">
+      <img src="assets/images/footer/password.png" width="40"  *ngIf="password==false">
+      <img src="assets/images/footer/password_active.png" width="40"  *ngIf="password==true">
+    </ion-tab-button>
+
+    <ion-tab-button (click)="bank_()">
+      <img src="assets/images/footer/bank_account.png" width="40"  *ngIf="bank==false">
+      <img src="assets/images/footer/bank_account_active.png" width="40" *ngIf="bank==true">
+    </ion-tab-button>
+
+    <ion-tab-button (click)="google_()" >
+      <img src="assets/images/footer/google.png" width="40" *ngIf="google==false">
+      <img src="assets/images/footer/google_active.png" width="40" *ngIf="google==true">
+    </ion-tab-button>
+
+    <ion-tab-button (click)="security_()"  >
+      <img src="assets/images/footer/security.png" width="40" *ngIf="security==false">
+      <img src="assets/images/footer/security_active.png" width="40" *ngIf="security==true">
+    </ion-tab-button>
+
+    <ion-tab-button (click)="preferences_()">
+      <img src="assets/images/footer/preferences.png" width="40" *ngIf="preferences==false">
+      <img src="assets/images/footer/preferences_active.png" width="40"  *ngIf="preferences==true">
+    </ion-tab-button>
+
+    <ion-tab-button (click)="ref_manag_()">
+      <img src="assets/images/footer/ref.png" width="40" *ngIf="ref_manag==false">
+      <img src="assets/images/footer/ref_active.png" width="40"  *ngIf="ref_manag==true">
+    </ion-tab-button>
+    </ion-tab-bar>
+      </ion-tabs>
+   </ion-toolbar>
+
+<!-- <ion-content>
+  <div class="background"></div>
+</ion-content> -->

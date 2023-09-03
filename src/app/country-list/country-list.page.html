@@ -1,0 +1,19 @@
+<ion-header class="ion-no-border"  [ngClass]="{'ios_header_css':ios_header==true}">
+  <ion-item lines="none" class="ion-no-padding transparenet">
+  <button class="close_btn" (click)="close()">Close</button>
+  <ion-title mode="md">Select Country</ion-title>
+</ion-item> 
+
+<ion-item lines="none" class="set_background transparenet search-item" style="margin-top: 2px;">
+  <ion-icon name="search" class="search-icon" style="color:white"></ion-icon>
+  <ion-input placeholder="Search by name"  (ionInput)="getItems($event)"></ion-input>
+</ion-item>
+</ion-header>
+<ion-content>
+<ion-list style="background: transparent;overflow: scroll;margin-top: 10px;height: 100%;">
+  <ion-item lines="none" class="transparenet" lines="none" *ngFor="let countries of countries" (click)="selected(countries.alpha2Code,countries.code,countries.name)">
+    <p class="lbl">{{countries.name}}</p>
+    <ion-checkbox slot="end"  mode="md"></ion-checkbox>
+  </ion-item>
+</ion-list>
+</ion-content>

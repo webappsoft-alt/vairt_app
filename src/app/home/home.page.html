@@ -1,0 +1,157 @@
+<ion-header class="ion-no-border">
+  <div class="background2" >
+    <ion-row class="ion-padding" [ngClass]="{'ios_header_css_row':ios_header==true}">
+      <ion-col size-xs="9.6" size-sm="9.6" size-md="10" size-lg="10"><img src="assets/images/setting_white.png" width="22" (click)="setting()"></ion-col>
+      <ion-col size-xs="1.2" size-sm="1.2" size-md="1" size-lg="1" (click)="noti()"><img src="assets/images/bell.png" width="25" style="float: right;margin-right: 5px;position: relative;">
+      <div class="noti"></div>
+      </ion-col>
+      <ion-col size-xs="1.2" size-sm="1.2" size-md="1" size-lg="1" (click)="logout()"><img src="assets/images/logout_white.png" width="25" style="float: right;"></ion-col>
+    </ion-row>
+    <h4 class="amount">${{balance}}</h4>
+    <p class="amount_txt">Available Balance</p>
+    <ion-item class="trans ion-no-padding" lines="none">
+      <ion-row class="ion-no-padding" style="width: 100%;">
+        <ion-col size="6" class="border" (click)="top_up()">
+          <img src="assets/images/wallet_up.png" class="center" width="32" style="margin-top: -2px;">
+          <p class="top">Topup</p>
+        </ion-col>
+        <ion-col size="6" (click)="top_down()" style="height: 51px;"><img src="assets/images/wallet_down.png" class="center" width="32"
+            style="margin-top: 9px;">
+          <p class="top">Topdown</p>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </div>
+</ion-header>
+
+<ion-content>
+  
+    <!-- Skeleton screen -->
+    <div *ngIf="data_loading" class="skelton_div">
+      <ion-list>  
+        <ion-item lines="none"  *ngFor = "let skelton of skelton" style="margin-top: 10px;">
+          <ion-avatar slot="start" style="width: 90px;">
+            <ion-skeleton-text animated></ion-skeleton-text>
+          </ion-avatar>
+          <ion-label>
+            <h3>
+              <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+            </h3>
+            <p>
+              <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+            </p>
+            <p>
+              <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+            </p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <div *ngIf="!data_loading" style="margin-bottom: 50px;">
+
+         <ion-card mode="ios" class="crd" *ngFor="let flip of flip_properties;let i=index">
+          <ion-avatar class="prop_avatar">
+            <img [defaultImage]="lazy_image" [lazyLoad]="flip.img" >
+            <span *ngIf="flip.property_is=='Flip'">
+            <ion-icon name="heart-outline" class="icn_card"  *ngIf="flip.like==false" (click)="fvt_flip(i,flip.id)"></ion-icon>
+            <ion-icon name="heart" class="icn_card" *ngIf="flip.like==true" (click)="un_fvt_flip(i,flip.id)"></ion-icon>
+           </span>  
+
+           <span *ngIf="flip.property_is=='Residual'">
+            <ion-icon name="heart-outline" class="icn_card" *ngIf="flip.like==false" (click)="fvt(i,flip.id)"></ion-icon>
+            <ion-icon name="heart" class="icn_card" *ngIf="flip.like==true" (click)="un_fvt(i,flip.id)"></ion-icon>
+           </span>
+
+            <div class="prop_type_" *ngIf="flip.property_type!='Funded'">Live</div>
+            <div class="prop_type_" *ngIf="flip.property_type=='Funded'">Funded</div>
+           
+            <div class="roi_div" *ngIf="flip.property_is=='Flip'">{{flip.investment_total | number:'1.0-0':'en'}}% ROI</div>
+            <div class="roi_div" *ngIf="flip.property_is=='Residual'">{{flip.gross_yield | number:'1.2-2':'en'}}% Gross Yield</div>
+            
+            <div class="flip_div" *ngIf="flip.property_is=='Flip'">FLIP</div>
+            <div class="flip_div" *ngIf="flip.property_is=='Residual'">Residual</div>
+          </ion-avatar>
+
+               <div class="row_">
+                <img src="assets/images/bed.svg" style="width: 17px;">
+                <p class="assc">{{flip.beds}}</p>
+                <div class="vertical"></div>
+                <img src="assets/images/bath.svg" style="margin-left: 10px;width: 17px;">
+                <p class="assc">{{flip.baths}}</p>
+                <div class="vertical"></div>
+                <img src="assets/images/location.svg" width="17" style="margin-left: 10px;width: 17px;">
+                <p class="assc">{{flip.size | number:'1.0-0':'en'}}</p>
+              </div>
+                <p class="title_new">{{flip.title}}</p>
+                <p class="address_new">{{flip.address}}</p>
+                <div class="circle_">
+                  <round-progress
+                  [current]="flip.funded"
+                  [max]="100"
+                  [color]="'#1790C9'"
+                  [background]="'#eaeaea'"
+                  [radius]="40"
+                  [stroke]="3"
+                  [rounded]="true"
+                  [clockwise]="true"
+                  [responsive]="false"
+                  [duration]="800"
+                  [animation]="'easeInOutQuart'"
+                  [animationDelay]="0"
+                  style="position: relative;"
+                  >
+                </round-progress>
+                <p class="invested">{{flip.funded}}% Invested</p>
+                <!-- <circle-progress
+                style="margin-left: 15px;" 
+                [percent]="flip.funded" 
+                [title]="0"
+                >
+              </circle-progress> -->
+              <!-- <div role="progressbar" aria-valuenow="flip.funded" aria-valuemin="1" aria-valuemax="100" style="--value:{{
+                flip.funded}}"></div> -->
+              <div class="verticle_"></div> 
+              <ion-item lines="none" class="ion-no-padding">
+              <ion-icon name="home" class="home_icon"></ion-icon>
+              <ion-label>
+              
+                <p class="title_cost" *ngIf="flip.property_is=='Flip'">Total Investment</p>
+              <p class="acq_price" *ngIf="flip.property_is=='Flip'">{{flip.total_investment | number:'1.0-0':'en'}}</p>
+
+              <p class="title_cost" *ngIf="flip.property_is=='Residual'">Finding Value Target</p>
+              <p class="acq_price" *ngIf="flip.property_is=='Residual'">{{flip.initial_invest | number:'1.0-0':'en'}}</p>
+
+            </ion-label>
+             </ion-item>
+            </div>
+            <ion-button color="primary" class="learn_btn ion-activatable" *ngIf="flip.property_is=='Flip'" (click)="flip_detail(flip,flip.transaction)">
+              Learn More
+              <ion-ripple-effect></ion-ripple-effect>
+            </ion-button>
+            <ion-button color="primary" class="learn_btn ion-activatable" *ngIf="flip.property_is=='Residual'" (click)="prop_detail(flip,flip.transaction)">
+              Learn More
+              <ion-ripple-effect></ion-ripple-effect>
+            </ion-button>  
+         </ion-card> 
+        </div>
+      <div class="center_loader1">
+        <lottie-player *ngIf="loading_more" src="assets/loader1.json"  background="transparent"  speed="1" class="loader" 
+        style="width: 100px; height: 100px;margin-top: -70px;" loop autoplay></lottie-player>
+      </div>
+
+    <ion-infinite-scroll threshold="15px" (ionInfinite)="load_more_flip_($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    
+    <div class="bottom_footer">
+      <img src="assets/images/home_active.png" width="40" (click)="home('home')">
+      <img src="assets/images/investments.png" width="40" (click)="inves('new-investments')">
+      <img src="assets/images/portfolio.png" width="40" (click)="portfolio('portfolio')">
+      <img src="assets/images/flip.png" width="40" (click)="flip('flip')">
+      <img src="assets/images/profile.png" width="40" (click)="profile('profile')">
+    </div>
+</ion-content>

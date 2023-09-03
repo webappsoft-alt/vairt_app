@@ -1,0 +1,35 @@
+.title{
+    font-family: "poppins semibold";
+    color: #333;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+ion-buttons{
+    margin-left: 10px;
+}
+ion-item.trans{
+    margin-top: 0px;
+    border-radius: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 100%;
+}
+.sub_heading{
+    color:black;
+    font-family: 'poppins regular';
+    font-size: 14px;
+
+}
+ion-input{
+    font-family: 'poppins regular';
+    --padding-start:10px;
+    border:1px solid #dcdcdc
+}
+ion-item.ios_header_css{
+    padding-top: 20px;
+    border-radius: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    width: 100%;
+}

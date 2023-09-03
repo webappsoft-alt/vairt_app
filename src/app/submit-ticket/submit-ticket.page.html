@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-grid class="background1" [ngClass]="{'ios_header_css':ios_header==true}">
+      <ion-buttons (click)="back()">
+        <img src="assets/images/arr_back.png" width="20">
+      </ion-buttons>
+      <h4 class="heading">Submit a ticket</h4>
+    </ion-grid>  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+<h4 class="sub-heading">Select the item you need help with</h4>
+<ion-select [(ngModel)]="help_with">
+  <ion-select-option value="Getting Started">Getting Started</ion-select-option>
+  <ion-select-option value="General Support Regarding platform">General Support Regarding platform</ion-select-option>
+  <ion-select-option value="Tip and Tricks">Tip and Tricks</ion-select-option>
+  <ion-select-option value="Real Estate Transactions">Real Estate Transactions</ion-select-option>
+  <ion-select-option value="Rental Income">Rental Income</ion-select-option>
+  <ion-select-option value="Property Management">Property Management</ion-select-option>
+  <ion-select-option value="Bank Transactions">Bank Transactions</ion-select-option>
+  <ion-select-option value="Crypto Transactions">Crypto Transactions</ion-select-option>
+</ion-select>
+
+<p class="sub-heading">In a few words, tell us what your enquiry is about</p>
+<ion-input type="text" [(ngModel)]="enquiry" style="margin-top: 6px;"></ion-input>
+
+<h4 class="sub-heading">Select the Priority Level</h4>
+<ion-select [(ngModel)]="priority_level">
+  <ion-select-option value="Highest">Highest</ion-select-option>
+  <ion-select-option value="High">High</ion-select-option>
+  <ion-select-option value="Medium">Medium</ion-select-option>
+  <ion-select-option value="Low">Low</ion-select-option>
+  <ion-select-option value="Lowest">Lowest</ion-select-option>
+</ion-select>
+
+<p class="sub-heading">Tell us more...Please be as detailed as possible.</p>
+<ion-textarea [(ngModel)]="detail"></ion-textarea>
+
+<p class="sub-heading">Attachment</p>
+<ion-row class="ion-no-padding" style="height: 120px;">
+<ion-col size="4">
+  <img src="{{pic}}" class="attach">
+</ion-col>
+  <ion-col size="6" style="margin-top: 20px;">
+    <button class="form_btn" style="height:35px;width:75%;background-color: #E5E5E5;color:black;    margin-top: 10px;" (click)="pic_upload()">Upload</button>
+  </ion-col>
+</ion-row>
+
+  <button class="form_btn ion-activatable ripple-parent" (click)="create_ticket()"><ion-spinner *ngIf="loading"></ion-spinner>
+    <span *ngIf="!loading" class="submit-txt"> Create Ticket
+      <ion-ripple-effect></ion-ripple-effect></span>
+  </button>
+
+</ion-content>

@@ -1,0 +1,127 @@
+<ion-header class="ion-no-border">
+  <ion-slides  pager=true class="ion-no-padding slides"  [pager]="true" [options]="opts">
+    <ion-slide *ngFor="let property_images of property_images;let i=index">      
+      <ion-grid  class="background-img" [style.background-image]="'url(' + property_images + ')'">
+        <img src="assets/images/left-arrow-white.svg" class="back_arrow" style="width: 30px;" (click)="back()" [ngClass]="{'ios_header_backbtn':ios_header==true}">
+        <ion-buttons  (click)="home()" class="home_btn"  [ngClass]="{'ios_header_css_back':ios_header==true}">
+          <ion-icon name="home" class="home_icon"></ion-icon>
+        </ion-buttons>
+      </ion-grid>
+    </ion-slide>
+  </ion-slides> 
+  </ion-header>
+ <ion-content class="ion-padding">
+    <p class="address">#{{this.title}}</p>
+    <p class="type">{{address}}</p>
+
+    <ion-row class="ion-no-padding" style="margin-top: -10px;">
+      <ion-col size="6">
+        <p class="sub_title">Purchase Price </p>
+        <button class="price_btn" style="margin-top: -10px;">${{purchase_price}}</button>
+      </ion-col>
+      <ion-col size="6">
+        <p class="sub_title" style="text-align: right;">Remaining Share</p>
+        <button class="price_btn right">${{remaining_share}} </button>
+      </ion-col>
+    </ion-row>
+
+    <div class="hori_divider"></div>
+
+    <h4 class="heading">Agree and Sign</h4>
+    <p class="info">Read the information below and check the boxes to confirm. After you complete your investment copies
+      of all doucment will be accessible on your dashboard.</p>
+
+    <ion-row class="ion-no-padding adjust">
+      <ion-col size="1">
+        <ion-checkbox mode="md" [(ngModel)]="document_accessible"></ion-checkbox>
+      </ion-col>
+      <ion-col size="11">
+        <p class="txt">Read the information below and check the boxes to confirm. After you complete your investment
+          copies of all doucment will be accessible on your dashboard.</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-no-padding adjust">
+      <ion-col size="1">
+        <ion-checkbox mode="md" [(ngModel)]="delivery_of_document"></ion-checkbox>
+      </ion-col>
+      <ion-col size="11">
+        <p class="txt">I have reviewed and agree to the Electronic Consent and Delivery of Documents Form.</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-no-padding adjust">
+      <ion-col size="1">
+        <ion-checkbox mode="md" [(ngModel)]="offering_circular"></ion-checkbox>
+      </ion-col>
+      <ion-col size="11">
+        <p class="txt">I have recieved and reviewed the Offering Circular.</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-no-padding adjust">
+      <ion-col size="1">
+        <ion-checkbox mode="md" [(ngModel)]="subscription_agreement"></ion-checkbox>
+      </ion-col>
+      <ion-col size="11">
+        <p class="txt">I have reviewed and agree to the Subscription Agreement.</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-no-padding adjust">
+      <ion-col size="1">
+        <ion-checkbox mode="md" [(ngModel)]="w_9"></ion-checkbox>
+      </ion-col>
+      <ion-col size="11">
+        <p class="txt">I have reviewed the Form W-9 and certify under penality of perjurcy each of the statements
+          contained in Part || therof.</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-no-padding adjust">
+      <ion-col size="1">
+        <ion-checkbox mode="md" [(ngModel)]="united_state_citizen"></ion-checkbox>
+      </ion-col>
+      <ion-col size="11">
+        <p class="txt">I am a United States citizen or resident.</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-no-padding adjust">
+      <ion-col size="1">
+        <ion-checkbox mode="md" [(ngModel)]="warrent_true"></ion-checkbox>
+      </ion-col>
+      <ion-col size="11">
+        <p class="txt">I repersent and warrant that the answers provided here in are current, ture, correct and complete
+          and may be relied upon by the issuer and its manager and their respective affiliates. I will notify the
+          manager of any change to the information provided heere in promptly, but in any event within thirty days of
+          such change.</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-no-padding adjust">
+      <ion-col size="1">
+        <ion-checkbox mode="md" [(ngModel)]="risk_of_loss"></ion-checkbox>
+      </ion-col>
+      <ion-col size="11">
+        <p class="txt">I repersent such knowledge and expierence in financial and business matters that i can evaluate
+          the risks of this investment, and i can bear the economic rish of this invesment including the rish of
+          complete loss.</p>
+      </ion-col>
+    </ion-row>
+
+    <div class="hori_divider"></div>
+
+    <br>
+    <button class="form_btn ion-activatable ripple-parent" (click)="next()">
+      <ion-spinner *ngIf="loading"></ion-spinner>
+      <span *ngIf="!loading" class="submit-txt"> Continue
+        <ion-ripple-effect></ion-ripple-effect>
+      </span>
+    </button><br>
+
+    <div class="row" (click)="cancel_inves()">
+      <img src="assets/images/cancel.png" width="20" style="margin-top: 2px;">
+      <button class="trans_btn" style="color:#b8babb;width: auto;margin-top: 0px;">Cancel Investment</button>
+     </div><br>
+</ion-content>

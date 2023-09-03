@@ -1,0 +1,40 @@
+<ion-header class="ion-no-border">
+  <ion-item lines="none">
+    <h4 class="heading">Liquidate Property</h4>
+    <ion-icon name="close-circle-outline" slot="end" class="close_btn" (click)="close()"></ion-icon>
+  </ion-item>
+</ion-header>
+
+<ion-content>
+  <ion-row class="background1 ion-no-padding">
+    <ion-col size="auto" style="height: 70px; display: flex"
+      ><img src="assets/images/amount.svg" width="20" class="input_img"
+    /></ion-col>
+    <ion-col size="9" style="height: 70px">
+      <p class="input_lbl">Share Amount</p>
+      <ion-input
+        type="number"
+        readonly
+        [(ngModel)]="share"
+        class="input">
+    </ion-input>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="background1 ion-no-padding">
+    <ion-col size="auto" style="height: 70px; display: flex"
+      ><img src="assets/images/amount.svg" width="20" class="input_img"
+    /></ion-col>
+    <ion-col size="9" style="height: 70px">
+      <p class="input_lbl">Share Price</p>
+      <ion-input
+        type="number"
+        readonly
+        [(ngModel)]="price"
+        class="input">
+    </ion-input>
+    </ion-col>
+  </ion-row>
+  <br>
+    <button class="view_document" (click)="liq()">Liquidate</button>
+</ion-content>

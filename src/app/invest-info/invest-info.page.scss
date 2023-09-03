@@ -1,0 +1,143 @@
+// ion-content{
+//     font-family: 'poppins regular';
+// }
+// .set-height{
+//     width: 93%;
+//     margin-left: 0%;
+// }
+.address{
+    font-family: "poppins semibold";
+    white-space: break-spaces;
+}
+.type{
+    color:#b8babb;
+    margin-top: -5px;
+    font-size: 13px;
+}
+.sub_title{
+    color:#333;
+    font-size: 13px;
+    height: 10px;
+}
+.price_btn{
+    background: var(--ion-color-primary);
+    color:white;
+    text-align: center;
+    width: auto;
+    padding: 8px 10px;
+    border-radius: 5px;
+}
+.right{
+    float: right;
+    margin-right: 25px;
+    margin-top: 0px;
+}
+
+.hori_divider{
+    width: 100%;
+    height: 1px;
+    background-color: #dcdcdc;
+    margin-top: 10px;
+}
+.heading{
+    color:#333;
+    font-size: 15px;
+}
+ion-select{
+    --padding-start:10px;
+    font-family: 'poppins regular';
+    border:1px solid silver;
+    width: 94%;
+    margin-left: 3%;
+}
+
+// .lbl{
+//     font-family: 'poppins regular';
+//     color:#9A9A9A ;
+//     margin-left: 10px;
+//     margin-top: 30px;
+//     font-size: 13px;
+// }
+// ion-input{
+//     --padding-start:10px;
+//     font-family: 'poppins regular';
+//     border:1px solid silver;
+//     width: 90%;
+//     margin-left: 5%;
+//     margin-top: 15px;
+// }
+.trans_btn{
+    background:transparent;
+    border:none;
+    outline: none;
+    text-align: center;
+    width: 100%;
+    color:var(--ion-color-primary);
+    margin-top: 15px;
+}   
+.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.info{
+    color: #858587;
+    font-family: 'poppins regular';
+    text-align: justify;
+    width: 95%;
+    margin-top: -5px;
+    font-size: 12px;
+}
+
+.ite_name{
+   font-family: 'poppins regular';
+   font-size: 13px;
+}
+ion-list.list{
+    width: 90%;
+    margin-left: 10%;
+  }
+  .desc{
+    font-family: "poppins regular";
+    border-bottom: 1px solid #dcdcdc;
+    font-size: 14px;
+    margin-top: 5px;
+    width: 100%;
+    padding-bottom: 6px;
+  }
+
+.background-img{
+    height: 250px;
+    background-size: cover;
+    background-position: center; 
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+ion-slides.images {
+    background: transparent;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    top: -48px;
+}
+.heading_{
+    color: #333;
+    margin-top: 6px;
+    font-family: 'poppins semibold';
+}
+ion-input{
+    font-family: 'poppins regular';
+}
+.desc{
+    font-family: 'poppins regular';
+    font-size: 14px;   
+}
+.row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+ion-buttons.ios_header_css_back{
+    margin-top: 40px;
+}

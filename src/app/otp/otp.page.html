@@ -1,0 +1,37 @@
+<ion-content>
+<ion-grid class="background1" style="position: fixed;width: 100%;"> <br>
+  <img src="assets/images/left-arrow-white.svg" class="back" (click)="back()" [ngClass]="{'ios_header_css':ios_header==true}">
+  <img src="assets/images/otp.png" class="center" width="50">
+  <h4 class="heading">{{username}} ! Your email is where all important details land</h4>
+  <p class="sub-heading">A One-time OTP valid for 10minutes has been sent to your email.</p>
+</ion-grid>
+<ion-grid class="content_grid">
+
+<form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)" style="width: 95%;margin-left: 2.5%;">
+
+    <br><br>
+    <ion-row  class="background ion-no-padding">
+      <ion-col size="auto" style="height: 70px; display: flex"
+        ><img src="assets/images/ssn_number.svg" width="20" class="input_img"
+      /></ion-col>
+      <ion-col size="9" style="height: 70px">
+        <p class="input_lbl">OTP</p>
+        <ion-input
+          type="number"
+          formControlName="otp"
+          [(ngModel)]="otp"
+          class="input"
+        ></ion-input>
+      </ion-col>
+    </ion-row>
+    <br>
+
+    <button class="form_btn ion-activatable ripple-parent"  [disabled]="!validations_form.valid" ><ion-spinner *ngIf="loading"></ion-spinner>
+      <span *ngIf="!loading" class="submit-txt"> 
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+        <ion-ripple-effect></ion-ripple-effect></span></button>
+
+          <p style="text-align: center;" (click)="resend_otp()">Didn’t receive your OTP? <span class="bottom_txt" >Resend OTP</span></p>
+       </form>  
+      </ion-grid>
+</ion-content>

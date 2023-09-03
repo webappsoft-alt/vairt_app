@@ -1,0 +1,202 @@
+<ion-content>
+  <ion-grid class="background1" style="position: fixed;width: 100%;" [ngClass]="{'ios_header_css':ios_header==true}"> <br><br>
+    <img src="assets/images/account_type.png" class="center" width="70"><br><br>
+    <h4 class="heading">You're awesome {{name}} !</h4>
+    <p class="sub-heading">We want to know what type of account you need</p><br>
+  </ion-grid>
+  <ion-grid class="content_grid">
+    <div style="width: 95%;margin-left: 2.5%;">
+      <p class="lbl">Account Type</p>
+      <ion-select [(ngModel)]="type" (ionChange)="acc_type($event)">
+        <ion-select-option value="individual">Individual</ion-select-option>
+        <ion-select-option value="joint">Joint</ion-select-option>
+        <ion-select-option value="trust">Trust</ion-select-option>
+        <ion-select-option value="entity">Entity</ion-select-option>
+        <ion-select-option value="retirement">Retirement</ion-select-option>
+      </ion-select>
+
+      <!--------------Joint -------->
+
+      <div *ngIf="joint==true">
+        <h4 class="heading_">Joint Investor's Information</h4>
+        <div class="row" style="margin-top: -10px;">
+          <ion-checkbox [(ngModel)]="joint_owner" mode="md" style="margin-top: 18px;"></ion-checkbox>
+          <p class="lbl" style="font-size: 12px;margin-left: 10px">The Joint Owner is the spouse of the primary owner
+          </p>
+        </div>
+
+        <h4 class="lbl" style="font-size: 14px;">First Name</h4>
+        <ion-input type="text" [(ngModel)]="first_name"></ion-input>
+        <h4 class="lbl" style="font-size: 14px;">Last Name</h4>
+        <ion-input type="text" [(ngModel)]="last_name"></ion-input>
+
+        <h4 class="heading_">Contact Information</h4>
+        <ion-row class="ion-no-padding" style="margin-top: -10px;">
+          <ion-col size="auto" class="ion-no-padding">
+            <ion-checkbox [(ngModel)]="joint_inv_address" mode="md" style="margin-top:20px"></ion-checkbox>
+          </ion-col>
+          <ion-col size="10" class="ion-no-padding">
+            <p class="lbl" style="font-size: 12px;margin-left: 10px;">Joint investor's address and phone number is the
+              same as your personal address/phone number.</p>
+          </ion-col>
+        </ion-row>
+
+        <h4 class="lbl" style="font-size: 14px;">Phone Number</h4>
+        <ion-input type="tel" [(ngModel)]="joint_phone_no"></ion-input>
+
+        <h4 class="lbl" style="font-size: 14px;">Country of Residence</h4>
+        <ion-item lines="none" class="ion-no-padding country_itm" (click)="countryList()">
+          <p style="margin-left:10px">{{country}}</p>
+        </ion-item>
+
+        <h4 class="lbl" style="font-size: 14px;">Address</h4>
+        <ion-input type="text" [(ngModel)]="autocomplete.input"
+          (ionInput)="UpdateSearchResults()" (ionClear)="ClearAutocomplete()">
+        </ion-input>
+        <ion-list [hidden]="autocompleteItems.length == 0">
+          <ion-item lines="none " class="ion-no-padding" *ngFor="let item of autocompleteItems" tappable
+            (click)="SelectSearchResult(item)">
+            <p class="desc">{{ item.description }}</p>
+          </ion-item>
+        </ion-list>
+
+        <p class="lbl" style="font-size: 14px;">State</p>
+        <ion-input type="text" [(ngModel)]="state" value="{{state}}"></ion-input>
+        <p class="lbl" style="font-size: 14px;">Zip Code</p>
+        <ion-input type="text" [(ngModel)]="postalCode" value="{{postalCode}}"></ion-input>
+      </div>
+
+      <!-------------- Trust -------->
+
+      <div *ngIf="trust==true">
+        <h4 class="heading_">Trust Account</h4>
+        <h4 class="lbl" style="font-size: 14px;">Name of Trust</h4>
+        <ion-input type="text" [(ngModel)]="name_trust"></ion-input>
+
+        <h4 class="lbl" style="font-size: 14px;">Your Title within Trust</h4>
+        <ion-input type="text" [(ngModel)]="title_trust"></ion-input>
+
+        <h4 class="lbl" style="font-size: 14px;">Type of Trust</h4>
+        <ion-select [(ngModel)]="trust_type">
+          <ion-select-option value="0">Revocable Trust</ion-select-option>
+          <ion-select-option value="1">Irrevocable Trust</ion-select-option>
+        </ion-select>
+
+        <h4 class="lbl" style="font-size: 14px;">TIN</h4>
+        <ion-input type="text" [(ngModel)]="tin"></ion-input>
+        <br><br>
+        <ion-select [(ngModel)]="tin_select">
+          <ion-select-option value="0">Jurisdiction of Registration</ion-select-option>
+          <ion-select-option value="1">Alabama</ion-select-option>
+          <ion-select-option value="2">Alaska</ion-select-option>
+          <ion-select-option value="3">Arizona</ion-select-option>
+          <ion-select-option value="4">Arkansas</ion-select-option>
+          <ion-select-option value="5">California</ion-select-option>
+          <ion-select-option value="6">Colorado</ion-select-option>
+          <ion-select-option value="7">Connecticut</ion-select-option>
+          <ion-select-option value="8">Delaware</ion-select-option>
+          <ion-select-option value="9">District of Columbia</ion-select-option>
+          <ion-select-option value="10">Florida</ion-select-option>
+          <ion-select-option value="11">Georgia</ion-select-option>
+        </ion-select>
+        <h4 class="heading_">Documentation</h4>
+        <p class="lbl" style="font-size: 14px;">Please provide copies of the following documents. You can skip this step
+          right now by checking the box below.</p>
+        <ion-row class="ion-no-padding" style="margin-top: -10px;">
+          <ion-col size="auto" class="ion-no-padding">
+            <ion-checkbox [(ngModel)]="doc_later" mode="md" style="margin-top:20px"></ion-checkbox>
+          </ion-col>
+          <ion-col size="10" class="ion-no-padding">
+            <p class="lbl" style="font-size: 12px;margin-left: 10px;">I will provide a copy of the Trust Agreement
+              later. I acknowledge that my investment will not be processed until I provide these documents..</p>
+          </ion-col>
+        </ion-row>
+        <p class="lbl" style="font-size: 14px;">Copy of Trust Agreement</p>
+
+        <ion-item lines='none' class="ion-no-padding" (click)="filechooser()">
+          <ion-input placeholder='Upload Document' value="{{upload_file}}" class="upload_doc" readonly></ion-input>
+        </ion-item>
+      </div>
+
+      <!--------------Entity ------------------->
+
+      <div *ngIf="entity==true">
+        <h4 class="heading_">Entity Account</h4>
+        <h4 class="lbl" style="font-size: 14px;">Name of Entity</h4>
+        <ion-input type="text" [(ngModel)]="name_entity"></ion-input>
+
+        <h4 class="lbl" style="font-size: 14px;">Your Title within Entity</h4>
+        <ion-input type="text" [(ngModel)]="title_entity"></ion-input>
+
+        <h4 class="lbl" style="font-size: 14px;">Type of Entity</h4>
+        <ion-select [(ngModel)]="entity_type">
+          <ion-select-option value="0">Single Member LLC</ion-select-option>
+          <ion-select-option value="1">Multiple Member LLC</ion-select-option>
+          <ion-select-option value="2">S Crop</ion-select-option>
+          <ion-select-option value="3">C Crop</ion-select-option>
+          <ion-select-option value="4">Limited Partnership</ion-select-option>
+        </ion-select>
+
+        <h4 class="heading_">Documentation</h4>
+        <p class="lbl" style="font-size: 14px;">Please provide copies of the following documents. You can skip this step
+          right now by checking the box below.</p>
+
+        <ion-row class="ion-no-padding" style="margin-top: -10px;">
+          <ion-col size="auto" class="ion-no-padding">
+            <ion-checkbox mode="md" [(ngModel)]="doc_entity" style="margin-top:20px"></ion-checkbox>
+          </ion-col>
+          <ion-col size="10" class="ion-no-padding">
+            <p class="lbl" style="font-size: 12px;margin-left: 10px;">I will provide a copy of the Certificate of
+              Formation and a copy of the Operating Agreement later. I acknowledge that my investment will not be
+              processed until I provide these documents.
+            </p>
+          </ion-col>
+        </ion-row>
+        <p class="lbl" style="font-size: 14px;">Certificate of Formation</p>
+
+        <ion-item lines='none' class="ion-no-padding" (click)="certification()">
+          <ion-input placeholder='Upload Document' value="{{certification_file}}" class="upload_doc" readonly>
+          </ion-input>
+        </ion-item>
+
+        <p class="lbl" style="font-size: 14px;">Operating Agreement</p>
+        <ion-item lines='none' class="ion-no-padding" (click)="operating()">
+          <ion-input placeholder='Upload Document' value="{{operating_file}}" class="upload_doc" readonly></ion-input>
+        </ion-item>
+      </div>
+      <!---------------Retirement ----------->
+      <div *ngIf="retirement==true">
+        <h4 class="heading_">Retirement Account</h4>
+        <p class="lbl" style="font-size: 13px;">Fund Your Investment</p>
+        <ion-radio-group mode="md" [(ngModel)]="retirement_value">
+          <ion-row class="ion-no-padding" style="margin-top: -10px;">
+            <ion-col size="auto" class="ion-no-padding">
+              <ion-radio value="0" mode="md" style="margin-top:20px">
+              </ion-radio>
+            </ion-col>
+            <ion-col size="10" class="ion-no-padding">
+              <p class="lbl" style="font-size: 12px;margin-left: 10px;">Open a New IRA with Vairt (Most people choose
+                this option)</p>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-no-padding" style="margin-top: -10px;">
+            <ion-col size="auto" class="ion-no-padding">
+              <ion-radio value="1" mode="md" style="margin-top:20px">
+              </ion-radio>
+            </ion-col>
+            <ion-col size="10" class="ion-no-padding">
+              <p class="lbl" style="font-size: 12px;margin-left: 10px;margin-top:20px;">Use an existing IRA</p>
+            </ion-col>
+          </ion-row>
+        </ion-radio-group>
+      </div>
+      <button class="form_btn ion-activatable ripple-parent" (click)="next()">
+        <ion-spinner *ngIf="loading"></ion-spinner>
+        <span *ngIf="!loading" class="submit-txt"> NEXT
+          <ion-ripple-effect></ion-ripple-effect>
+        </span>
+      </button>
+    </div>
+    <br><br><br><br><br><br>
+  </ion-grid>
+</ion-content>

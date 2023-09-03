@@ -1,0 +1,363 @@
+
+    ion-avatar{
+        width: 100%;
+        height: 80px;
+        --border-radius: 10px;
+    }
+    .prop_type_img{
+        display: flex;
+        align-items: center;
+        align-content: center;
+        margin-left: 5px;
+    }
+    .name{
+        font-family: 'poppins regular';
+        color:#454444;
+        margin-left: 5px;
+        margin-top: 0px;
+        font-size: 13px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis ;
+        text-align: left;
+    }
+    .address{
+        font-family: 'poppins regular';
+        color:#A6A6A9;
+        // margin-left: 10px;
+        font-size: 11px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis ;
+        margin-top: -13px;
+        margin-left: 10px;
+        text-align: left;
+        width: 75%;
+    }
+    .price{
+        color:#656567;
+        font-family: 'poppins regular';
+        text-align: right;
+        font-size: 13px;
+        margin-top: 17px;
+    }
+    .img_prop{
+        width: 100%;
+        height: 100%;
+        position: relative;
+        object-fit: contain;
+
+    }
+
+    .heart_outline{
+        position: absolute;
+    }
+    .prop_type{
+        margin-left: 10px;
+        width: 13px;
+    }
+    .slide_count{
+        font-size: 13px;
+        color:#A6A6A9;
+        padding-top: 8px;
+    }
+    .price_btn{
+        background:var(--ion-color-primary);
+        border: none;
+        outline: none;
+        width: auto;
+        padding:7px 15px;
+        font-family: 'poppins regular';
+        color: white;
+        border-radius: 4px;
+        float: right;
+        margin-top: -25px;
+    }
+    ion-item.search{
+        // border:1px solid #D9D9DA;  
+        margin-top: 20px;
+        width: 92%;
+        box-shadow: 0 4px 6px -2px #dcdcdc;
+        height: 45px;
+        border-radius: 25px;
+        margin-left: 4%;
+        --background: #f5f5f5;
+    }
+    ion-input{
+        font-family: 'poppins regular';
+        --padding-start:10x;
+        margin-left: 10px;
+        margin-top: -4px;
+        font-size: 14px;
+    }
+    .property_status{
+        background: black;
+        font-family: 'poppins regular';
+        color:white;
+        text-align: center;
+        font-size: 12px;
+        border-radius: 5px;
+        width: 100%;
+        padding: 2px;
+    }
+    .property_status_live{
+        background: #149636;
+        font-family: 'poppins regular';
+        color:white;
+        text-align: center;
+        font-size: 12px;
+        border-radius: 5px;
+        width: 100%;
+        padding: 2px;    
+    }
+    
+    .center_loader {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin-top: 0px;
+    }
+    .skelton_div{
+        margin-top: 0px;
+    }
+    .noti{
+     position: absolute;
+     right: 9px;
+     top:4px;
+     background: var(--ion-color-danger);
+     width: 10px;
+     height: 10px;
+     border-radius: 30px;
+ }
+ .background2{
+     height: 174px;
+ }
+ .center{
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+ }
+
+ ion-card.crd{
+     width: 95%;
+     height: auto;
+     border-radius: 0px; 
+     margin-left: 2.5%;    
+ }
+ ion-avatar.prop_avatar{
+     width: 100%;
+     height: 180px;
+     padding:10px;
+     --border-radius: 0px;
+     position: relative;
+ }
+ .icn_card{
+    top: 15px;
+    right: 15px;
+    color: var(--ion-color-primary);
+    font-size: 25px;
+    position: absolute;
+ }
+ .prop_type_{
+     background: var(--ion-color-primary);
+     color:white;
+     text-align: center;
+     font-family: 'poppins regular';
+     position: absolute;
+     top: 20px;
+     width: auto;
+    padding: 2px 20px;
+ }
+ .roi_div{
+    background: black;
+    color:white;
+    text-align: center;
+    font-family: 'poppins semibold';
+    position: absolute;
+    bottom: 20px;    
+    width: auto;
+   padding: 2px 20px;  
+ }
+ .flip_div{
+    background: #1790c9;
+    color:white;
+    text-align: center;
+    font-family: 'poppins regular';
+    position: absolute;
+    bottom: 22px;
+    width: auto;
+    padding: 2px 20px;
+    right: 20px;
+    border-radius: 5px; 
+ }
+ .vertical{
+    background: white;
+    width: 1px;
+    height: 20px;
+    margin-left: 10px;
+}
+ .row_{
+    width: auto;
+    background: var(--ion-color-primary);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    max-width: 215px;
+    height: 35px;
+    margin-right: 0px;
+    // padding: 0px 20px;
+    margin-left: 10px;
+    margin-top: 5px;
+    
+}
+.assc{
+    color:white;
+    font-family: 'poppins regular';
+    font-size: 13px;
+    margin-left: 5px;
+    padding-top: 5px;
+}
+.address_new{
+    font-family: 'poppins regular';
+    color:#A6A6A9;
+    font-size: 11px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis ;
+    margin-left: 10px;
+    text-align: left;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: -10px;
+}
+.title_new{
+    font-family: 'poppins semibold';
+    color:black;
+    text-align: left;
+    width: 90%;
+    margin-left: 5%;
+    font-size: 13px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis ;
+}
+.circle_{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    margin-left: 4%;
+}
+.verticle_{
+    background-color:black;
+    width: 1px;
+    height: 10px;
+    width: 1px;
+    height: 70px;
+}
+.home_icon{
+    color:black;
+    margin-right: 10px;  
+    margin-top: -30px;      
+}
+.hori_{
+    width: 100%;
+    height: 1px;
+    background: #dcdcdc;
+}
+.acq_price{
+    text-align: center;
+    font-family: 'poppins regular';
+    color: black;
+}
+.title_cost{
+    color:black;
+    font-family: 'poppins regular';
+    text-align: center;
+    margin-top: -5px;
+    font-size: 13px;
+}
+.center_loader1{
+    margin-top: 20px;
+}
+.end_property{
+    width: 100%;
+    height: 90px;
+    margin-top: 0px;
+    text-align: center;
+    font-family: 'poppins regular';
+    color: var(--ion-color-primary);
+}
+.learn_btn{
+    display: block;
+    width: 70%;
+    margin-left: 15%;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+@keyframes growProgressBar {
+    0%, 33% { --pgPercentage: 0; }
+    100% { --pgPercentage: var(--value); }
+  }
+  
+//   @property --pgPercentage {
+//     syntax: '<number>';
+//     inherits: false;
+//     initial-value: 0;
+//   }
+  
+  div[role="progressbar"] {
+    --size: 5rem;
+    --fg: #000;
+    --bg: #f5f5f5;
+    --pgPercentage: var(--value);
+    animation: growProgressBar 3s 1 forwards;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: 
+      radial-gradient(closest-side, white 93%, transparent 0 99.9%, white 0),
+      conic-gradient(var(--fg) calc(var(--pgPercentage) * 1%), var(--bg) 0)
+      ;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: calc(var(--size) / 5);
+    color: var(--fg);
+    margin-left: 15px;
+  }
+  
+  div[role="progressbar"]::before {
+    counter-reset: percentage var(--value);
+    content: counter(percentage) '%  Invested';
+    word-spacing: 100vw;
+    margin: auto;
+    font-size: 11px;
+    font-family: 'poppins regular';
+    text-align: center;
+  }
+  .invested{
+    font-family: 'poppins regular';
+    margin-left: 0px;
+    color: black;
+    position: absolute;
+    width: 70px;    
+    text-align: center;
+    //left: 20px;
+    margin-left: 6px;
+    font-size: 12px;
+  }
+  .img-loaded + ion-spinner {
+    display:none;
+  }
+  // .center in my case to make the spinner at the center
+  .center{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    color:black
+  }

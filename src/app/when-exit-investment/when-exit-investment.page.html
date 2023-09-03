@@ -1,0 +1,63 @@
+<ion-content>
+  <ion-grid class="background1" style="position: fixed;width: 100%;" [ngClass]="{'ios_header_css':ios_header==true}"> <br>
+    <img src="assets/images/when_exit.png" class="center" width="70"><br>
+    <h4 class="heading">Start move {{name}} !</h4>
+  <p class="sub-heading">We want to know more about your preferred exit strategy.</p>
+  </ion-grid>
+  <ion-grid class="content_grid ion-no-padding">  
+    <br><br>
+  <h4 class="title">When would you need to exit this investment?</h4>
+  <ion-radio-group [(ngModel)]="when">
+    <ion-row class="ion-padding">
+    <ion-col size="1"><ion-radio value="1" mode="md"></ion-radio></ion-col>
+    <ion-col size="11"><p class="txt">Less than 1 year</p></ion-col>
+  </ion-row>
+  <ion-row class="ion-padding" style="margin-top: -30px;">
+    <ion-col size="1"><ion-radio value="2" mode="md"></ion-radio></ion-col>
+    <ion-col size="11"><p class="txt">1-3 Years</p></ion-col>
+  </ion-row>
+  <ion-row class="ion-padding" style="margin-top: -30px;">
+    <ion-col size="1"><ion-radio value="3" mode="md"></ion-radio></ion-col>
+    <ion-col size="11"><p class="txt">3-5 Years</p></ion-col>
+  </ion-row>
+  <ion-row class="ion-padding" style="margin-top: -30px;">
+    <ion-col size="1"><ion-radio value="4" mode="md"></ion-radio></ion-col>
+    <ion-col size="11"><p class="txt">5-7 Years</p></ion-col>
+  </ion-row>
+  <ion-row class="ion-padding" style="margin-top: -30px;">
+    <ion-col size="1"><ion-radio value="5" mode="md"></ion-radio></ion-col>
+    <ion-col size="11"><p class="txt">7-10 Years</p></ion-col>
+  </ion-row>
+  <ion-row class="ion-padding" style="margin-top: -30px;">
+    <ion-col size="1"><ion-radio value="6" mode="md"></ion-radio></ion-col>
+    <ion-col size="11"><p class="txt">10+</p></ion-col>
+  </ion-row>
+  </ion-radio-group>
+
+  <div class="hori_bar"></div>
+  <p class="des">You selected an investment time horizon indicated above. The investment you have selected has an anticipated hold period of at least 5 years, and as this is an illiquid investment, you may not be able to sell or otherwise exit your investment for sometime.</p>
+
+  <h4 class="title">Please select one of the following</h4>
+<ion-radio-group [(ngModel)]="comfort">
+  <ion-row class="ion-padding">
+  <ion-col size="1"><ion-radio value="1" mode="md"></ion-radio></ion-col>
+  <ion-col size="11"><p class="txt">i'm comfortable with the investment time horizon</p></ion-col>
+</ion-row>
+
+<ion-row class="ion-padding" style="margin-top: -30px;">
+  <ion-col size="1"><ion-radio value="2" mode="md"></ion-radio></ion-col>
+  <ion-col size="11"><p class="txt">i'm not comfortable with having my money locked up for the investment time horizon</p></ion-col>
+</ion-row>
+</ion-radio-group>
+
+<br>
+<button class="form_btn ion-activatable ripple-parent" (click)="next()"><ion-spinner *ngIf="loading"></ion-spinner>
+  <span *ngIf="!loading" class="submit-txt"> NEXT
+    <ion-ripple-effect></ion-ripple-effect></span></button>
+    <br><br><br><br><br><br>
+    
+
+</ion-grid>
+
+
+</ion-content>

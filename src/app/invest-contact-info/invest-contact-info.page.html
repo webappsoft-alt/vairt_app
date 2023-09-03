@@ -1,0 +1,165 @@
+<ion-header class="ion-no-border">
+  <div class="background2">
+    <ion-row class="ion-padding" [ngClass]="{'ios_header_css_row':ios_header==true}">
+      <ion-col size-xs="9.6" size-sm="9.6" size-md="10" size-lg="10"><img src="assets/images/setting_white.png" width="22" (click)="setting()"></ion-col>
+      <ion-col size-xs="1.2" size-sm="1.2" size-md="1" size-lg="1" (click)="noti()"><img src="assets/images/bell.png" width="25" style="float: right;margin-right: 5px;position: relative;">
+      <div class="noti"></div>
+      </ion-col>
+      <ion-col size-xs="1.2" size-sm="1.2" size-md="1" size-lg="1" (click)="logout()"><img src="assets/images/logout_white.png" width="25" style="float: right;"></ion-col>
+    </ion-row>
+    <h4 class="amount">${{balance}}</h4>
+    <p class="amount_txt">Available Balance</p>
+    <ion-item class="trans ion-no-padding" lines="none">
+      <ion-row class="ion-no-padding" style="width: 100%;">
+        <ion-col size="6" class="border" (click)="top_up()">
+          <img src="assets/images/wallet_up.png" class="center" width="32" style="margin-top: -2px;">
+          <p class="top">Topup</p>
+        </ion-col>
+        <ion-col size="6" (click)="top_down()" style="height: 51px;"><img src="assets/images/wallet_down.png" class="center" width="32"
+            style="margin-top: 9px;">
+          <p class="top">Topdown</p>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </div>
+  </ion-header>
+ <ion-content class="ion-padding">
+      <p class="lbl" style="font-family: 'poppins bold';">Confirm Personal and Contact Information</p>
+      <p class="title">Congratulations on selecting your next investment. In order to proceed our broker dealer requires some additional information. Please verify your account information.</p>
+      
+      <p class="tile">Personal Information</p>
+
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/user.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">First Name</p>
+          <ion-input
+            type="text"
+            [(ngModel)]="first_name"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/user1.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">Last Name</p>
+          <ion-input
+            type="text"
+            [(ngModel)]="last_name"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <p class="tile">Contact Information</p>
+
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/phone.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">Phone</p>
+          <ion-input
+            type="tel"
+            [(ngModel)]="phone_no"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/country.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">Country of Residence</p>
+          <ion-input
+            type="text"
+            readonly (click)="countryList()"
+            [(ngModel)]="user_country"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+      
+      <ion-row  class="background ion-no-padding">
+        <ion-col size="auto" style="height: 70px; display: flex"
+          ><img src="assets/images/pin.svg" width="20" class="input_img"
+        /></ion-col>
+        <ion-col size="9" style="height: 70px">
+          <p class="input_lbl">Address</p>
+          <ion-input
+            type="text"
+            [(ngModel)]="autocomplete.input"
+            (ionInput)="UpdateSearchResults()" (ionClear)="ClearAutocomplete()"
+            class="input"
+          ></ion-input>
+        </ion-col>
+      </ion-row>
+      
+
+      <ion-list [hidden]="autocompleteItems.length == 0" class="list">
+        <ion-item lines="none " class="ion-no-padding" *ngFor="let item of autocompleteItems" tappable
+         (click)="SelectSearchResult(item)">
+         <p class="desc">{{ item.description }}</p>
+       </ion-item>
+     </ion-list>
+
+     <ion-row  class="background ion-no-padding">
+      <ion-col size="auto" style="height: 70px; display: flex"
+        ><img src="assets/images/city.svg" width="20" class="input_img"
+      /></ion-col>
+      <ion-col size="9" style="height: 70px">
+        <p class="input_lbl">City</p>
+        <ion-input
+          type="text"
+          [(ngModel)]="city"
+          class="input"
+        ></ion-input>
+      </ion-col>
+    </ion-row>
+
+     <ion-row  class="background ion-no-padding">
+      <ion-col size="auto" style="height: 70px; display: flex"
+        ><img src="assets/images/zip-code.svg" width="20" class="input_img"
+      /></ion-col>
+      <ion-col size="9" style="height: 70px">
+        <p class="input_lbl">Zip Code</p>
+        <ion-input
+          type="text"
+          [(ngModel)]="zip"
+          class="input"
+        ></ion-input>
+      </ion-col>
+    </ion-row>
+
+        <ion-row  class="background ion-no-padding">
+          <ion-col size="auto" style="height: 70px; display: flex"
+            ><img src="assets/images/ssn_number.svg" width="20" class="input_img"
+          /></ion-col>
+          <ion-col size="9" style="height: 70px">
+            <p class="input_lbl">SSN Number</p>
+            <ion-input
+              type="text"
+              [(ngModel)]="ssn_number"
+              class="input"
+            ></ion-input>
+          </ion-col>
+        </ion-row>
+
+        <br><br>
+        <button class="form_btn ion-activatable ripple-parent" (click)="next()"><ion-spinner *ngIf="loading"></ion-spinner>
+          <span *ngIf="!loading" class="submit-txt"> Next
+            <ion-ripple-effect></ion-ripple-effect></span></button>
+            <br>
+            <div class="row" (click)="cancel_inves()">
+              <img src="assets/images/cancel.png" width="20" style="margin-top: 2px;">
+              <button class="trans_btn" style="color:#b8babb;width: auto;margin-top: 0px;">Cancel Investment</button>
+           </div><br>
+     </ion-content>

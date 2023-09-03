@@ -1,0 +1,41 @@
+<ion-header class="ion-no-border">
+  <img src="assets/images/logo4.png" width="150" class="center"><br>
+</ion-header>
+<ion-content class="ion-padding">
+<h3 class="heading">Sign In</h3>
+<p class="sub-heading">Please enter your correct details below for signin on 'VAIRT' app.</p><br>
+  <form [formGroup]="validations_form" (ngSubmit)="onSubmit(validations_form.value)" [ngClass]="{'margin':isKeyboardHide==false}">
+      <ng-container *ngFor="let validation of validation_messages.email">
+      <ion-row lines="none" class="background ion-no-padding"  [ngClass]="{'error-message' : validations_form.get('email').hasError(validation.type) && (validations_form.get('email').dirty || validations_form.get('email').touched)}">
+        <ion-col size="auto" style="height: 70px;display: flex;"><img src="assets/images/email.svg" width="20" class="input_img"></ion-col>
+        <ion-col size="9" style="height: 70px;">
+        <p class="input_lbl">Email</p>
+          <ion-input type="email" formControlName="email" class="input"></ion-input>
+      </ion-col>
+      </ion-row>
+    </ng-container>
+      <br>
+      <ng-container *ngFor="let validation of validation_messages.password">
+        <ion-row  class="background ion-no-padding"  [ngClass]="{'error-message' : validations_form.get('password').hasError(validation.type) && (validations_form.get('password').dirty || validations_form.get('password').touched)}">
+          <ion-col size="auto" style="height: 70px;display: flex;"><img src="assets/images/password.svg" width="20" class="input_img"></ion-col>
+          <ion-col size="9" style="height: 70px;"> 
+          <p class="input_lbl">Password</p>
+            <ion-input type="password" formControlName="password" class="input"></ion-input>
+          </ion-col>
+        </ion-row>
+      </ng-container>
+      <br>
+      <p class="forgot_password" (click)="forgot()">Forgot Password</p>
+      <button class="form_btn ion-activatable ripple-parent"  [disabled]="!validations_form.valid"><ion-spinner *ngIf="loading"></ion-spinner>
+      <span *ngIf="!loading" class="submit-txt"> 
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+        <ion-ripple-effect></ion-ripple-effect></span></button>
+     </form>
+
+    <div class="bottom" *ngIf="isKeyboardHide==true">
+    <p>You don't have an account?</p>      <div class="row_bottom" (click)="signup()">
+        <span class="bottom_txt">Sign up</span>
+        <ion-icon name="caret-forward-outline" class="caret_icon"></ion-icon>
+      </div>
+    </div>
+  </ion-content>

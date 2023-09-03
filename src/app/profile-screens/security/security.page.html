@@ -1,0 +1,34 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="header">
+    <ion-item lines="none" style="margin-top:12px">
+    <ion-buttons class="close_btn" (click)="close()">
+      <ion-icon name="chevron-back-outline" class="close"></ion-icon>
+    </ion-buttons>
+    <ion-title mode="ios">Security</ion-title>
+   </ion-item><br>
+  </ion-toolbar>
+</ion-header> 
+
+<ion-content class="ion-padding">
+  <p class="sub_heading">Keep your account secure by enabling the below options</p>
+  <ion-item lines="none" class="ion-no-padding border_bottom">
+    <p class="heading_black">Login</p>
+    <ion-toggle mode="ios" [(ngModel)]="login_security" slot="end" (click)="login_sec()"></ion-toggle>
+  </ion-item>
+  <ion-item lines="none" class="ion-no-padding border_bottom">
+    <p class="heading_black">Transaction Confirmations</p>
+    <ion-toggle mode="ios" [(ngModel)]="trans_security" slot="end" (click)="trans_sec()"></ion-toggle>
+  </ion-item>
+  <ion-item lines="none" class="ion-no-padding border_bottom">
+    <p class="heading_black">Keep Session Alive</p>
+    <ion-toggle mode="ios" [(ngModel)]="session_security" (click)="session_alive()" slot="end"></ion-toggle>
+  </ion-item>
+  <ion-item lines="none" class="ion-no-padding border_bottom">
+    <p class="heading_black">Send Email on Login</p>
+    <ion-toggle mode="ios" [(ngModel)]="send_email_security" (click)="send_email_sec()" slot="end"></ion-toggle>
+  </ion-item>
+  <ion-item lines="none" class="ion-no-padding">
+    <p class="heading_black">Detect IP Address Change</p>
+    <ion-toggle mode="ios" [(ngModel)]="ip_address_security" slot="end"></ion-toggle>
+  </ion-item>
+</ion-content>

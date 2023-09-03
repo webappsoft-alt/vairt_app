@@ -1,0 +1,369 @@
+<ion-header class="ion-no-border">
+    <ion-grid class="background1">
+      <ion-buttons (click)="back()" [ngClass]="{'ios_header_css_':ios_header==true}">
+        <img src="assets/images/left-arrow-white.svg" class="back_arrow" style="width: 30px;margin-left:0px;margin-top:0px">
+      </ion-buttons>
+      <h4 class="heading">{{full_name}}'s Dashboard</h4>
+    </ion-grid>
+</ion-header>
+
+    <!-- <ion-header class="ion-no-border">
+  <ion-toolbar class="header" [ngClass]="{'ios_header_css':ios_header==true}">
+      <ion-item lines="none" style="margin-top:12px">
+      <ion-buttons class="close_btn" (click)="back()">
+        <ion-icon name="chevron-back-outline" class="close"></ion-icon>
+      </ion-buttons>
+      <ion-title mode="ios">Dashboard</ion-title>
+     </ion-item><br>
+      <h4 class="hello">Hello,</h4>
+      <p class="name">{{full_name}}</p>
+    </ion-toolbar>
+  </ion-header> -->
+
+<ion-content class="ion-no-padding">
+ <br>
+  <div style="width: 95%;margin-left: 2.5%;">
+  <ion-row class="ion-no-padding">
+    <ion-col size="4" (click)="header_click('investments')">
+      <ion-icon name="business-outline" [ngClass]="{'center_active' : investments==true }" class="center"></ion-icon>
+      <p class="txt" [ngClass]="{'txt_active' : investments==true }" style="line-height: 16px;">My Investments</p>
+    </ion-col>
+    <ion-col size="4" (click)="header_click('actions')">
+      <ion-icon name="mail-outline" class="center" [ngClass]="{'center_active' : actions==true }"></ion-icon>
+      <p class="txt" [ngClass]="{'txt_active' : actions==true }" style="line-height: 16px;">Corporate Actions</p>
+    </ion-col>
+    <ion-col size="4" (click)="header_click('documents')">
+      <ion-icon name="briefcase-outline" class="center" [ngClass]="{'center_active' : documents==true }"></ion-icon>
+      <p class="txt" [ngClass]="{'txt_active' : documents==true }" style="line-height: 16px;">Documents</p>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-no-padding">
+    <ion-col size="4" (click)="header_click('friend')">
+      <ion-icon name="people-outline" class="center" [ngClass]="{'center_active' : friend==true }"></ion-icon>
+      <p class="txt" [ngClass]="{'txt_active' : friend==true }" style="line-height: 16px;">Refer A Friend</p>
+    </ion-col>
+    <ion-col size="4" (click)="header_click('profile')">
+      <ion-icon name="person-outline" class="center" [ngClass]="{'center_active' : profile==true }"></ion-icon>
+      <p class="txt" [ngClass]="{'txt_active' : profile==true }" style="line-height: 16px;">Profile</p>
+    </ion-col>
+  </ion-row>
+  <!-------------------My Investments --------------->
+  <div [hidden]="!investments">
+    <ion-row class="ion-no-padding">
+      <ion-col size="6" (click)="active_inves_detail()">
+        <div class="border-row"> Pending Investment: <span> $ {{pending_inves}}</span></div>
+      </ion-col>
+      <ion-col size="6" (click)="pending_inves_detail()">
+        <div class="border-row"> Pending Investment: <span> $ {{pending_inves}}</span></div>
+      </ion-col>
+      <ion-col size="6">
+        <div class="border-row">USD Balance: <span> $ {{balance}}</span></div>
+      </ion-col>
+    </ion-row><br>
+    <ion-row style="margin-top: 10px;">
+      <ion-col size="1" class="setcolor"></ion-col>
+      <ion-col size="2" class="chart-txt">Active</ion-col>
+
+      <ion-col size="1" class="setcolor1"></ion-col>
+      <ion-col size="2.5" class="chart-txt">Pending</ion-col>
+
+      <ion-col size="1" class="setcolor2"></ion-col>
+      <ion-col size="3" class="chart-txt">USD Balance</ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <div class="center_chart"> <canvas #barChart></canvas> </div>
+      </ion-col><br>
+      <!-- <ion-col size="6">
+        <div class="detail">
+       <span>Service Spent:</span>
+       <span class="count">12</span>
+      </div>
+         
+     <div class="detail">
+       <span>Service Earned:</span>
+       <span class="count">20</span>
+     </div>
+     
+     <div class="detail1">
+       <span>Balance:</span>
+       <span class="count">21</span>
+     </div>
+      </ion-col>-->
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">
+        <div class="border-row" routerLink="/deposit-funds">Deposit Funds</div>
+      </ion-col>
+      <!-- routerLink="/update-bank-detail" -->
+      <ion-col size="4">
+        <div class="border-row">Withdraw Funds</div>
+      </ion-col>
+      <ion-col size="4">
+        <div class="border-row" routerLink="/funds-request">Funds Request</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">
+        <div class="border-row">Transfer Funds</div>
+      </ion-col>
+      <ion-col size="4">
+        <div class="border-row" (click)="my_prop()">My Properties</div>
+      </ion-col>
+    </ion-row>
+
+    <h4 class="heading1">Wallet</h4>
+    <h4 class="totalhours" style="margin-top: -3px;">Total Hours</h4>
+    <h4 class="time">{{balance | number:'1.2-2':'en'}}<span class="hours">USD</span></h4>
+
+    <ion-row class="ion-padding">
+      <ion-col size="5" class="totalEarned">
+        <h4 class="totalhours">TOTAL GAINS</h4>
+        <h4 class="time" style="color:#1790C9">{{total_gains}}<span class="hours" style="color:#1790C9">USD</span></h4>
+      </ion-col>
+      <ion-col size="1" class="border-col"></ion-col>
+      <ion-col size="5" class="totalEarned1">
+        <h4 class="totalhours">GROSS YIELD</h4>
+        <h4 class="time" style="color:#1790C9">0<span class="hours" style="color:#1790C9">%</span></h4>
+      </ion-col>
+    </ion-row>
+   </div>
+
+
+  <!-------------------Coorporation Actions --------------->
+  <div *ngIf="actions==true">
+    <h4 class="heading1">Corporate actions for you</h4>
+    <div class="grey_background">
+      <p class="sub_heading">This Corporate Action area is to provide you control on your investments. Any major
+        decisions regarding your portfolio asset is raised over here. We will provide you with full details of the
+        situation and options for you to vote on,</p>
+      <!-- <div class="row_cooprate">
+        <div class="circle"></div> -->
+          <p class="points">The polling will be conducted over a set period of time.</p>
+      <!-- </div>
+      <div class="row_cooprate">
+        <div class="circle"></div> -->
+          <p class="points">During this time you will be able to raise questions seeking clarifications. </p>
+      <!-- </div> -->
+      <!-- <div class="row_cooprate">
+        <div class="circle"></div> -->
+          <p class="points">All investors of the relevant property will be required to cast their vote. </p>
+      <!-- </div>
+      <div class="row_cooprate"> 
+        <div class="circle"></div> -->
+          <p class="points">At the conclusion of the voting period, we will poll the voting and communicate the
+            decisions to all investors.</p>
+      <!-- </div>
+      <div class="row_cooprate"> 
+        <div class="circle"></div> -->
+          <p class="points">We would require at least 20% of the investors to cast their vote for the vote to be valid
+          </p>
+      <!-- </div> -->
+    </div>
+    </div>
+  <!-------------------Coorporation Actions --------------->
+  <div *ngIf="documents==true">
+    <h4 class="heading1">Documents</h4>
+  </div>
+
+  <!-------------------Refferal --------------->
+  <div *ngIf="friend==true">
+    <h4 class="heading1" style="margin-left: 10px;text-align: left;font-size: 15px;">Earn $ 200 for every new investor refer</h4>
+    <p class="sub_heading">We give you $ 200 to you and $ 200 to each friend or relative who invests.</p>
+    <p class="sub_heading">There is no limit, you can invite everyone you want, until the 3/6/2021, included!</p><br>
+    <div  style="border:1px solid black;height: 85px;">
+      <ion-input type="text" placeholder="www.vairt.com/r/" [(ngModel)]="referral"></ion-input>
+      <button class="share_btn" (click)="share_referral()">Share</button>
+      <button class="copy_btn"  (click)="copy()">Copy</button>
+    </div>
+    <p class="sub_heading" style="font-size: 12px;">copy or share your referral link with friends</p>
+    <ion-row>
+      <ion-col size="4">
+        <div class="circle_count">1</div>
+      </ion-col>
+      <ion-col size="4">
+        <div class="circle_count">2</div>
+      </ion-col>
+      <ion-col size="4">
+        <div class="circle_count">3</div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">
+        <p class="sub_heading" style="text-align: center;margin-top: -2px;white-space: nowrap;overflow: hidden;">Refer
+          friends</p>
+      </ion-col>
+      <ion-col size="4">
+        <p class="sub_heading" style="text-align: center;margin-top: -2px;white-space: nowrap;overflow: hidden;">Follow
+          along</p>
+      </ion-col>
+      <ion-col size="4">
+        <p class="sub_heading" style="text-align: center;margin-top: -2px;">Get Paid</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">
+        <p class="sub_heading" style="margin-top: -20px;text-align: center">Send referrals to your friends either here
+          or in your app.</p>
+      </ion-col>
+      <ion-col size="4">
+        <p class="sub_heading" style="margin-top: -20px;text-align: center">Follow your friend's progress and send
+          encouraging messages along the way.</p>
+      </ion-col>
+      <ion-col size="4">
+        <p class="sub_heading" style="margin-top: -20px;text-align: center">When your friend start investing, you will
+          get paid after their first investment.</p>
+      </ion-col>
+      </ion-row>
+    </div>
+   </div>
+
+  <!--------------Transaction --------------->
+  <ion-card class="transaction-card" mode="ios">
+    <ion-item class="ion-no-padding" lines="none" class="trans_item">
+     <img src="assets/images/transaction.png" width="30" class="trans_img">
+        <h4 class="trans_name">Transactions</h4>
+        <button slot="end" class="view_all_btn" (click)="view_all()">View All</button>
+    </ion-item>
+
+    <ion-card mode="md" class="recent-trans" *ngFor="let transactions of transactions">
+      <ion-item lines="none" class="ion-no-padding trans_" style="border-bottom: 1px solid #74D7F1;
+        ">
+          <ion-icon name="id-card-outline" class="tran_icon_left" slot="start"></ion-icon>
+          <ion-label slot="start">
+          <h4 class="tran_heading">Trx ID</h4>
+          <h4 class="tran_value" style="color:#74D7F1">{{transactions.trx_id}}</h4>
+         </ion-label>
+          <ion-icon name="calendar-outline" class="tran_icon_right" slot="end"></ion-icon>
+          <ion-label slot="end">
+          <h4 class="tran_heading">Date</h4>
+          <h4 class="tran_value">{{transactions.date}}</h4>
+          </ion-label>
+        </ion-item>
+    
+        <ion-item lines="none" class="ion-no-padding trans_">
+          <ion-icon name="card-outline" class="tran_icon_left" slot="start"></ion-icon>
+          <ion-label slot="start">
+          <h4 class="tran_heading">Debit/Credit:</h4>
+          <h4 class="tran_value">{{transactions.c_type}}</h4>
+          </ion-label>
+          </ion-item>
+    
+        <ion-item lines="none" class="ion-no-padding trans_">
+          <ion-icon name="logo-usd" class="tran_icon_left" slot="start"></ion-icon>
+          <ion-label slot="start">
+          <h4 class="tran_heading">Amount</h4>
+          <h4 class="tran_value">{{transactions.amount}}</h4>
+         </ion-label>
+        </ion-item>
+    
+        <ion-item lines="none" class="ion-no-padding trans_">
+          <ion-icon name="reader-outline" class="tran_icon_left" slot="start"></ion-icon>
+          <ion-label slot="start" class="ion-text-wrap">
+          <h4 class="tran_heading">Title</h4>
+          <h4 class="tran_value">{{transactions.description}}</h4>
+         </ion-label>
+        </ion-item>
+    
+        <ion-item lines="none" class="ion-no-padding trans_">
+          <ion-icon name="stats-chart-outline" class="tran_icon_left" slot="start"></ion-icon>
+          <ion-label slot="start" class="ion-text-wrap">
+          <h4 class="tran_heading" style="margin-top: 10px;">Status</h4>
+          <p class="tran_value status_approve_color" *ngIf="transactions.status=='Success'" slot="end">
+            {{transactions.status}}</p>
+          <p class="tran_value status_rejected_color" *ngIf="transactions.status=='Rejected'" slot="end">
+            {{transactions.status}}</p>
+    
+           <p class="tran_value status_rejected_btn" *ngIf="transactions.status=='Incomplete'" slot="end" (click)="incomplete(transactions.deposit_id,transactions.stage)">
+              {{transactions.status}}</p>
+            <p class="tran_value status_approve_color" *ngIf="transactions.status=='Pending Status'" slot="end">
+              {{transactions.status}}</p>
+         </ion-label>
+        </ion-item>
+<!-- 
+      <div style="border-bottom:1px solid #f3f3f3">
+      <div class="trans_row" style="margin-top:-7px;">
+       <ion-icon name="id-card-outline" class="tran_icon_left"></ion-icon>
+        <h4 class="tran_heading left">Trx ID</h4>
+        <ion-icon name="calendar-outline" class="tran_icon_right"></ion-icon>
+        <h4 class="tran_heading">Date</h4>
+      </div>
+      <div class="trans_row">
+        <h4 class="tran_value" style="color:#74D7F1">{{transactions.trx_id}}</h4>
+        <h4 class="tran_value">{{transactions.date}}</h4>
+      </div>
+      </div>
+
+      <div style="border-bottom:1px solid #f3f3f3">
+      <div class="trans_row">
+        <ion-icon name="logo-usd" class="tran_icon_left"></ion-icon>
+        <h4 class="tran_heading left">Amount</h4>
+        <ion-icon name="card-outline" class="tran_icon_right" style="margin-right:95px"></ion-icon>
+        <h4 class="tran_heading">Debit/Credit:</h4>
+      </div>
+       <div class="trans_row">
+        <h4 class="tran_value">{{transactions.amount}}</h4>
+        <h4 class="tran_value">{{transactions.c_type}}</h4>
+      </div>
+      </div>
+
+      <div style="border-bottom:1px solid #f3f3f3">
+         <div class="trans_row" style="margin-top:6px">
+        <ion-icon name="reader-outline" class="tran_icon_left"></ion-icon>
+        <h4 class="tran_heading left">Title</h4>
+        </div>
+        <p class="des">{{transactions.description}}</p>
+       </div>
+
+        <div style="border-bottom:1px solid #f3f3f3">
+        <div class="trans_row" style="margin-top:10px">
+        <ion-icon name="stats-chart-outline" class="tran_icon_left"></ion-icon>
+        <h4 class="tran_heading left">Status:</h4>
+       </div>
+       <p class="tran_value status_approve_color" *ngIf="transactions.status=='Success'" slot="end">
+          {{transactions.status}}</p>
+        <p class="tran_value status_rejected_color" *ngIf="transactions.status=='Rejected'" slot="end">
+          {{transactions.status}}</p>
+
+         <p class="tran_value status_rejected_btn" *ngIf="transactions.status=='Incomplete'" slot="end" (click)="incomplete(transactions.deposit_id,transactions.stage)">
+            {{transactions.status}}</p>
+          <p class="tran_value status_approve_color" *ngIf="transactions.status=='Pending Status'" slot="end">
+            {{transactions.status}}</p>
+        </div> -->
+      </ion-card>
+    </ion-card>
+
+        <!-- <ion-row class="ion-no-padding">
+         <ion-col size="auto"><div class="circle"></div></ion-col> 
+         <ion-col size="11"><p class="des">{{transactions.description}}</p></ion-col>
+       </ion-row> -->
+
+      <!-- <ion-item class="ion-no-padding trans1" lines="none">
+        <h4 class="tran_heading">Date:</h4>
+        <p class="tran_value" slot="end">{{transactions.date}}</p>
+      </ion-item>
+
+      <ion-item class="ion-no-padding trans1" lines="none" style="margin-top: -23px;">
+        <h4 class="tran_heading">Trx ID:</h4>
+        <p class="tran_value" slot="end">{{transactions.trx_id}}</p>
+      </ion-item> -->
+
+      <!-- <ion-item class="ion-no-padding trans1" lines="none" style="margin-top: -23px;">
+        <h4 class="tran_heading">Description:</h4>
+        <p class="tran_value" slot="end">{{transactions.description}}</p>
+      </ion-item> -->
+
+      <!-- <ion-item class="ion-no-padding trans1" lines="none" style="margin-top: -23px;">
+        <h4 class="tran_heading">Amount:</h4>
+        <p class="tran_value" slot="end">{{transactions.amount}}</p>
+      </ion-item>
+
+      <ion-item class="ion-no-padding trans1" lines="none" style="margin-top: -23px;">
+        <h4 class="tran_heading">Debit/Credit:</h4>
+        <p class="tran_value" slot="end">{{transactions.c_type}}</p>
+      </ion-item> -->
+
+
+ 
+</ion-content>
